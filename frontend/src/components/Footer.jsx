@@ -1,5 +1,11 @@
+import "../styles/footer.scss";
+
 function Footer() {
-  return <p>Futur Footer</p>;
+  return (
+    <footer className="footer">
+      <p>footer</p>
+    </footer>
+  );
 }
 
 export default Footer;

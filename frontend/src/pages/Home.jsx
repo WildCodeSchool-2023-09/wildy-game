@@ -1,7 +1,12 @@
 import React from "react";
-import ParallaxCoin from "../components/Parallax";
+import ParallaxCoin from "../components/ParallaxCoin";
+
 import "../styles/home.scss";
 
 export default function Home() {
-  return <ParallaxCoin />;
+  return (
+    <div className="home">
+      <ParallaxCoin />
+    </div>
+  );
 }

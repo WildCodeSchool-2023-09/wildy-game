@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   width: 100vw;
-  bottom: 0;
+  height: 100vh;
 
   .container-form {
     display: flex;
+    position: fixed;
+    bottom: 0;
     .borne-arcade {
       margin: 0 auto;
       display: block;
@@ -16,7 +17,7 @@
     }
     .login-form {
       position: absolute;
-      top: 50%;
+      top: 53%;
       left: 50%;
       transform: translate(-50%, -50%);
       display: flex;

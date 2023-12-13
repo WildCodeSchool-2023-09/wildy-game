@@ -1,7 +1,7 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useState } from "react";
 import manette from "../assets/anim_manette.json";
-import "../styles/Navbar.scss";
+import "../styles/navbar.scss";
 
 function Navbar() {
   const [login, setLogin] = useState(false);

@@ -5,9 +5,9 @@ import "./styles/root.scss";
 
 function App() {
   return (
-    <div className="main">
+    <div className="main flex">
       <Parallax bgImage={background} strength={1000}>
-        <h1>Wildy Gamy</h1>
+        <h1 className="text-red-500">Wildy Gamy</h1>
       </Parallax>
     </div>
   );

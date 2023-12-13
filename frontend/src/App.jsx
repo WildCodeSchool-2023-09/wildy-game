@@ -6,8 +6,8 @@ import "./styles/root.scss";
 function App() {
   return (
     <div className="main">
-      <Outlet />
       <Navbar />
+      <Outlet />
       <Footer />
     </div>
   );

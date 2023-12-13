@@ -1,17 +1,14 @@
 @import url("https://fonts.cdnfonts.com/css/upheaval");
 
-body {
-  background-image: url(../assets/images/FondGlobal.png);
-  background-size: cover;
-}
-
 .navbar {
   font-family: "Upheaval TT (BRK)", sans-serif;
   font-size: x-large;
   display: flex;
   justify-content: space-between;
-  margin: 10px 20px 0 20px;
+  padding: 10px 20px 0 20px;
 
+  /* position: absolute;
+  width: 100%; */
   .navbar-left {
     filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(159deg)
       brightness(102%) contrast(105%);

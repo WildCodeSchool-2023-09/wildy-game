@@ -5,11 +5,11 @@ import "./styles/root.scss";
 
 function App() {
   return (
-    <>
+    <div className="main">
       <Navbar />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 }
 

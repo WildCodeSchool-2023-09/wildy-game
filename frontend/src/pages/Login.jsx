@@ -1,12 +1,12 @@
 import borne from "../assets/images/borne_arcade_login.png";
-import ParallaxCoin from "../components/Parallax";
+import ParallaxCoin from "../components/ParallaxCoin";
 import "../styles/login.scss";
 
 function Login() {
   return (
-    <div>
+    <div className="wrapper">
       <ParallaxCoin />
-      <div className="wrapper">
+      <div className="container-form">
         <img src={borne} alt="borne" className="borne-arcade" />
         <form action="post" className="login-form">
           <label htmlFor="user">Nom d'utilisateur</label>

@@ -19,6 +19,8 @@ $font: "Upheaval TT (BRK)", sans-serif;
 
 body {
   background-image: url(../assets/images/FondGlobal.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
 }
 .s-coin {

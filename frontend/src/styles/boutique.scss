@@ -1,0 +1,10 @@
+.boutique-landing {
+  background-image: url(../assets/images/piece-boutique.png),
+    url(../assets/images/fond-boutique.png);
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.boutique-main {
+  height: calc(100vh - (300px + 24px));
+}

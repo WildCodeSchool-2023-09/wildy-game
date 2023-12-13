@@ -2,20 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  /*  .borne-arcade {
-    width: 1440px;
-    height: 968px;
-    background-image: url("../assets/images/borne_arcade_login.png");
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
+  position: fixed;
+  bottom: 0;
+  left: 15%;
   .borne-arcade {
-    width: 100%;
-    height: auto;
     display: block;
+    height: 90vh;
   }
   .login-form {
     position: absolute;

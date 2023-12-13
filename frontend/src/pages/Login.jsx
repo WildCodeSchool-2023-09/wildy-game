@@ -4,7 +4,7 @@ import "../styles/login.scss";
 
 function Login() {
   return (
-    <div className="wrapper">
+    <div className="wrapper-login">
       <ParallaxCoin />
       <div className="container-form">
         <img src={borne} alt="borne" className="borne-arcade" />
@@ -14,7 +14,9 @@ function Login() {
           <label htmlFor="password">Mot de passe</label>
           <input type="text" name="password" id="user" />
           <p>Mot de passe oublié ?</p>
-          <button type="button">CONNEXION</button>
+          <button type="button" className="btn-connexion">
+            CONNEXION
+          </button>
           <p>Créer un compte</p>
         </form>
       </div>

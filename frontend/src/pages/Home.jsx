@@ -4,7 +4,7 @@ import "../styles/home.scss";
 
 export default function Home() {
   return (
-    <div className="main">
+    <div className="parallax-div">
       <ParallaxCoin />
     </div>
   );

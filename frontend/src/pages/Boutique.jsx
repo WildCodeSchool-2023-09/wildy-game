@@ -14,7 +14,7 @@ function Boutique() {
 
   return (
     <>
-      <div className="boutique-container border-b-2 h-[250px] border-black">
+      <div className="boutique-container border-b-2 h-[300px] border-black">
         <div className="boutique-landing h-[300px] -z-10 bg-black flex items-end justify-center absolute top-0 w-full">
           <p className="text-white text-8xl drop-shadow-xl">La boutique</p>
         </div>

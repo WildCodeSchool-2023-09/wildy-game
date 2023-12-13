@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /*  .borne-arcade {
+    width: 1440px;
+    height: 968px;
+    background-image: url("../assets/images/borne_arcade_login.png");
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+  .borne-arcade {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

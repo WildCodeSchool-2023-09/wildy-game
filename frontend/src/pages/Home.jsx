@@ -1,3 +1,5 @@
+import "../styles/home.scss";
+
 function Home() {
   return (
     <>

@@ -5,8 +5,8 @@ function InputCheckbox({ value, setter, text }) {
     <div className="flex">
       <input
         type="checkbox"
-        value={value}
-        className="w-6 bg-color-first"
+        checked={value}
+        className="w-6 bg-color-first bouton-boutique"
         onChange={() => setter((prev) => !prev)}
       />
       <p className="pl-2">{text}</p>

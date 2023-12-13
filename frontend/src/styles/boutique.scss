@@ -1,3 +1,5 @@
+@import "../styles/root.scss";
+
 .boutique-landing {
   background-image: url(../assets/images/piece-boutique.png),
     url(../assets/images/fond-boutique.png);
@@ -8,4 +10,35 @@
 
 .boutique-main {
   height: calc(100vh - (300px));
+}
+
+.bouton-boutique[type="checkbox"] {
+  position: relative;
+  cursor: pointer;
+}
+
+.bouton-boutique[type="checkbox"]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 0;
+  background-color: $first-color;
+  padding: 1px;
+}
+.bouton-boutique[type="checkbox"]:checked:after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 15px;
+  border: solid $second-color;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
 }

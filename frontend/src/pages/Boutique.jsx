@@ -4,13 +4,13 @@ import InputCheckbox from "../components/Boutique/InputCheckbox";
 import "../styles/boutique.scss";
 
 function Boutique() {
-  const [bSurPlace, setBSurPlace] = useState(false);
+  const [bSurPlace, setBSurPlace] = useState(true);
   const [bOnline, setBOnline] = useState(false);
   const [figurine, setFigurine] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const [titre, setTitre] = useState(false);
   const [peluche, setPeluche] = useState(false);
-  const [allthere, setAllThere] = useState(false);
+  const [hideAchieved, setHideAchieved] = useState(false);
 
   return (
     <>
@@ -44,12 +44,24 @@ function Boutique() {
           <InputCheckbox value={peluche} setter={setPeluche} text="Peluche" />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
-            value={allthere}
-            setter={setAllThere}
+            value={hideAchieved}
+            setter={setHideAchieved}
             text="Cacher ceux possédés"
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
-          <button type="button" className="bg-color-second shadow-lg h-8 mt-2">
+          <button
+            type="button"
+            className="bg-color-second shadow-lg h-8 mt-2"
+            onClick={() => {
+              setBSurPlace(false);
+              setBOnline(false);
+              setFigurine(false);
+              setAvatar(false);
+              setTitre(false);
+              setPeluche(false);
+              setHideAchieved(false);
+            }}
+          >
             Réinitialiser
           </button>
         </div>

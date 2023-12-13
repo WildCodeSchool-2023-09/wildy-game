@@ -1,10 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.cdnfonts.com/css/upheaval");
 
-body {
+$font-color: white;
+$first-color: #920075;
+$second-color: #f9c80e;
+$shop-color1: #f36d84;
+$shop-color2: #3d2579;
+$neutral-color: #bbbbbb;
+$font: "Upheaval TT (BRK)", sans-serif;
+
+* {
   margin: 0;
   padding: 0;
+  font-family: $font;
 }
 .main {
   background-image: url(../assets/images/FondGlobal.png);

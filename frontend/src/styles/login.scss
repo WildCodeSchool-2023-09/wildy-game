@@ -4,11 +4,15 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  height: 100vh;
 
   .container-form {
     display: flex;
     position: fixed;
     bottom: 0;
+    position: fixed;
+    bottom: 0;
+
     .borne-arcade {
       margin: 0 auto;
       display: block;
@@ -17,6 +21,7 @@
     }
     .login-form {
       position: absolute;
+      top: 53%;
       top: 53%;
       left: 50%;
       transform: translate(-50%, -50%);

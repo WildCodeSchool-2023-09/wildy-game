@@ -1,6 +1,6 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 import manette from "../assets/anim_manette.json";
 import "../styles/navbar.scss";
 
@@ -10,7 +10,7 @@ function Navbar() {
   console.error(setLogin);
   return (
     <nav className="navbar">
-      <NavLink to="/">
+      <NavHashLink to="/#home">
         <Player
           autoplay
           keepLastFrame
@@ -18,14 +18,19 @@ function Navbar() {
           style={{ height: "40px" }}
           className="navbar-left"
         />
-      </NavLink>
+      </NavHashLink>
 
       <ul className="navbar-middle">
-        <li>Infos</li>
-        <li>Jeux</li>
+        <li>
+          <NavHashLink to="#infos">Infos</NavHashLink>
+        </li>
+        <li>
+          {" "}
+          <NavHashLink>Jeux </NavHashLink>
+        </li>
         <li>Nos salles</li>
         <li>
-          <NavLink to="boutique">Boutique</NavLink>
+          <NavHashLink to="boutique">Boutique</NavHashLink>
         </li>
       </ul>
       <div className="navbar-right">
@@ -33,7 +38,7 @@ function Navbar() {
           <p>Avatar</p>
         ) : (
           <p>
-            <NavLink to="login">LOG IN</NavLink>
+            <NavHashLink to="login">LOG IN</NavHashLink>
           </p>
         )}
       </div>

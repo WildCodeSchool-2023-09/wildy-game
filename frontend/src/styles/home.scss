@@ -1,18 +1,23 @@
-.parallax-div {
-  width: 100vw;
-  position: absolute;
-}
+@import "../styles/root.scss";
+
 .wrapper-home {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100vw;
   height: 100vh;
-
+  overflow: hidden !important;
+  .parallax-div {
+    width: 100vw;
+    position: absolute;
+  }
   .container-home {
     display: flex;
-    position: fixed;
-    bottom: 0;
+    position: relative;
+    top: 9vh;
+    margin-bottom: 0;
+    overflow: hidden;
     .borne-arcade {
       margin: 0 auto;
       display: block;
@@ -24,6 +29,56 @@
       top: 35.5%;
       left: 20.7%;
       width: 59%;
+    }
+  }
+}
+.section-wrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .parallax-div {
+    width: 100vw;
+    position: absolute;
+    top: 100vh;
+  }
+  .infos {
+    position: absolute;
+    top: 100vh;
+    height: 100vh;
+    width: 75vw;
+    padding-top: 15vh;
+
+    .infos-container {
+      color: white;
+      height: 70vh;
+      background-color: $first-color;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      img {
+        height: 90%;
+        margin: auto 1.5vw;
+      }
+      .infos-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8%;
+        margin: 2vh 2vw 2vh 0;
+        h1 {
+          font-size: 3rem;
+          text-align: center;
+        }
+        p {
+          font-size: 1.2rem;
+          font-family: $font2;
+          text-align: center;
+        }
+      }
+
+      .line {
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import borne from "../assets/images/borne_arcade_login.png";
 import ParallaxCoin from "../components/ParallaxCoin";
 import "../styles/login.scss";
@@ -13,11 +14,11 @@ function Login() {
           <input type="text" name="user" id="user" />
           <label htmlFor="password">Mot de passe</label>
           <input type="text" name="password" id="user" />
-          <p>Mot de passe oublié ?</p>
+          <Link to="/">Mot de passe oublié ?</Link>
           <button type="button" className="btn-connexion">
             CONNEXION
           </button>
-          <p>Créer un compte</p>
+          <Link to="/">Créer un compte</Link>
         </form>
       </div>
     </div>

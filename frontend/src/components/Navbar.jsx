@@ -22,7 +22,7 @@ function Navbar() {
 
       <ul className="navbar-middle">
         <li>
-          <NavHashLink to="#infos">Infos</NavHashLink>
+          <NavHashLink to="/#infos">Infos</NavHashLink>
         </li>
         <li>
           {" "}

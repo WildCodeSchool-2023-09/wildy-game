@@ -1,16 +1,171 @@
 import { useState } from "react";
 import Searchbar from "../components/Boutique/Searchbar";
 import InputCheckbox from "../components/Boutique/InputCheckbox";
+import BoutiqueComponent from "../components/Boutique/BoutiqueComponent";
 import "../styles/boutique.scss";
 
 function Boutique() {
-  const [bSurPlace, setBSurPlace] = useState(true);
+  const [bSurPlace, setBSurPlace] = useState(false);
   const [bOnline, setBOnline] = useState(false);
   const [figurine, setFigurine] = useState(false);
   const [avatar, setAvatar] = useState(false);
   const [titre, setTitre] = useState(false);
   const [peluche, setPeluche] = useState(false);
   const [hideAchieved, setHideAchieved] = useState(false);
+
+  const [listeFictive, setListeFictive] = useState([
+    {
+      name: "Blabla",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom1.png",
+      price: 500,
+    },
+    {
+      name: "ABCD",
+      rarity: "Rare",
+      path: "/Boutique/ImageRandom2.png",
+      price: 2200,
+    },
+    {
+      name: "Bloodborne",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom3.png",
+      price: 10,
+    },
+    {
+      name: "Goat",
+      rarity: "Epic",
+      path: "/Boutique/ImageRandom4.png",
+      price: 1500,
+    },
+    {
+      name: "Plusd'inspi",
+      rarity: "Legendary",
+      path: "/Boutique/ImageRandom5.png",
+      price: 300,
+    },
+    {
+      name: "Blabla",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom1.png",
+      price: 500,
+    },
+    {
+      name: "ABCD",
+      rarity: "Rare",
+      path: "/Boutique/ImageRandom2.png",
+      price: 2200,
+    },
+    {
+      name: "Bloodborne",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom3.png",
+      price: 10,
+    },
+    {
+      name: "Goat",
+      rarity: "Epic",
+      path: "/Boutique/ImageRandom4.png",
+      price: 1500,
+    },
+    {
+      name: "Plusd'inspi",
+      rarity: "Legendary",
+      path: "/Boutique/ImageRandom5.png",
+      price: 300,
+    },
+    {
+      name: "Blabla",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom1.png",
+      price: 500,
+    },
+    {
+      name: "ABCD",
+      rarity: "Rare",
+      path: "/Boutique/ImageRandom2.png",
+      price: 2200,
+    },
+    {
+      name: "Bloodborne",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom3.png",
+      price: 10,
+    },
+    {
+      name: "Goat",
+      rarity: "Epic",
+      path: "/Boutique/ImageRandom4.png",
+      price: 1500,
+    },
+    {
+      name: "Plusd'inspi",
+      rarity: "Legendary",
+      path: "/Boutique/ImageRandom5.png",
+      price: 300,
+    },
+    {
+      name: "Blabla",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom1.png",
+      price: 500,
+    },
+    {
+      name: "ABCD",
+      rarity: "Rare",
+      path: "/Boutique/ImageRandom2.png",
+      price: 2200,
+    },
+    {
+      name: "Bloodborne",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom3.png",
+      price: 10,
+    },
+    {
+      name: "Goat",
+      rarity: "Epic",
+      path: "/Boutique/ImageRandom4.png",
+      price: 1500,
+    },
+    {
+      name: "Plusd'inspi",
+      rarity: "Legendary",
+      path: "/Boutique/ImageRandom5.png",
+      price: 300,
+    },
+    {
+      name: "Blabla",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom1.png",
+      price: 500,
+    },
+    {
+      name: "ABCD",
+      rarity: "Rare",
+      path: "/Boutique/ImageRandom2.png",
+      price: 2200,
+    },
+    {
+      name: "Bloodborne",
+      rarity: "Commun",
+      path: "/Boutique/ImageRandom3.png",
+      price: 10,
+    },
+    {
+      name: "Goat",
+      rarity: "Epic",
+      path: "/Boutique/ImageRandom4.png",
+      price: 1500,
+    },
+    {
+      name: "Plusd'inspi",
+      rarity: "Legendary",
+      path: "/Boutique/ImageRandom5.png",
+      price: 300,
+    },
+  ]);
+  console.info(setListeFictive);
 
   return (
     <>
@@ -20,7 +175,7 @@ function Boutique() {
         </div>
       </div>
       <div className="boutique-main flex w-full">
-        <div className="boutique-filtre bg-color-shop1 w-[15%] h-full flex flex-col gap-2 pt-4 px-6 min-w-[240px]">
+        <div className="flex-1 boutique-filtre bg-color-shop1 w-[15%] flex flex-col gap-2 pt-4 px-6 min-w-[240px]">
           <Searchbar />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
@@ -65,8 +220,12 @@ function Boutique() {
             Réinitialiser
           </button>
         </div>
-        <div className="boutique-liste bg-color-shop2 w-[85%]">
-          <p>{bSurPlace && bOnline && "Toutes les boutiques"}</p>
+        <div className="boutique-liste bg-color-shop2 w-[85%] flex gap-10 p-10 flex-wrap">
+          {listeFictive.map((item) => (
+            <div className="flex flex-col">
+              <BoutiqueComponent item={item} />
+            </div>
+          ))}
         </div>
       </div>
     </>

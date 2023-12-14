@@ -12,7 +12,7 @@ function Login() {
           <div className="top-signup">
             <div className="signup-column">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
+              <input type="email" name="email" id="email" />
             </div>
             <div className="signup-column">
               <label htmlFor="user">Nom d'utilisateur</label>
@@ -21,9 +21,13 @@ function Login() {
           </div>
 
           <label htmlFor="password">Mot de passe</label>
-          <input type="text" name="password" id="password" />
+          <input type="password" name="password" id="password" />
           <label htmlFor="password-confirm">Confirmer le mot de passe</label>
-          <input type="text" name="password-confirm" id="password-confirm" />
+          <input
+            type="password"
+            name="password-confirm"
+            id="password-confirm"
+          />
           <button type="button" className="btn-connexion">
             Inscription
           </button>

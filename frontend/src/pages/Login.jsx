@@ -13,7 +13,7 @@ function Login() {
           <label htmlFor="user">Nom d'utilisateur</label>
           <input type="text" name="user" id="user" />
           <label htmlFor="password">Mot de passe</label>
-          <input type="text" name="password" id="user" />
+          <input type="password" name="password" id="user" />
           <Link to="/">Mot de passe oublié ?</Link>
           <button type="button" className="btn-connexion">
             CONNEXION

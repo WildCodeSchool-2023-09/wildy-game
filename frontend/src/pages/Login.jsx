@@ -18,7 +18,7 @@ function Login() {
           <button type="button" className="btn-connexion">
             CONNEXION
           </button>
-          <Link to="/">Créer un compte</Link>
+          <Link to="/signup">Créer un compte</Link>
         </form>
       </div>
     </div>

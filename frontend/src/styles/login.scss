@@ -29,6 +29,19 @@
       flex-direction: column;
       align-items: center;
       z-index: 4;
+      input {
+        width: 8vw;
+      }
+      .top-signup {
+        display: flex;
+        gap: 1rem;
+
+        .signup-column {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
     }
     .btn-connexion {
       height: 2.5rem;

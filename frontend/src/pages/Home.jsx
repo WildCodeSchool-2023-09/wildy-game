@@ -78,6 +78,20 @@ export default function Home() {
             </h1>
           </div>
         </section>
+
+        <div className="section-wrapper3">
+          <ParallaxCoin />
+          <section className="contact" id="contact">
+            <div className="contact-container">
+              {/* <div className="contact-map">
+
+              </div>
+              <div className="contact-form">
+
+              </div> */}
+            </div>
+          </section>
+        </div>
       </div>
     </>
   );

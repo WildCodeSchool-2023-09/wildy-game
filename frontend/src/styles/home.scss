@@ -1,5 +1,11 @@
 @import "../styles/root.scss";
-
+.parallax-div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 .wrapper-home {
   display: flex;
   justify-content: center;
@@ -7,7 +13,6 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  overflow: hidden !important;
   .parallax-div {
     width: 100vw;
     position: absolute;
@@ -17,7 +22,6 @@
     position: relative;
     bottom: -5vh;
     margin-bottom: 0;
-
     .borne-arcade {
       margin: 0 auto;
       display: block;
@@ -114,10 +118,6 @@
       display: flex;
       flex-direction: column;
       gap: 8%;
-      img {
-        height: 90%;
-        margin: auto 2.5%;
-      }
       .games-cards {
         margin-top: 1.5rem;
         display: flex;
@@ -239,6 +239,7 @@
         text-align: center;
         letter-spacing: 2.5px;
         font-family: $font3;
+        margin-top: -25px;
         span.shop {
           text-decoration: underline;
           font-size: 2rem;
@@ -246,6 +247,40 @@
         span.coin {
           font-size: 2rem;
         }
+      }
+    }
+  }
+}
+.section-wrapper3 {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .parallax-div {
+    width: 100vw;
+    position: absolute;
+    top: 300vh;
+  }
+  .contact {
+    position: absolute;
+    top: 300vh;
+    height: 100vh;
+    width: 75vw;
+    padding-top: 15vh;
+
+    .contact-container {
+      color: white;
+      height: 70vh;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 8%;
+
+      .contact-map {
+      }
+      .contact-form {
       }
     }
   }

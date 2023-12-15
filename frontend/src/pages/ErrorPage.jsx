@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import borne from "../assets/images/borne_arcade_404.png";
 import ParallaxCoin from "../components/ParallaxCoin";
 import start from "../assets/video/wildy_gamy_gameover_carre.mp4";
-import "../styles/error.scss";
+import "../styles/home.scss";
 
 function ErrorPage() {
   return (

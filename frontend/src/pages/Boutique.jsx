@@ -7,18 +7,19 @@ import "../styles/boutique.scss";
 function Boutique() {
   const [bSurPlace, setBSurPlace] = useState(false);
   const [bOnline, setBOnline] = useState(false);
-  const [figurine, setFigurine] = useState(false);
-  const [avatar, setAvatar] = useState(false);
-  const [titre, setTitre] = useState(false);
-  const [peluche, setPeluche] = useState(false);
+  const [common, setCommon] = useState(false);
+  const [rare, setRare] = useState(false);
+  const [epic, setEpic] = useState(false);
+  const [legendary, setLegendary] = useState(false);
   const [hideAchieved, setHideAchieved] = useState(false);
 
   const [listeFictive, setListeFictive] = useState([
     {
       name: "Blabla",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom1.png",
       price: 500,
+      owned: true,
     },
     {
       name: "ABCD",
@@ -28,7 +29,7 @@ function Boutique() {
     },
     {
       name: "Bloodborne",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom3.png",
       price: 10,
     },
@@ -46,7 +47,7 @@ function Boutique() {
     },
     {
       name: "Blabla",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom1.png",
       price: 500,
     },
@@ -58,7 +59,7 @@ function Boutique() {
     },
     {
       name: "Bloodborne",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom3.png",
       price: 10,
     },
@@ -76,7 +77,7 @@ function Boutique() {
     },
     {
       name: "Blabla",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom1.png",
       price: 500,
     },
@@ -88,7 +89,7 @@ function Boutique() {
     },
     {
       name: "Bloodborne",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom3.png",
       price: 10,
     },
@@ -106,7 +107,7 @@ function Boutique() {
     },
     {
       name: "Blabla",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom1.png",
       price: 500,
     },
@@ -118,7 +119,7 @@ function Boutique() {
     },
     {
       name: "Bloodborne",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom3.png",
       price: 10,
     },
@@ -136,7 +137,7 @@ function Boutique() {
     },
     {
       name: "Blabla",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom1.png",
       price: 500,
     },
@@ -148,7 +149,7 @@ function Boutique() {
     },
     {
       name: "Bloodborne",
-      rarity: "Commun",
+      rarity: "Common",
       path: "/Boutique/ImageRandom3.png",
       price: 10,
     },
@@ -167,6 +168,29 @@ function Boutique() {
   ]);
   console.info(setListeFictive);
 
+  const [searchValue, setSearchValue] = useState("");
+
+  console.info(searchValue);
+
+  const filteredList = listeFictive
+    .filter((element) =>
+      element.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
+    .filter((element) =>
+      common ? element.rarity.includes("Common") : element.rarity.includes("")
+    )
+    .filter((element) =>
+      rare ? element.rarity.includes("Rare") : element.rarity.includes("")
+    )
+    .filter((element) =>
+      epic ? element.rarity.includes("Epic") : element.rarity.includes("")
+    )
+    .filter((element) =>
+      legendary
+        ? element.rarity.includes("Legendary")
+        : element.rarity.includes("")
+    );
+  console.info(filteredList);
   return (
     <>
       <div className="boutique-container border-b-2 h-[300px] border-black">
@@ -176,7 +200,10 @@ function Boutique() {
       </div>
       <div className="boutique-main flex w-full">
         <div className="flex-1 boutique-filtre bg-color-shop1 w-[15%] flex flex-col gap-2 pt-4 px-6 min-w-[240px]">
-          <Searchbar />
+          <Searchbar
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
             value={bSurPlace}
@@ -189,14 +216,14 @@ function Boutique() {
             text="Boutique en ligne"
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
+          <InputCheckbox value={common} setter={setCommon} text="Common" />
+          <InputCheckbox value={rare} setter={setRare} text="Rare" />
+          <InputCheckbox value={epic} setter={setEpic} text="Epic" />
           <InputCheckbox
-            value={figurine}
-            setter={setFigurine}
-            text="Figurine"
+            value={legendary}
+            setter={setLegendary}
+            text="Legendary"
           />
-          <InputCheckbox value={avatar} setter={setAvatar} text="Avatar" />
-          <InputCheckbox value={titre} setter={setTitre} text="Titre" />
-          <InputCheckbox value={peluche} setter={setPeluche} text="Peluche" />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
             value={hideAchieved}
@@ -210,10 +237,10 @@ function Boutique() {
             onClick={() => {
               setBSurPlace(false);
               setBOnline(false);
-              setFigurine(false);
-              setAvatar(false);
-              setTitre(false);
-              setPeluche(false);
+              setCommon(false);
+              setRare(false);
+              setEpic(false);
+              setLegendary(false);
               setHideAchieved(false);
             }}
           >
@@ -221,7 +248,7 @@ function Boutique() {
           </button>
         </div>
         <div className="boutique-liste bg-color-shop2 w-[85%] flex gap-10 p-10 flex-wrap">
-          {listeFictive.map((item) => (
+          {filteredList.map((item) => (
             <div className="flex flex-col">
               <BoutiqueComponent item={item} />
             </div>

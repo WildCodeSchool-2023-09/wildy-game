@@ -4,7 +4,7 @@ import heart from "../assets/images/heart.png";
 
 export default function ParallaxCoin() {
   return (
-    <Parallax pages={2} className="parallax-div">
+    <Parallax pages={1.2} className="parallax-div">
       {/* LAYER 1 */}
       <ParallaxLayer offset={0} speed={-2}>
         <img

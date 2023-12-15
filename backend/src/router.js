@@ -21,5 +21,5 @@ router.post("/items", itemControllers.add);
 const avatarControllers = require("./controllers/avatarControllers");
 
 router.get("/avatars", avatarControllers.browse);
-
+router.get("/avatars/:id", avatarControllers.findById);
 module.exports = router;

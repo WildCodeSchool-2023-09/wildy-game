@@ -18,8 +18,8 @@ router.get("/items/:id", itemControllers.read);
 router.post("/items", itemControllers.add);
 
 /* ************************************************************************* */
-const userControllers = require("./controllers/userControllers");
+const avatarControllers = require("./controllers/avatarControllers");
 
-router.get("/users", userControllers.browse);
+router.get("/avatars", avatarControllers.browse);
 
 module.exports = router;

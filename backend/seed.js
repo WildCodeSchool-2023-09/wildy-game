@@ -25,8 +25,9 @@ const seed = async () => {
     // Insert fake data into the 'item' table
     for (let i = 0; i < 10; i += 1) {
       queries.push(
-        database.query("insert into item(title) values (?)", [
+        database.query("insert into item(title, image) values (?, ?)", [
           faker.lorem.word(),
+          faker.image.avatar(),
         ])
       );
     }

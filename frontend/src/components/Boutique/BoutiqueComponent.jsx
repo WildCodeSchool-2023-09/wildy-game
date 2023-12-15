@@ -10,7 +10,7 @@ function BoutiqueComponent({ item }) {
         className="w-60 h-60 bg-black shadow-lg shadow-black"
       />
       <div className="flex items-center justify-between mt-2">
-        <p className="text-white font-arial">{item.name}</p>
+        <p className="text-white">{item.name}</p>
         <div className="flex text-white">
           <p>{item.price}</p>
           <img src={piece} alt="coin" className="h-6" />

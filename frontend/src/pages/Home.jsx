@@ -1,4 +1,7 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
+import { useForm } from "react-hook-form";
+
 import ParallaxCoin from "../components/ParallaxCoin";
 import borne from "../assets/images/borne_arcade.png";
 import start from "../assets/video/wildy_gamy_carre.mp4";
@@ -6,6 +9,14 @@ import salle from "../assets/images/lateralement-femmes-jouer-danse-arcade.jpg";
 import "../styles/home.scss";
 
 export default function Home() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.info(data);
+  console.info(errors);
+
   return (
     <>
       <div className="wrapper-home" id="home">
@@ -83,12 +94,40 @@ export default function Home() {
           <ParallaxCoin />
           <section className="contact" id="contact">
             <div className="contact-container">
-              {/* <div className="contact-map">
-
+              <div className="contact-map">
+                <h1>Nos Salles</h1>
+                <iframe
+                  title="Wildy Gamy"
+                  className="map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.399743615755!2d7.743210411383006!3d48.583044419925145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c84dc1b5befb%3A0xe55e855fc6df9c52!2sPl.%20Kl%C3%A9ber%2C%2067000%20Strasbourg!5e0!3m2!1sfr!2sfr!4v1702654875824!5m2!1sfr!2sfr"
+                  width="400"
+                  height="300"
+                  allowfullscreen=""
+                  loading="lazy"
+                />
               </div>
-              <div className="contact-form">
+              <div className="contact-form-container">
+                <h1>Une question, une suggestion ? </h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    {...register("Email", {
+                      required: true,
+                      pattern: /^\S+@\S+$/i,
+                    })}
+                  />
+                  <textarea
+                    {...register("Message", {
+                      required: true,
+                      max: 500,
+                      min: 100,
+                    })}
+                  />
 
-              </div> */}
+                  <input type="submit" />
+                </form>
+              </div>
             </div>
           </section>
         </div>

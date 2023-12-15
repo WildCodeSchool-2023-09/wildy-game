@@ -26,9 +26,12 @@ function Navbar() {
         </li>
         <li>
           {" "}
-          <NavHashLink>Jeux </NavHashLink>
+          <NavHashLink to="#games">Jeux </NavHashLink>
         </li>
-        <li>Nos salles</li>
+        <li>
+          {" "}
+          <NavHashLink to="#contact">Nos Salles </NavHashLink>
+        </li>
         <li>
           <NavHashLink to="boutique">Boutique</NavHashLink>
         </li>

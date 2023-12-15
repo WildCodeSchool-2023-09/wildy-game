@@ -21,7 +21,7 @@
     display: flex;
     position: relative;
     bottom: -5vh;
-    margin-bottom: 0;
+
     .borne-arcade {
       margin: 0 auto;
       display: block;
@@ -275,12 +275,45 @@
       width: 100%;
       z-index: 5;
       display: flex;
-      flex-direction: column;
-      gap: 8%;
+      gap: 10%;
 
       .contact-map {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        h1 {
+          font-size: 2rem;
+        }
+        .map {
+          border-radius: 10px;
+        }
       }
-      .contact-form {
+      .contact-form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        h1 {
+          font-size: 2rem;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.3rem;
+          input {
+            background-color: $first-color;
+            height: 2.5rem;
+          }
+          textarea {
+            background-color: $first-color;
+            height: 180px;
+          }
+          input[type="submit"] {
+            background-color: $second-color;
+            padding: 5px 30px;
+            box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+            border-radius: 1px;
+          }
+        }
       }
     }
   }

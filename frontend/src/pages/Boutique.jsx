@@ -176,11 +176,25 @@ function Boutique() {
     .filter((element) =>
       element.name.toLowerCase().includes(searchValue.toLowerCase())
     )
-    .filter((element) => (common ? element.rarity === "Common" : true))
-    .filter((element) => (rare ? element.rarity === "Rare" : true))
-    .filter((element) => (epic ? element.rarity === "Epic" : true))
-    .filter((element) => (legendary ? element.rarity === "Legendary" : true))
-    .filter((element) => (hideAchieved ? !element.owned : true));
+    .filter((element) =>
+      common || rare || epic || legendary
+        ? element.rarity.includes("Common") ||
+          element.rarity.includes("Rare") ||
+          element.rarity.includes("Epic") ||
+          element.rarity.includes("Legendary")
+        : element.rarity.includes("")
+    );
+  /* .filter((element) =>
+      rare ? element.rarity.includes("Rare") : element.rarity.includes("")
+    )
+    .filter((element) =>
+      epic ? element.rarity.includes("Epic") : element.rarity.includes("")
+    )
+    .filter((element) =>
+      legendary
+        ? element.rarity.includes("Legendary")
+        : element.rarity.includes("")
+    ); */
 
   return (
     <>

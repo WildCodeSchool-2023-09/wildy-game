@@ -1,5 +1,11 @@
 @import "../styles/root.scss";
-
+.parallax-div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 .wrapper-home {
   display: flex;
   justify-content: center;
@@ -7,7 +13,6 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  overflow: hidden !important;
   .parallax-div {
     width: 100vw;
     position: absolute;
@@ -15,9 +20,8 @@
   .container-home {
     display: flex;
     position: relative;
-    top: 9vh;
-    margin-bottom: 0;
-    overflow: hidden;
+    bottom: -5vh;
+
     .borne-arcade {
       margin: 0 auto;
       display: block;
@@ -59,13 +63,14 @@
       display: flex;
       img {
         height: 90%;
-        margin: auto 1.5vw;
+        margin: auto 2.5%;
       }
       .infos-content {
         display: flex;
         flex-direction: column;
-        gap: 8%;
+        gap: 2%;
         margin: 2vh 2vw 2vh 0;
+
         h1 {
           font-size: 3rem;
           text-align: center;
@@ -74,10 +79,241 @@
           font-size: 1.2rem;
           font-family: $font2;
           text-align: center;
+          padding: 0 10px;
         }
       }
-
       .line {
+        position: relative;
+        top: 10%;
+        height: 80%;
+        width: 3px;
+        background: white;
+      }
+    }
+  }
+}
+.section-wrapper2 {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .parallax-div {
+    width: 100vw;
+    position: absolute;
+    top: 200vh;
+  }
+  .games {
+    position: absolute;
+    top: 200vh;
+    height: 100vh;
+    width: 75vw;
+    padding-top: 15vh;
+
+    .games-container {
+      color: white;
+      height: 70vh;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 8%;
+      .games-cards {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2%;
+        .game1 {
+          background-image: url(../assets/images/pacmann.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: 18rem;
+          height: 25rem;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          .game-button {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 50%;
+            background: linear-gradient(
+              0deg,
+              rgba(61, 61, 61, 1) 26%,
+              rgba(61, 61, 61, 0) 100%
+            );
+            button {
+              margin: 1.5rem;
+              height: 3rem;
+              width: 15rem;
+              font-size: 1.7rem;
+              color: #3d3d3d;
+              background-color: #f9c80e;
+              padding: 5px 30px;
+              border: none;
+              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+              border-radius: 1px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+        .game2 {
+          background-image: url(../assets/images/Streetfighter.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: 18rem;
+          height: 25rem;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          .game-button {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 50%;
+            background: linear-gradient(
+              0deg,
+              rgba(61, 61, 61, 1) 26%,
+              rgba(61, 61, 61, 0) 100%
+            );
+            button {
+              margin: 1.5rem;
+              height: 3rem;
+              width: 15rem;
+              font-size: 1.7rem;
+              color: #3d3d3d;
+              background-color: #f9c80e;
+              padding: 5px 30px;
+              border: none;
+              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+              border-radius: 1px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+        .game3 {
+          background-image: url(../assets/images/mario.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: 18rem;
+          height: 25rem;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          .game-button {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 50%;
+            background: linear-gradient(
+              0deg,
+              rgba(61, 61, 61, 1) 26%,
+              rgba(61, 61, 61, 0) 100%
+            );
+            button {
+              margin: 1.5rem;
+              height: 3rem;
+              width: 15rem;
+              font-size: 1.7rem;
+              color: #3d3d3d;
+              background-color: #f9c80e;
+              padding: 5px 30px;
+              border: none;
+              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+              border-radius: 1px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
+      .h-games {
+        font-size: 1.2rem;
+        text-align: center;
+        letter-spacing: 2.5px;
+        font-family: $font3;
+        margin-top: -25px;
+        span.shop {
+          text-decoration: underline;
+          font-size: 2rem;
+        }
+        span.coin {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+.section-wrapper3 {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .parallax-div {
+    width: 100vw;
+    position: absolute;
+    top: 300vh;
+  }
+  .contact {
+    position: absolute;
+    top: 300vh;
+    height: 100vh;
+    width: 75vw;
+    padding-top: 15vh;
+
+    .contact-container {
+      color: white;
+      height: 70vh;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      gap: 10%;
+
+      .contact-map {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        h1 {
+          font-size: 2rem;
+        }
+        .map {
+          border-radius: 10px;
+        }
+      }
+      .contact-form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        h1 {
+          font-size: 2rem;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.3rem;
+          input {
+            background-color: $first-color;
+            height: 2.5rem;
+          }
+          textarea {
+            background-color: $first-color;
+            height: 180px;
+          }
+          input[type="submit"] {
+            background-color: $second-color;
+            padding: 5px 30px;
+            box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+            border-radius: 1px;
+          }
+        }
       }
     }
   }

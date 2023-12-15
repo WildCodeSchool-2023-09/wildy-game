@@ -7,20 +7,22 @@ import "../styles/home.scss";
 
 export default function Home() {
   return (
-    <div className="wrapper-home" id="home">
-      <ParallaxCoin />
-      <div className="container-home">
-        <img src={borne} alt="borne home" className="borne-arcade" />
-        <video
-          autoPlay
-          loop
-          controls={false}
-          playsInline
-          muted
-          className="start-video"
-        >
-          <source src={start} type="video/mp4" />
-        </video>
+    <>
+      <div className="wrapper-home" id="home">
+        <ParallaxCoin />
+        <div className="container-home">
+          <img src={borne} alt="borne home" className="borne-arcade" />
+          <video
+            autoPlay
+            loop
+            controls={false}
+            playsInline
+            muted
+            className="start-video"
+          >
+            <source src={start} type="video/mp4" />
+          </video>
+        </div>
       </div>
       <div className="section-wrapper">
         <ParallaxCoin />
@@ -47,6 +49,36 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </div>
+
+      <div className="section-wrapper2">
+        <ParallaxCoin />
+        <section className="games" id="games">
+          <div className="games-container">
+            <div className="games-cards">
+              <div className="game1">
+                <div className="game-button">
+                  <button type="button">START</button>
+                </div>
+              </div>
+              <div className="game2">
+                <div className="game-button">
+                  <button type="button">START</button>
+                </div>
+              </div>
+              <div className="game3">
+                <div className="game-button">
+                  <button type="button">START</button>
+                </div>
+              </div>
+            </div>
+            <h1 className="h-games">
+              Gagne des <span className="coin">WILDY COINS</span> et viens les
+              dépenser dans <br />
+              la <span className="shop">Wildy Boutique</span>
+            </h1>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }

@@ -177,14 +177,9 @@ function Boutique() {
       element.name.toLowerCase().includes(searchValue.toLowerCase())
     )
     .filter((element) =>
-      common || rare || epic || legendary
-        ? element.rarity.includes("Common") ||
-          element.rarity.includes("Rare") ||
-          element.rarity.includes("Epic") ||
-          element.rarity.includes("Legendary")
-        : element.rarity.includes("")
-    );
-  /* .filter((element) =>
+      common ? element.rarity.includes("Common") : element.rarity.includes("")
+    )
+    .filter((element) =>
       rare ? element.rarity.includes("Rare") : element.rarity.includes("")
     )
     .filter((element) =>
@@ -194,8 +189,8 @@ function Boutique() {
       legendary
         ? element.rarity.includes("Legendary")
         : element.rarity.includes("")
-    ); */
-
+    );
+  console.info(filteredList);
   return (
     <>
       <div className="boutique-container border-b-2 h-[300px] border-black">

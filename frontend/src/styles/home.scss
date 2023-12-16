@@ -11,10 +11,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 100svw;
   height: 100vh;
   .parallax-div {
-    width: 100vw;
+    width: 100svw;
     position: absolute;
   }
   .container-home {
@@ -37,13 +37,13 @@
   }
 }
 .section-wrapper {
-  width: 100vw;
+  width: 100svw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   .parallax-div {
-    width: 100vw;
+    width: 100svw;
     position: absolute;
     top: 100vh;
   }
@@ -70,22 +70,32 @@
         flex-direction: column;
         gap: 2%;
         margin: 2vh 2vw 2vh 0;
+        justify-self: center;
+        align-self: center;
 
         h1 {
           font-size: 3rem;
           text-align: center;
+          text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
+          @media screen and (min-width: 1600px) {
+            font-size: 5rem;
+          }
         }
         p {
           font-size: 1.2rem;
           font-family: $font2;
           text-align: center;
           padding: 0 10px;
+          @media screen and (min-width: 1600px) {
+            font-size: 2rem;
+          }
         }
       }
       .line {
         position: relative;
-        top: 10%;
-        height: 80%;
+        justify-self: center;
+        align-self: center;
+        height: 60%;
         width: 3px;
         background: white;
       }
@@ -93,13 +103,13 @@
   }
 }
 .section-wrapper2 {
-  width: 100vw;
+  width: 100svw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   .parallax-div {
-    width: 100vw;
+    width: 100svw;
     position: absolute;
     top: 200vh;
   }
@@ -117,19 +127,22 @@
       z-index: 5;
       display: flex;
       flex-direction: column;
-      gap: 8%;
+      @media screen and (min-width: 1600px) {
+        gap: 10%;
+      }
       .games-cards {
         margin-top: 1.5rem;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        gap: 2%;
+        gap: 5rem;
+
         .game1 {
           background-image: url(../assets/images/pacmann.png);
-          background-size: contain;
+          background-size: cover;
           background-repeat: no-repeat;
-          width: 40vw;
+          flex-grow: 1;
           height: 60vh;
           display: flex;
           align-items: flex-end;
@@ -164,9 +177,9 @@
         }
         .game2 {
           background-image: url(../assets/images/Streetfighter.png);
-          background-size: contain;
+          background-size: cover;
           background-repeat: no-repeat;
-          width: 40vw;
+          flex-grow: 1;
           height: 60vh;
           display: flex;
           align-items: flex-end;
@@ -201,9 +214,9 @@
         }
         .game3 {
           background-image: url(../assets/images/mario.png);
-          background-size: contain;
+          background-size: cover;
           background-repeat: no-repeat;
-          width: 40vw;
+          flex-grow: 1;
           height: 60vh;
           display: flex;
           align-items: flex-end;
@@ -213,7 +226,7 @@
             align-items: flex-end;
             justify-content: center;
             height: 50%;
-            width: 90%;
+            width: 100%;
             background: linear-gradient(
               0deg,
               rgba(61, 61, 61, 1) 26%,
@@ -242,7 +255,8 @@
         text-align: center;
         letter-spacing: 2.5px;
         font-family: $font3;
-        margin-top: -25px;
+        text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
+
         span.shop {
           text-decoration: underline;
           font-size: 2rem;
@@ -255,13 +269,13 @@
   }
 }
 .section-wrapper3 {
-  width: 100vw;
+  width: 100svw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   .parallax-div {
-    width: 100vw;
+    width: 100svw;
     position: absolute;
     top: 300vh;
   }
@@ -284,31 +298,49 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        flex-grow: 1;
         h1 {
           font-size: 2rem;
+          text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
         }
         .map {
           border-radius: 10px;
+          justify-self: center;
+          @media screen and (min-width: 1600px) {
+            width: 40vw;
+            height: 50vh;
+          }
         }
       }
       .contact-form-container {
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        flex-grow: 1;
         h1 {
           font-size: 2rem;
+          text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
         }
         form {
           display: flex;
           flex-direction: column;
           gap: 1.3rem;
+          justify-self: center;
+          @media screen and (min-width: 1600px) {
+          }
           input {
             background-color: $first-color;
             height: 2.5rem;
+            @media screen and (min-width: 1600px) {
+              height: 4rem;
+            }
           }
           textarea {
             background-color: $first-color;
             height: 180px;
+            @media screen and (min-width: 1600px) {
+              height: 31vh;
+            }
           }
           input[type="submit"] {
             background-color: $second-color;

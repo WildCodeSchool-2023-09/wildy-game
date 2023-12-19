@@ -193,19 +193,21 @@ function Boutique() {
         </div>
       </div>
       <div className="boutique-main flex w-full">
-        <div className="flex-1 boutique-filtre bg-color-shop1 w-[15%] flex flex-col gap-2 pt-4 px-6 min-w-[240px]">
+        <div className="boutique-filtre bg-color-shop1 flex flex-col gap-2 pt-4 px-6 min-w-[240px]">
           <Searchbar
             searchValue={searchValue}
             setSearchValue={setSearchValue}
           />
-          <div className="h-[1px] bg-black w-[80%] self-center" />
+          <div className="h-[1px] bg-black w-[80%] self-center " />
           <InputCheckbox
+            className="filter"
             value={bSurPlace}
             setArrayFilter={setBSurPlace}
             text="Boutique sur place"
             reset={setBSurPlace}
           />
           <InputCheckbox
+            className="filter"
             value={bOnline}
             setArrayFilter={setBOnline}
             text="Boutique en ligne"
@@ -241,6 +243,7 @@ function Boutique() {
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
+            className="filter"
             value={hideAchieved}
             setArrayFilter={setHideAchieved}
             text="Cacher ceux possédés"
@@ -264,7 +267,7 @@ function Boutique() {
             Réinitialiser
           </button>
         </div>
-        <div className="boutique-liste bg-color-shop2 w-[85%] p-10 flex-wrap">
+        <div className="boutique-liste bg-color-shop2 w-[90%] p-10 flex-wrap">
           <div className="item-container flex w-full flex-wrap gap-10">
             {filteredList.map((item) => (
               <div className="flex flex-col item h-[280px]">

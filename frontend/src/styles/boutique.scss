@@ -15,13 +15,11 @@
   .boutique-filtre {
     position: -webkit-sticky;
     position: sticky;
-    height: 100vh;
+    height: 89vh;
     bottom: calc(100vh - (50px));
-    top: 50px;
+    top: 5rem;
+    bottom: 0;
     scroll-behavior: none;
-  }
-  .boutique-liste {
-    top: 50px;
   }
 }
 

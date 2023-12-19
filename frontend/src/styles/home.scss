@@ -61,9 +61,15 @@
       width: 100%;
       z-index: 5;
       display: flex;
+      @media screen and (max-width: 730px) {
+        flex-direction: column;
+      }
       img {
         height: 90%;
         margin: auto 2.5%;
+        @media screen and (max-width: 730px) {
+          display: none;
+        }
       }
       .infos-content {
         display: flex;
@@ -80,6 +86,10 @@
           @media screen and (min-width: 1600px) {
             font-size: 5rem;
           }
+          @media screen and (max-width: 730px) {
+            font-size: 2rem;
+            margin-top: 5%;
+          }
         }
         p {
           font-size: 1.2rem;
@@ -88,6 +98,10 @@
           padding: 0 10px;
           @media screen and (min-width: 1600px) {
             font-size: 2rem;
+          }
+          @media screen and (max-width: 730px) {
+            font-size: 1rem;
+            text-align: justify;
           }
         }
       }
@@ -98,6 +112,9 @@
         height: 60%;
         width: 3px;
         background: white;
+        @media screen and (max-width: 730px) {
+          display: none;
+        }
       }
     }
   }
@@ -130,6 +147,10 @@
       @media screen and (min-width: 1600px) {
         gap: 10%;
       }
+      @media screen and (max-width: 730px) {
+        height: 100vh;
+      }
+
       .games-cards {
         margin-top: 1.5rem;
         display: flex;
@@ -137,7 +158,9 @@
         justify-content: space-around;
         align-items: center;
         gap: 5rem;
-
+        @media screen and (max-width: 730px) {
+          overflow-x: scroll;
+        }
         .game1 {
           background-image: url(../assets/images/pacmann.png);
           background-size: cover;
@@ -147,6 +170,7 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
+
           .game-button {
             display: flex;
             align-items: flex-end;
@@ -184,6 +208,7 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
+
           .game-button {
             display: flex;
             align-items: flex-end;
@@ -221,6 +246,7 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
+
           .game-button {
             display: flex;
             align-items: flex-end;
@@ -256,9 +282,10 @@
         letter-spacing: 2.5px;
         font-family: $font3;
         text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
-
+        @media screen and (max-width: 730px) {
+          font-size: 1rem;
+        }
         span.shop {
-          text-decoration: underline;
           font-size: 2rem;
         }
         span.coin {
@@ -293,6 +320,9 @@
       z-index: 5;
       display: flex;
       gap: 10%;
+      @media screen and (max-width: 730px) {
+        flex-direction: column;
+      }
 
       .contact-map {
         display: flex;

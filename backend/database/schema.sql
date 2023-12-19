@@ -80,8 +80,11 @@ CREATE TABLE `boutique` (
   `prix` int NOT NULL,
   `avatarId` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_boutique` (`avatarId`),
-  CONSTRAINT `fk_boutique` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`)
+
+  KEY `fk_boutique` (`avatar_id`),
+  CONSTRAINT `fk_boutique` FOREIGN KEY (`avatar_id`) REFERENCES `avatar` (`id`)
+  ON DELETE CASCADE
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

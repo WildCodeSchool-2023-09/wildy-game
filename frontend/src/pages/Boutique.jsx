@@ -12,6 +12,7 @@ function Boutique() {
   const [epic, setEpic] = useState(false);
   const [legendary, setLegendary] = useState(false);
   const [hideAchieved, setHideAchieved] = useState(false);
+  const [arrayFilter, setArrayFilter] = useState([]);
 
   const [listeFictive, setListeFictive] = useState([
     {
@@ -170,26 +171,19 @@ function Boutique() {
 
   const [searchValue, setSearchValue] = useState("");
 
-  console.info(searchValue);
-
   const filteredList = listeFictive
     .filter((element) =>
       element.name.toLowerCase().includes(searchValue.toLowerCase())
     )
-    .filter((element) =>
-      common ? element.rarity.includes("Common") : element.rarity.includes("")
-    )
-    .filter((element) =>
-      rare ? element.rarity.includes("Rare") : element.rarity.includes("")
-    )
-    .filter((element) =>
-      epic ? element.rarity.includes("Epic") : element.rarity.includes("")
-    )
-    .filter((element) =>
-      legendary
-        ? element.rarity.includes("Legendary")
-        : element.rarity.includes("")
-    );
+    .filter((item) => {
+      if (arrayFilter.length === 0) {
+        return true;
+      }
+      return arrayFilter.some(
+        (selectedRarity) => item.rarity === selectedRarity
+      );
+    });
+
   console.info(filteredList);
   return (
     <>
@@ -207,28 +201,50 @@ function Boutique() {
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
             value={bSurPlace}
-            setter={setBSurPlace}
+            setArrayFilter={setBSurPlace}
             text="Boutique sur place"
+            reset={setBSurPlace}
           />
           <InputCheckbox
             value={bOnline}
-            setter={setBOnline}
+            setArrayFilter={setBOnline}
             text="Boutique en ligne"
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
-          <InputCheckbox value={common} setter={setCommon} text="Common" />
-          <InputCheckbox value={rare} setter={setRare} text="Rare" />
-          <InputCheckbox value={epic} setter={setEpic} text="Epic" />
+          <InputCheckbox
+            value={common}
+            setArrayFilter={setArrayFilter}
+            text="Common"
+            reset={setCommon}
+            arrayFilter={arrayFilter}
+          />
+          <InputCheckbox
+            value={rare}
+            setArrayFilter={setArrayFilter}
+            text="Rare"
+            reset={setRare}
+            arrayFilter={arrayFilter}
+          />
+          <InputCheckbox
+            value={epic}
+            setArrayFilter={setArrayFilter}
+            text="Epic"
+            reset={setEpic}
+            arrayFilter={arrayFilter}
+          />
           <InputCheckbox
             value={legendary}
-            setter={setLegendary}
+            setArrayFilter={setArrayFilter}
             text="Legendary"
+            reset={setLegendary}
+            arrayFilter={arrayFilter}
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
             value={hideAchieved}
-            setter={setHideAchieved}
+            setArrayFilter={setHideAchieved}
             text="Cacher ceux possédés"
+            reset={setHideAchieved}
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <button
@@ -242,12 +258,13 @@ function Boutique() {
               setEpic(false);
               setLegendary(false);
               setHideAchieved(false);
+              setArrayFilter(() => []);
             }}
           >
             Réinitialiser
           </button>
         </div>
-        <div className="boutique-liste bg-color-shop2 w-[85%] flex gap-10 p-10 flex-wrap">
+        <div className="boutique-liste bg-color-shop2 w-[85%] flex gap-10 p-10 flex-wrap items-start">
           {filteredList.map((item) => (
             <div className="flex flex-col">
               <BoutiqueComponent item={item} />

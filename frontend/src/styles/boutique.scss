@@ -10,6 +10,22 @@
 
 .boutique-main {
   min-height: calc(100vh - (300px));
+  position: relative;
+  bottom: 0;
+  .boutique-filtre {
+    position: -webkit-sticky;
+    position: sticky;
+    height: 100vh;
+    bottom: calc(100vh - (50px));
+    top: 50px;
+    scroll-behavior: none;
+  }
+  .boutique-liste {
+    position: -webkit-sticky;
+    position: sticky;
+    height: auto;
+    top: 50px;
+  }
 }
 
 .bouton-boutique[type="checkbox"] {

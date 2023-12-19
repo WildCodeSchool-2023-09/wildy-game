@@ -22,15 +22,15 @@ function Navbar() {
 
       <ul className="navbar-middle">
         <li>
-          <NavHashLink to="#infos">Infos</NavHashLink>
+          <NavHashLink to="/#infos">Infos</NavHashLink>
         </li>
         <li>
           {" "}
-          <NavHashLink to="#games">Jeux </NavHashLink>
+          <NavHashLink to="/#games">Jeux </NavHashLink>
         </li>
         <li>
           {" "}
-          <NavHashLink to="#contact">Nos Salles </NavHashLink>
+          <NavHashLink to="/#contact">Nos Salles </NavHashLink>
         </li>
         <li>
           <NavHashLink to="boutique">Boutique</NavHashLink>

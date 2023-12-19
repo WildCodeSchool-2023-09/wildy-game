@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import { React, useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 import ParallaxCoin from "../components/ParallaxCoin";
+import UpPage from "../components/UpPage";
 import borne from "../assets/images/borne_arcade.png";
 import start from "../assets/video/wildy_gamy_carre.mp4";
 import salle from "../assets/images/lateralement-femmes-jouer-danse-arcade.jpg";
@@ -17,8 +19,42 @@ export default function Home() {
   const onSubmit = (data) => console.info(data);
   console.info(errors);
 
+  /* UP BUTTON */
+  const [isVisible, setIsVisible] = useState(false);
+  const prevScrollPos = useRef(0);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      const currentScrollPos = window.pageYOffset;
+
+      // Button is displayed after scrolling for 500 pixels
+      if (currentScrollPos > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+
+      prevScrollPos.current = currentScrollPos;
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, [isVisible]);
+
   return (
     <>
+      <UpPage
+        scrollToTop={scrollToTop}
+        isVisible={isVisible}
+        prevScrollPos={prevScrollPos}
+      />
       <div className="wrapper-home" id="home">
         <ParallaxCoin />
         <div className="container-home">
@@ -85,7 +121,12 @@ export default function Home() {
             <h1 className="h-games">
               Gagne des <span className="coin">WILDY COINS</span> et viens les
               dépenser dans <br />
-              la <span className="shop">Wildy Boutique</span>
+              la{" "}
+              <span className="shop">
+                <Link className="link" to="/boutique">
+                  Wildy Boutique
+                </Link>
+              </span>
             </h1>
           </div>
         </section>

@@ -55,7 +55,6 @@ CREATE TABLE `avatar` (
   `name` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
   `rarity` varchar(50) NOT NULL,
-  `animated` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -83,6 +82,7 @@ CREATE TABLE `boutique` (
   PRIMARY KEY (`id`),
   KEY `fk_boutique` (`avatar_id`),
   CONSTRAINT `fk_boutique` FOREIGN KEY (`avatar_id`) REFERENCES `avatar` (`id`)
+  ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -222,6 +222,7 @@ CREATE TABLE `player` (
   `membre_id` varchar(50) NOT NULL,
   `profil_theme` int NOT NULL DEFAULT '0',
   `lvl` int NOT NULL DEFAULT '1',
+  `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `email` (`email`),

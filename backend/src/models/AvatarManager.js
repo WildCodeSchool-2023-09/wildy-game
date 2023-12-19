@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class UserManager extends AbstractManager {
+class AvatarManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "item" as configuration
@@ -9,11 +9,11 @@ class UserManager extends AbstractManager {
 
   // The C of CRUD - Create operation
 
-  async create(item) {
+  async create(avatar) {
     // Execute the SQL INSERT query to add a new item to the "item" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title) values (?)`,
-      [item.title]
+      `insert into ${this.table} (id, name, image, rarity) values (?, ?, ?, ?)`,
+      [avatar.id, avatar.name, avatar.image, avatar.rarity]
     );
 
     // Return the ID of the newly inserted item
@@ -44,16 +44,37 @@ class UserManager extends AbstractManager {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
 
-  // async update(item) {
-  //   ...
-  // }
+  async update(avatar) {
+    if (!avatar.id) {
+      throw new Error("Un ID est nécessaire pour mettre à jour l'avatar.");
+    }
+
+    const query = `UPDATE ${this.table} SET name = ?, image = ?, rarity = ? WHERE id = ?`;
+
+    const [result] = await this.database.query(query, [
+      avatar.name,
+      avatar.image,
+      avatar.rarity,
+      avatar.id,
+    ]);
+
+    if (result.affectedRows === 0) {
+      throw new Error("Aucune ligne affectée, l'update a échoué");
+    }
+    return result;
+  }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an item by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [id]
+    );
+
+    return rows;
+  }
 }
 
-module.exports = UserManager;
+module.exports = AvatarManager;

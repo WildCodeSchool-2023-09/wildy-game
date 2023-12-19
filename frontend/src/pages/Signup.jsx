@@ -2,7 +2,7 @@ import borne from "../assets/images/borne_arcade_signup.png";
 import ParallaxCoin from "../components/ParallaxCoin";
 import "../styles/login.scss";
 
-function SignUp() {
+function Signup() {
   return (
     <div className="wrapper-login">
       <ParallaxCoin />
@@ -37,4 +37,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default Signup;

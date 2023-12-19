@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import Boutique from "./pages/Boutique";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Signup from "./pages/Signup";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "signup",
-        element: <SignUp />,
+        element: <Signup />,
       },
     ],
   },

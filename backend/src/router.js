@@ -14,6 +14,8 @@ router.post("/avatars", avatarControllers.add);
 router.put("/avatars/:id", avatarControllers.edit);
 router.delete("/avatars/:id", avatarControllers.destroy);
 
+/* ************************************************************************* */
+
 const playerControllers = require("./controllers/playerControllers");
 
 router.get("/players", playerControllers.browse);
@@ -21,5 +23,19 @@ router.get("/players/:id", playerControllers.findById);
 router.post("/players", playerControllers.add);
 router.put("/players/:id", playerControllers.edit);
 router.delete("/players/:id", playerControllers.destroy);
+
+/* ************************************************************************* */
+
+const boutiqueControllers = require("./controllers/boutiqueControllers");
+
+router.get("/boutique", boutiqueControllers.browse);
+router.get("/boutique/common", boutiqueControllers.commonFilter);
+router.get("/boutique/rare", boutiqueControllers.commonRare);
+router.get("/boutique/epic", boutiqueControllers.commonEpic);
+router.get("/boutique/legendary", boutiqueControllers.commonLegendary);
+router.get("/boutique/:id", boutiqueControllers.findById);
+router.post("/boutique", boutiqueControllers.add);
+router.put("/boutique/:id", boutiqueControllers.edit);
+router.delete("/boutique/:id", boutiqueControllers.destroy);
 
 module.exports = router;

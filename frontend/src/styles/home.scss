@@ -13,6 +13,7 @@
   align-items: center;
   width: 100svw;
   height: 100vh;
+
   .parallax-div {
     width: 100svw;
     position: absolute;
@@ -27,12 +28,19 @@
       display: block;
       height: 90vh;
       z-index: 3;
+      @media screen and (max-width: 391px) {
+        height: 70vh;
+      }
     }
     .start-video {
       position: absolute;
       top: 35.5%;
       left: 20.7%;
       width: 59%;
+      @media screen and (max-width: 361px) {
+        width: 65%;
+        left: 19%;
+      }
     }
   }
 }
@@ -57,16 +65,26 @@
     .infos-container {
       color: white;
       height: 70vh;
+      max-height: max-content;
       background-color: $first-color;
       width: 100%;
       z-index: 5;
       display: flex;
-      @media screen and (max-width: 730px) {
+      @media screen and (max-width: 835px) {
         flex-direction: column;
       }
+      @media screen and (max-width: 391px) {
+        width: 90vw;
+        height: auto;
+        margin-left: -20px;
+      }
+
       img {
         height: 90%;
         margin: auto 2.5%;
+        @media screen and (min-width: 731px) and (max-width: 835px) {
+          height: 40%;
+        }
         @media screen and (max-width: 730px) {
           display: none;
         }
@@ -78,6 +96,9 @@
         margin: 2vh 2vw 2vh 0;
         justify-self: center;
         align-self: center;
+        @media screen and (min-width: 731px) and (max-width: 835px) {
+          height: 50%;
+        }
 
         h1 {
           font-size: 3rem;
@@ -86,7 +107,7 @@
           @media screen and (min-width: 1600px) {
             font-size: 5rem;
           }
-          @media screen and (max-width: 730px) {
+          @media screen and (min-width: 361px) and (max-width: 835px) {
             font-size: 2rem;
             margin-top: 5%;
           }
@@ -99,7 +120,7 @@
           @media screen and (min-width: 1600px) {
             font-size: 2rem;
           }
-          @media screen and (max-width: 730px) {
+          @media screen and (min-width: 361px) and (max-width: 835px) {
             font-size: 1rem;
             text-align: justify;
           }
@@ -112,7 +133,7 @@
         height: 60%;
         width: 3px;
         background: white;
-        @media screen and (max-width: 730px) {
+        @media screen and (min-width: 361px) and (max-width: 835px) {
           display: none;
         }
       }
@@ -129,6 +150,9 @@
     width: 100svw;
     position: absolute;
     top: 200vh;
+    @media screen and (max-width: 391px) {
+      top: 230vh;
+    }
   }
   .games {
     position: absolute;
@@ -136,6 +160,9 @@
     height: 100vh;
     width: 75vw;
     padding-top: 15vh;
+    @media screen and (max-width: 391px) {
+      top: 250vh;
+    }
 
     .games-container {
       color: white;
@@ -147,8 +174,11 @@
       @media screen and (min-width: 1600px) {
         gap: 10%;
       }
-      @media screen and (max-width: 730px) {
+      @media screen and (min-width: 361px) and (max-width: 835px) {
         height: 100vh;
+      }
+      @media screen and (max-width: 391px) {
+        height: max-content;
       }
 
       .games-cards {
@@ -158,8 +188,14 @@
         justify-content: space-around;
         align-items: center;
         gap: 5rem;
-        @media screen and (max-width: 730px) {
+        @media screen and (min-width: 361px) and (max-width: 835px) {
           overflow-x: scroll;
+        }
+        @media screen and (max-width: 360px) {
+          overflow-x: scroll;
+          width: 90vw;
+          height: 70vh;
+          margin: 0 auto;
         }
         .game1 {
           background-image: url(../assets/images/pacmann.png);
@@ -182,6 +218,10 @@
               rgba(61, 61, 61, 1) 26%,
               rgba(61, 61, 61, 0) 100%
             );
+            @media screen and (max-width: 391px) {
+              height: 80%;
+            }
+
             button {
               margin: 1.5rem;
               height: 3rem;
@@ -282,7 +322,7 @@
         letter-spacing: 2.5px;
         font-family: $font3;
         text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
-        @media screen and (max-width: 730px) {
+        @media screen and (max-width: 835px) {
           font-size: 1rem;
         }
         span.shop {
@@ -305,6 +345,9 @@
     width: 100svw;
     position: absolute;
     top: 300vh;
+    @media screen and (max-width: 391px) {
+      top: 388vh;
+    }
   }
   .contact {
     position: absolute;
@@ -312,6 +355,9 @@
     height: 100vh;
     width: 75vw;
     padding-top: 15vh;
+    @media screen and (max-width: 391px) {
+      top: 380vh;
+    }
 
     .contact-container {
       color: white;
@@ -320,7 +366,7 @@
       z-index: 5;
       display: flex;
       gap: 10%;
-      @media screen and (max-width: 730px) {
+      @media screen and (max-width: 835px) {
         flex-direction: column;
       }
 
@@ -340,6 +386,12 @@
             width: 40vw;
             height: 50vh;
           }
+          @media screen and (min-width: 731px) and (max-width: 835px) {
+            width: 75vw;
+          }
+          @media screen and (max-width: 391px) {
+            width: 70vw;
+          }
         }
       }
       .contact-form-container {
@@ -356,8 +408,7 @@
           flex-direction: column;
           gap: 1.3rem;
           justify-self: center;
-          @media screen and (min-width: 1600px) {
-          }
+
           input {
             background-color: $first-color;
             height: 2.5rem;

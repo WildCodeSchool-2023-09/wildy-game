@@ -16,17 +16,24 @@
   /* position: absolute;*/
   width: 100%;
   z-index: 4;
-  @media screen and (max-width: 730px) {
+  @media screen and (min-width: 361px) and (max-width: 730px) {
     font-size: 1rem;
     padding: 0px 10px;
+  }
+  @media screen and (max-width: 361px) {
+    font-size: 0.7rem;
+    padding: 0 5px;
   }
 
   /*   position: absolute; */
   .navbar-left {
     filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(159deg)
       brightness(102%) contrast(105%) drop-shadow(2px 2px 2px black);
-    @media screen and (max-width: 730px) {
+    @media screen and (min-width: 391px) and (max-width: 730px) {
       width: 3rem;
+    }
+    @media screen and (max-width: 390px) {
+      width: 2rem;
     }
   }
 
@@ -40,7 +47,8 @@
     li {
       color: white;
       text-shadow: 2px 2px 2px black;
-      .link {
+      @media screen and (max-width: 361px) {
+        width: max-content;
       }
     }
   }

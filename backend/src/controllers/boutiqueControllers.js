@@ -5,10 +5,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all items from the database
-    const avatars = await tables.avatar.readAll();
+    const players = await tables.player.readAll();
 
     // Respond with the items in JSON format
-    res.json(avatars);
+    res.json(players);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -19,14 +19,14 @@ const browse = async (req, res, next) => {
 const findById = async (req, res, next) => {
   try {
     // Fetch a specific item from the database based on the provided ID
-    const avatar = await tables.avatar.read(req.params.id);
+    const player = await tables.player.read(req.params.id);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (avatar == null) {
+    if (player == null) {
       res.sendStatus(404);
     } else {
-      res.json(avatar);
+      res.json(player);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -38,36 +38,56 @@ const findById = async (req, res, next) => {
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
   const id = parseInt(req.params.id, 10);
-
-  const { name, image, rarity } = req.body;
+  const {
+    firstname,
+    lastname,
+    pseudo,
+    password,
+    email,
+    experience,
+    credit,
+    membreId,
+    profilTheme,
+    lvl,
+    isAdmin,
+  } = req.body;
 
   try {
-    const avatarToUpdate = {
+    const playerToUpdate = {
       id,
-      name,
-      image,
-      rarity,
+      firstname,
+      lastname,
+      pseudo,
+      password,
+      email,
+      experience,
+      credit,
+      membreId,
+      profilTheme,
+      lvl,
+      isAdmin,
     };
-    const result = await tables.avatar.update(avatarToUpdate);
+    const result = await tables.player.update(playerToUpdate);
     if (result.affectedRows === 0) {
-      return res.status(404).send("Aucun avatar trouvé avec cet ID.");
+      return res.status(404).send("Aucun player trouvé avec cet ID.");
     }
-
-    return res.status(200).send(`L'avatar ayant l'id: ${id} a été mis à jour.`);
+    return res
+      .status(200)
+      .send(`Le player ayant l'id: ${id} a été mis à jour.`);
   } catch (err) {
-    next(err);
-    return res.status(500).send("Une erreur s'est produite");
+    // Only pass the error to the next middleware, don't send a response here
+    return next(err);
   }
 };
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the item data from the request body
-  const avatar = req.body;
+  const joueur = req.body;
 
   try {
     // Insert the item into the database
-    const insertId = await tables.avatar.create(avatar);
+    const insertId = await tables.player.create(joueur);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
@@ -82,18 +102,19 @@ const add = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await tables.avatar.delete(id);
+    const result = await tables.player.delete(id);
 
     if (result.affectedRows === 0) {
       res.status(404).send("id pas trouvée");
     } else {
-      res.status(200).send(`L'avatar ayant l'id: ${id} a bien été supprimée`);
+      res.status(200).send(`Le player ayant l'id: ${id} a bien été supprimée`);
     }
   } catch (err) {
     next(err);
   }
 };
 // Ready to export the controller functions
+
 module.exports = {
   browse,
   findById,

@@ -267,12 +267,14 @@ function Boutique() {
             Réinitialiser
           </button>
         </div>
-        <div className="boutique-liste bg-color-shop2 w-[90%] flex gap-10 p-10 flex-wrap items-start">
-          {filteredList.map((item) => (
-            <div className="flex flex-col ">
-              <BoutiqueComponent item={item} />
-            </div>
-          ))}
+        <div className="boutique-liste bg-color-shop2 w-[90%] p-10 flex-wrap">
+          <div className="item-container flex w-full flex-wrap gap-10">
+            {filteredList.map((item) => (
+              <div className="flex flex-col item h-[280px]">
+                <BoutiqueComponent item={item} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

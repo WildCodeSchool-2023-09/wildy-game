@@ -45,10 +45,9 @@
   ul {
     padding: 0;
     li {
-      color: white;
-      text-shadow: 2px 2px 2px black;
-      @media screen and (max-width: 361px) {
-        width: max-content;
+      .link {
+        color: white;
+        text-shadow: 2px 2px 2px black;
       }
     }
   }

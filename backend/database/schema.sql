@@ -24,13 +24,13 @@ DROP TABLE IF EXISTS `amis`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `amis` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `player_id1` int NOT NULL,
-  `player_id2` int NOT NULL,
+  `playerId1` int NOT NULL,
+  `playerId2` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_amis_player1` (`player_id1`),
-  KEY `fk_amis_player2` (`player_id2`),
-  CONSTRAINT `fk_amis_player1` FOREIGN KEY (`player_id1`) REFERENCES `player` (`id`),
-  CONSTRAINT `fk_amis_player2` FOREIGN KEY (`player_id2`) REFERENCES `player` (`id`)
+  KEY `fk_amis_player1` (`playerId1`),
+  KEY `fk_amis_player2` (`playerId2`),
+  CONSTRAINT `fk_amis_player1` FOREIGN KEY (`playerId1`) REFERENCES `player` (`id`),
+  CONSTRAINT `fk_amis_player2` FOREIGN KEY (`playerId2`) REFERENCES `player` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,7 +55,6 @@ CREATE TABLE `avatar` (
   `name` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
   `rarity` varchar(50) NOT NULL,
-  `animated` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -79,10 +78,13 @@ DROP TABLE IF EXISTS `boutique`;
 CREATE TABLE `boutique` (
   `id` int NOT NULL AUTO_INCREMENT,
   `prix` int NOT NULL,
-  `avatar_id` int NOT NULL,
+  `avatarId` int NOT NULL,
   PRIMARY KEY (`id`),
+
   KEY `fk_boutique` (`avatar_id`),
   CONSTRAINT `fk_boutique` FOREIGN KEY (`avatar_id`) REFERENCES `avatar` (`id`)
+  ON DELETE CASCADE
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -104,13 +106,13 @@ DROP TABLE IF EXISTS `collection`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `collection` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `player_id` int NOT NULL,
-  `avatar_id` int NOT NULL,
+  `playerId` int NOT NULL,
+  `avatarId` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_collection_player` (`player_id`),
-  KEY `fk_collection_avatar` (`avatar_id`),
-  CONSTRAINT `fk_collection_avatar` FOREIGN KEY (`avatar_id`) REFERENCES `avatar` (`id`),
-  CONSTRAINT `fk_collection_player` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`)
+  KEY `fk_collection_player` (`playerId`),
+  KEY `fk_collection_avatar` (`avatarId`),
+  CONSTRAINT `fk_collection_avatar` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`),
+  CONSTRAINT `fk_collection_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -132,13 +134,13 @@ DROP TABLE IF EXISTS `fav`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fav` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `game_id` int NOT NULL,
-  `player_id` int NOT NULL,
+  `gameId` int NOT NULL,
+  `playerId` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_fav_game` (`game_id`),
-  KEY `fk_fav_player` (`player_id`),
-  CONSTRAINT `fk_fav_game` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`),
-  CONSTRAINT `fk_fav_player` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`)
+  KEY `fk_fav_game` (`gameId`),
+  KEY `fk_fav_player` (`playerId`),
+  CONSTRAINT `fk_fav_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`),
+  CONSTRAINT `fk_fav_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -183,14 +185,14 @@ DROP TABLE IF EXISTS `hv`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hv` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `player_id` int NOT NULL,
-  `avatar_id` int NOT NULL,
+  `playerId` int NOT NULL,
+  `avatarId` int NOT NULL,
   `price` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_HV_player` (`player_id`),
-  KEY `fk_HV_avatar` (`avatar_id`),
-  CONSTRAINT `fk_HV_avatar` FOREIGN KEY (`avatar_id`) REFERENCES `collection` (`avatar_id`),
-  CONSTRAINT `fk_HV_player` FOREIGN KEY (`player_id`) REFERENCES `collection` (`player_id`)
+  KEY `fk_HV_player` (`playerId`),
+  KEY `fk_HV_avatar` (`avatarId`),
+  CONSTRAINT `fk_HV_avatar` FOREIGN KEY (`avatarId`) REFERENCES `collection` (`avatarId`),
+  CONSTRAINT `fk_HV_player` FOREIGN KEY (`playerId`) REFERENCES `collection` (`playerId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -219,13 +221,14 @@ CREATE TABLE `player` (
   `email` varchar(255) NOT NULL,
   `experience` int NOT NULL DEFAULT '0',
   `credit` int NOT NULL DEFAULT '50',
-  `membre_id` varchar(50) NOT NULL,
-  `profil_theme` int NOT NULL DEFAULT '0',
+  `membreId` varchar(50) NOT NULL,
+  `profilTheme` int NOT NULL DEFAULT '0',
   `lvl` int NOT NULL DEFAULT '1',
+  `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `membre_id` (`membre_id`)
+  UNIQUE KEY `membreId` (`membreId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -247,14 +250,14 @@ DROP TABLE IF EXISTS `scoreboard`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `scoreboard` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `game_id` int NOT NULL,
-  `player_id` int NOT NULL,
+  `gameId` int NOT NULL,
+  `playerId` int NOT NULL,
   `score` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_scoreboard_game` (`game_id`),
-  KEY `fk_scoreboard_player` (`player_id`),
-  CONSTRAINT `fk_scoreboard_game` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`),
-  CONSTRAINT `fk_scoreboard_player` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`)
+  KEY `fk_scoreboard_game` (`gameId`),
+  KEY `fk_scoreboard_player` (`playerId`),
+  CONSTRAINT `fk_scoreboard_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`),
+  CONSTRAINT `fk_scoreboard_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

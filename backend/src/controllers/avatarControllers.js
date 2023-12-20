@@ -37,9 +37,8 @@ const findById = async (req, res, next) => {
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
-  // ??? erreur Eslint inconnue : Expected to return a value at the end of async arrow function
-  const id = parseInt(req.params.id, 10); // Si quelqu'un peut m'expliquer ce qu'est un *** de radix ! J'ai rien compris mais sur internet
-  // ils disaient de mettre 10 pour un nombre décimal.. et surtout pourquoi soudainement c'est important.
+  const id = parseInt(req.params.id, 10);
+
   const { name, image, rarity } = req.body;
 
   try {
@@ -57,12 +56,7 @@ const edit = async (req, res, next) => {
     return res.status(200).send(`L'avatar ayant l'id: ${id} a été mis à jour.`);
   } catch (err) {
     next(err);
-    return res
-      .status(500)
-      .send(
-        "Une erreur s'est produite"
-      ); /* Il a fallu que j'ajoute un return ici
-    pour résoudre le soucis Eslint qui se déclarait à l'ouverture de la fonction edit (voir plus haut) */
+    return res.status(500).send("Une erreur s'est produite");
   }
 };
 
@@ -76,9 +70,7 @@ const add = async (req, res, next) => {
     const insertId = await tables.avatar.create(avatar);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId }); // <--- {insertID} est une syntaxe raccourcie! C'est possible en JS
-    // quand la clé et la valeur sont identiques.
-    // je pourrais écrire à la place {insertId : insertId}. Enfin si ESlint m'autorisait.
+    res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

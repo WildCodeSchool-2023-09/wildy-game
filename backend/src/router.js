@@ -30,9 +30,9 @@ const boutiqueControllers = require("./controllers/boutiqueControllers");
 
 router.get("/boutique", boutiqueControllers.browse);
 router.get("/boutique/common", boutiqueControllers.commonFilter);
-router.get("/boutique/rare", boutiqueControllers.commonRare);
-router.get("/boutique/epic", boutiqueControllers.commonEpic);
-router.get("/boutique/legendary", boutiqueControllers.commonLegendary);
+router.get("/boutique/rare", boutiqueControllers.rareFilter);
+router.get("/boutique/epic", boutiqueControllers.epicFilter);
+router.get("/boutique/legendary", boutiqueControllers.legendaryFilter);
 router.get("/boutique/:id", boutiqueControllers.findById);
 router.post("/boutique", boutiqueControllers.add);
 router.put("/boutique/:id", boutiqueControllers.edit);

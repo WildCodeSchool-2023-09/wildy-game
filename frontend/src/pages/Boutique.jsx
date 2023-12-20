@@ -14,7 +14,7 @@ function Boutique() {
   const [hideAchieved, setHideAchieved] = useState(false);
   const [arrayFilter, setArrayFilter] = useState([]);
 
-  const [listeFictive, setListeFictive] = useState([
+  const listeFictive = [
     {
       name: "Blabla",
       rarity: "Common",
@@ -166,8 +166,7 @@ function Boutique() {
       path: "/Boutique/ImageRandom5.png",
       price: 300,
     },
-  ]);
-  console.info(setListeFictive);
+  ];
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -184,7 +183,6 @@ function Boutique() {
       );
     });
 
-  console.info(filteredList);
   return (
     <>
       <div className="boutique-container border-b-2 h-[300px] border-black">

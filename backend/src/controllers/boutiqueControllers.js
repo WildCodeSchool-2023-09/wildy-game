@@ -37,9 +37,7 @@ const findById = async (req, res, next) => {
 // The E of BREAD - Edit (Update) operation
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
-  // ??? erreur Eslint inconnue : Expected to return a value at the end of async arrow function
-  const id = parseInt(req.params.id, 10); // Si quelqu'un peut m'expliquer ce qu'est un *** de radix ! J'ai rien compris mais sur internet
-  // ils disaient de mettre 10 pour un nombre décimal.. et surtout pourquoi soudainement c'est important.
+  const id = parseInt(req.params.id, 10);
   const { prix, avatarId } = req.body;
 
   try {
@@ -53,12 +51,7 @@ const edit = async (req, res, next) => {
       .send(`L'boutique ayant l'id: ${id} a été mis à jour.`);
   } catch (err) {
     next(err);
-    return res
-      .status(500)
-      .send(
-        "Une erreur s'est produite"
-      ); /* Il a fallu que j'ajoute un return ici
-    pour résoudre le soucis Eslint qui se déclarait à l'ouverture de la fonction edit (voir plus haut) */
+    return res.status(500).send("Une erreur s'est produite");
   }
 };
 
@@ -106,7 +99,7 @@ const commonFilter = async (req, res, next) => {
     next(err);
   }
 };
-const commonRare = async (req, res, next) => {
+const rareFilter = async (req, res, next) => {
   try {
     const result = await tables.boutique.rare();
     res.json(result);
@@ -114,7 +107,7 @@ const commonRare = async (req, res, next) => {
     next(err);
   }
 };
-const commonEpic = async (req, res, next) => {
+const epicFilter = async (req, res, next) => {
   try {
     const result = await tables.boutique.epic();
     res.json(result);
@@ -122,7 +115,7 @@ const commonEpic = async (req, res, next) => {
     next(err);
   }
 };
-const commonLegendary = async (req, res, next) => {
+const legendaryFilter = async (req, res, next) => {
   try {
     const result = await tables.boutique.legendary();
     res.json(result);
@@ -139,7 +132,7 @@ module.exports = {
   edit,
   destroy,
   commonFilter,
-  commonRare,
-  commonEpic,
-  commonLegendary,
+  rareFilter,
+  epicFilter,
+  legendaryFilter,
 };

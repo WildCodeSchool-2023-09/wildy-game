@@ -38,34 +38,11 @@ const findById = async (req, res, next) => {
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
   const id = parseInt(req.params.id, 10);
-  const {
-    firstname,
-    lastname,
-    pseudo,
-    password,
-    email,
-    experience,
-    credit,
-    membreId,
-    profilTheme,
-    lvl,
-    isAdmin,
-  } = req.body;
 
   try {
     const playerToUpdate = {
       id,
-      firstname,
-      lastname,
-      pseudo,
-      password,
-      email,
-      experience,
-      credit,
-      membreId,
-      profilTheme,
-      lvl,
-      isAdmin,
+      ...req.body,
     };
     const result = await tables.player.update(playerToUpdate);
     if (result.affectedRows === 0) {
@@ -90,9 +67,7 @@ const add = async (req, res, next) => {
     const insertId = await tables.player.create(joueur);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId }); // <--- {insertID} est une syntaxe raccourcie! C'est possible en JS
-    // quand la clé et la valeur sont identiques.
-    // je pourrais écrire à la place {insertId : insertId}. Enfin si ESlint m'autorisait.
+    res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

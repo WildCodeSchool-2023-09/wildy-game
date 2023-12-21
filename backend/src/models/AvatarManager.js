@@ -12,8 +12,8 @@ class AvatarManager extends AbstractManager {
   async create(avatar) {
     // Execute the SQL INSERT query to add a new item to the "item" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (id, name, image, rarity) values (?, ?, ?, ?)`,
-      [avatar.id, avatar.name, avatar.image, avatar.rarity]
+      `insert into ${this.table} (name, image, rarity) values (?, ?, ?)`,
+      [avatar.name, avatar.image, avatar.rarity]
     );
 
     // Return the ID of the newly inserted item

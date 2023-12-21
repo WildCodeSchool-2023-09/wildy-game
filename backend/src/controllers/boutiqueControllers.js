@@ -5,10 +5,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all items from the database
-    const avatars = await tables.avatar.readAll();
+    const result = await tables.boutique.readAll();
 
     // Respond with the items in JSON format
-    res.json(avatars);
+    res.json(result);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -19,14 +19,14 @@ const browse = async (req, res, next) => {
 const findById = async (req, res, next) => {
   try {
     // Fetch a specific item from the database based on the provided ID
-    const avatar = await tables.avatar.read(req.params.id);
+    const boutique = await tables.boutique.read(req.params.id);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (avatar == null) {
+    if (boutique == null) {
       res.sendStatus(404);
     } else {
-      res.json(avatar);
+      res.json(boutique);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -38,22 +38,17 @@ const findById = async (req, res, next) => {
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
   const id = parseInt(req.params.id, 10);
-
-  const { name, image, rarity } = req.body;
+  const { prix, avatarId } = req.body;
 
   try {
-    const avatarToUpdate = {
-      id,
-      name,
-      image,
-      rarity,
-    };
-    const result = await tables.avatar.update(avatarToUpdate);
+    const result = await tables.boutique.update(prix, avatarId, id);
     if (result.affectedRows === 0) {
-      return res.status(404).send("Aucun avatar trouvé avec cet ID.");
+      return res.status(404).send("Aucun boutique trouvé avec cet ID.");
     }
 
-    return res.status(200).send(`L'avatar ayant l'id: ${id} a été mis à jour.`);
+    return res
+      .status(200)
+      .send(`L'boutique ayant l'id: ${id} a été mis à jour.`);
   } catch (err) {
     next(err);
     return res.status(500).send("Une erreur s'est produite");
@@ -63,14 +58,16 @@ const edit = async (req, res, next) => {
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the item data from the request body
-  const avatar = req.body;
+  const boutique = req.body;
 
   try {
     // Insert the item into the database
-    const insertId = await tables.avatar.create(avatar);
+    const insertId = await tables.boutique.create(boutique);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId });
+    res.status(201).json({ insertId }); // <--- {insertID} est une syntaxe raccourcie! C'est possible en JS
+    // quand la clé et la valeur sont identiques.
+    // je pourrais écrire à la place {insertId : insertId}. Enfin si ESlint m'autorisait.
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -82,17 +79,27 @@ const add = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await tables.avatar.delete(id);
+    const result = await tables.boutique.delete(id);
 
     if (result.affectedRows === 0) {
       res.status(404).send("id pas trouvée");
     } else {
-      res.status(200).send(`L'avatar ayant l'id: ${id} a bien été supprimée`);
+      res.status(200).send(`L'boutique ayant l'id: ${id} a bien été supprimée`);
     }
   } catch (err) {
     next(err);
   }
 };
+
+const filter = async (req, res, next) => {
+  try {
+    const result = await tables.boutique.getFilter(req.query);
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
@@ -100,4 +107,5 @@ module.exports = {
   add,
   edit,
   destroy,
+  filter,
 };

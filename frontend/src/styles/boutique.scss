@@ -1,0 +1,58 @@
+@import "../styles/root.scss";
+
+.boutique-landing {
+  background-image: url(../assets/images/piece-boutique.png),
+    url(../assets/images/fond-boutique.png);
+  background-size: contain, cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.boutique-main {
+  min-height: calc(100vh - (300px));
+  position: relative;
+  bottom: 0;
+  .boutique-filtre {
+    position: -webkit-sticky;
+    position: sticky;
+    height: 89vh;
+    bottom: calc(100vh - (50px));
+    top: 5rem;
+    bottom: 0;
+    scroll-behavior: none;
+  }
+}
+
+.bouton-boutique[type="checkbox"] {
+  position: relative;
+  cursor: pointer;
+}
+
+.bouton-boutique[type="checkbox"]:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  left: 0;
+  background-color: $first-color;
+  padding: 1px;
+}
+.bouton-boutique[type="checkbox"]:checked:after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 15px;
+  border: solid $second-color;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+.font-play {
+  font-family: $font2;
+}

@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.cdnfonts.com/css/upheaval");
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+$font-color: white;
+$first-color: #920075;
+$second-color: #f9c80e;
+$shop-color1: #f36d84;
+$shop-color2: #3d2579;
+$neutral-color: #3d3d3d;
+$font1: "Upheaval TT (BRK)", sans-serif;
+$font2: "Play", sans-serif;
+$font3:
+  "Press Start 2P",
+  sans serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font1;
+  &::-webkit-scrollbar {
+    height: 0px;
+  }
+}
+
+.link {
+  &:hover {
+    opacity: 70%;
+  }
+}
+.is-active {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 42px rgb(230, 18, 124),
+    0 0 77px rgb(230, 18, 124),
+    0 0 100px rgb(230, 18, 124);
+  animation: lumiere 1s infinite linear;
+
+  @keyframes lumiere {
+    0% {
+      text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 42px rgb(230, 18, 124),
+        0 0 77px rgb(230, 18, 124),
+        0 0 100px rgb(230, 18, 124);
+    }
+    50% {
+      text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 32px rgb(230, 18, 124),
+        0 0 87px rgb(230, 18, 124),
+        0 0 120px rgb(230, 18, 124);
+    }
+  }
+}
+
+:root {
+  background-image: url(../assets/images/FondGlobal.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+}
+.s-coin {
+  width: 100px;
+}
+.l-coin {
+  width: 200px;
+}
+
+.up-page {
+  z-index: 100;
+  width: 70px;
+  height: 45px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 40px;
+  right: 0;
+  filter: drop-shadow(5px 5px 2px #1b1b1b);
+  .disabled {
+    display: none;
+  }
+}
+button {
+  &:hover {
+    opacity: 90%;
+  }
+}

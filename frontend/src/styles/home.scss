@@ -1,0 +1,385 @@
+@import "../styles/root.scss";
+.parallax-div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.wrapper-home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100svw;
+  height: 100vh;
+  .parallax-div {
+    width: 100svw;
+    position: absolute;
+  }
+  .container-home {
+    display: flex;
+    position: relative;
+    bottom: -5vh;
+
+    .borne-arcade {
+      margin: 0 auto;
+      display: block;
+      height: 90vh;
+      z-index: 3;
+    }
+    .start-video {
+      position: absolute;
+      top: 35.5%;
+      left: 20.7%;
+      width: 59%;
+    }
+  }
+}
+.section-wrapper {
+  width: 100svw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .parallax-div {
+    width: 100svw;
+    position: absolute;
+    top: 100vh;
+  }
+  .infos {
+    position: absolute;
+    top: 100vh;
+    height: 100vh;
+    width: 75vw;
+    padding-top: 15vh;
+
+    .infos-container {
+      color: white;
+      height: 70vh;
+      background-color: $first-color;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      @media screen and (max-width: 730px) {
+        flex-direction: column;
+      }
+      img {
+        height: 90%;
+        margin: auto 2.5%;
+        @media screen and (max-width: 730px) {
+          display: none;
+        }
+      }
+      .infos-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2%;
+        margin: 2vh 2vw 2vh 0;
+        justify-self: center;
+        align-self: center;
+
+        h1 {
+          font-size: 3rem;
+          text-align: center;
+          text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
+          @media screen and (min-width: 1600px) {
+            font-size: 5rem;
+          }
+          @media screen and (max-width: 730px) {
+            font-size: 2rem;
+            margin-top: 5%;
+          }
+        }
+        p {
+          font-size: 1.2rem;
+          font-family: $font2;
+          text-align: center;
+          padding: 0 10px;
+          @media screen and (min-width: 1600px) {
+            font-size: 2rem;
+          }
+          @media screen and (max-width: 730px) {
+            font-size: 1rem;
+            text-align: justify;
+          }
+        }
+      }
+      .line {
+        position: relative;
+        justify-self: center;
+        align-self: center;
+        height: 60%;
+        width: 3px;
+        background: white;
+        @media screen and (max-width: 730px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+.section-wrapper2 {
+  width: 100svw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .parallax-div {
+    width: 100svw;
+    position: absolute;
+    top: 200vh;
+  }
+  .games {
+    position: absolute;
+    top: 200vh;
+    height: 100vh;
+    width: 75vw;
+    padding-top: 15vh;
+
+    .games-container {
+      color: white;
+      height: 70vh;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      @media screen and (min-width: 1600px) {
+        gap: 10%;
+      }
+      @media screen and (max-width: 730px) {
+        height: 100vh;
+      }
+
+      .games-cards {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 5rem;
+        @media screen and (max-width: 730px) {
+          overflow-x: scroll;
+        }
+        .game1 {
+          background-image: url(../assets/images/pacmann.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          flex-grow: 1;
+          height: 60vh;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+
+          .game-button {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 50%;
+            width: 100%;
+            background: linear-gradient(
+              0deg,
+              rgba(61, 61, 61, 1) 26%,
+              rgba(61, 61, 61, 0) 100%
+            );
+            button {
+              margin: 1.5rem;
+              height: 3rem;
+              width: 15rem;
+              font-size: 1.7rem;
+              color: #3d3d3d;
+              background-color: #f9c80e;
+              padding: 5px 30px;
+              border: none;
+              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+              border-radius: 1px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+        .game2 {
+          background-image: url(../assets/images/Streetfighter.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          flex-grow: 1;
+          height: 60vh;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+
+          .game-button {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 50%;
+            width: 100%;
+            background: linear-gradient(
+              0deg,
+              rgba(61, 61, 61, 1) 26%,
+              rgba(61, 61, 61, 0) 100%
+            );
+            button {
+              margin: 1.5rem;
+              height: 3rem;
+              width: 15rem;
+              font-size: 1.7rem;
+              color: #3d3d3d;
+              background-color: #f9c80e;
+              padding: 5px 30px;
+              border: none;
+              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+              border-radius: 1px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+        .game3 {
+          background-image: url(../assets/images/mario.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          flex-grow: 1;
+          height: 60vh;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+
+          .game-button {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 50%;
+            width: 100%;
+            background: linear-gradient(
+              0deg,
+              rgba(61, 61, 61, 1) 26%,
+              rgba(61, 61, 61, 0) 100%
+            );
+            button {
+              margin: 1.5rem;
+              height: 3rem;
+              width: 15rem;
+              font-size: 1.7rem;
+              color: #3d3d3d;
+              background-color: #f9c80e;
+              padding: 5px 30px;
+              border: none;
+              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+              border-radius: 1px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
+      .h-games {
+        font-size: 1.2rem;
+        text-align: center;
+        letter-spacing: 2.5px;
+        font-family: $font3;
+        text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
+        @media screen and (max-width: 730px) {
+          font-size: 1rem;
+        }
+        span.shop {
+          font-size: 2rem;
+        }
+        span.coin {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+.section-wrapper3 {
+  width: 100svw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .parallax-div {
+    width: 100svw;
+    position: absolute;
+    top: 300vh;
+  }
+  .contact {
+    position: absolute;
+    top: 300vh;
+    height: 100vh;
+    width: 75vw;
+    padding-top: 15vh;
+
+    .contact-container {
+      color: white;
+      height: 70vh;
+      width: 100%;
+      z-index: 5;
+      display: flex;
+      gap: 10%;
+      @media screen and (max-width: 730px) {
+        flex-direction: column;
+      }
+
+      .contact-map {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        flex-grow: 1;
+        h1 {
+          font-size: 2rem;
+          text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
+        }
+        .map {
+          border-radius: 10px;
+          justify-self: center;
+          @media screen and (min-width: 1600px) {
+            width: 40vw;
+            height: 50vh;
+          }
+        }
+      }
+      .contact-form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        flex-grow: 1;
+        h1 {
+          font-size: 2rem;
+          text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.3rem;
+          justify-self: center;
+          @media screen and (min-width: 1600px) {
+          }
+          input {
+            background-color: $first-color;
+            height: 2.5rem;
+            @media screen and (min-width: 1600px) {
+              height: 4rem;
+            }
+          }
+          textarea {
+            background-color: $first-color;
+            height: 180px;
+            @media screen and (min-width: 1600px) {
+              height: 31vh;
+            }
+          }
+          input[type="submit"] {
+            background-color: $second-color;
+            padding: 5px 30px;
+            box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+            border-radius: 1px;
+          }
+        }
+      }
+    }
+  }
+}

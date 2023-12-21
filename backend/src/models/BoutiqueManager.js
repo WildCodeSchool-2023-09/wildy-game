@@ -64,32 +64,20 @@ class AvatarManager extends AbstractManager {
     return rows;
   }
 
-  async common() {
-    const [result] = await this.database.query(
-      `SELECT a.name, a.image, a.rarity, b.prix from avatar a join ${this.table} b on a.id = b.avatarId WHERE a.rarity="Common"`
-    );
-    return result;
-  }
-
-  async rare() {
-    const [result] = await this.database.query(
-      `SELECT a.name, a.image, a.rarity, b.prix from avatar a join ${this.table} b on a.id = b.avatarId WHERE a.rarity="Rare"`
-    );
-    return result;
-  }
-
-  async epic() {
-    const [result] = await this.database.query(
-      `SELECT a.name, a.image, a.rarity, b.prix from avatar a join ${this.table} b on a.id = b.avatarId WHERE a.rarity="Epic"`
-    );
-    return result;
-  }
-
-  async legendary() {
-    const [result] = await this.database.query(
-      `SELECT a.name, a.image, a.rarity, b.prix from avatar a join ${this.table} b on a.id = b.avatarId WHERE a.rarity="Legendary"`
-    );
-    return result;
+  async getFilter(request) {
+    const { rarity } = request;
+    const full = '"Common","Rare","Epic","Legendary"';
+    const tableau = rarity
+      .split(",")
+      .map((value) => `"${value}"`)
+      .join(",");
+    const sql = `SELECT a.name, a.image, a.rarity, b.prix from avatar a join ${
+      this.table
+    } b on a.id = b.avatarId WHERE a.rarity IN (${
+      tableau.length === 2 ? full : tableau
+    })`;
+    const [rows] = await this.database.query(sql);
+    return rows;
   }
 }
 

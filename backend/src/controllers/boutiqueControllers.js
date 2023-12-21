@@ -91,36 +91,12 @@ const destroy = async (req, res, next) => {
   }
 };
 
-const commonFilter = async (req, res, next) => {
+const filter = async (req, res, next) => {
   try {
-    const result = await tables.boutique.common();
+    const result = await tables.boutique.getFilter(req.query);
     res.json(result);
-  } catch (err) {
-    next(err);
-  }
-};
-const rareFilter = async (req, res, next) => {
-  try {
-    const result = await tables.boutique.rare();
-    res.json(result);
-  } catch (err) {
-    next(err);
-  }
-};
-const epicFilter = async (req, res, next) => {
-  try {
-    const result = await tables.boutique.epic();
-    res.json(result);
-  } catch (err) {
-    next(err);
-  }
-};
-const legendaryFilter = async (req, res, next) => {
-  try {
-    const result = await tables.boutique.legendary();
-    res.json(result);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -131,8 +107,5 @@ module.exports = {
   add,
   edit,
   destroy,
-  commonFilter,
-  rareFilter,
-  epicFilter,
-  legendaryFilter,
+  filter,
 };

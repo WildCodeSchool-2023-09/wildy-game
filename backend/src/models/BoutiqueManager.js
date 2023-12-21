@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class AvatarManager extends AbstractManager {
+class BoutiqueManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "item" as configuration
@@ -81,4 +81,4 @@ class AvatarManager extends AbstractManager {
   }
 }
 
-module.exports = AvatarManager;
+module.exports = BoutiqueManager;

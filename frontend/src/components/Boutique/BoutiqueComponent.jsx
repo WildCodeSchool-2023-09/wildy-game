@@ -5,14 +5,14 @@ function BoutiqueComponent({ item }) {
   return (
     <>
       <img
-        src={item.path}
+        src={item.image}
         alt={item.name}
         className="w-60 h-60 bg-black shadow-lg shadow-black"
       />
       <div className="flex items-center justify-between mt-2">
         <p className="text-white">{item.name}</p>
         <div className="flex text-white">
-          <p>{item.price}</p>
+          <p>{item.prix}</p>
           <img src={piece} alt="coin" className="h-6" />
         </div>
       </div>

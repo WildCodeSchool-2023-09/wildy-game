@@ -5,11 +5,9 @@ export default function UpPage({ scrollToTop, isVisible }) {
   return (
     <div>
       {isVisible && (
-        <button type="button" onClick={scrollToTop}>
-          <div className="up-page">
-            <p className="disabled">Up</p>
-            <img src={up} alt="" />
-          </div>
+        <button type="button" className="up-page" onClick={scrollToTop}>
+          <p className="disabled">Up</p>
+          <img src={up} alt="" />
         </button>
       )}
     </div>

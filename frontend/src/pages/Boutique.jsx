@@ -19,7 +19,9 @@ function Boutique() {
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     axios
-      .get(`http://localhost:3310/api/boutique/filter?rarity=${lien}`)
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/boutique/filter?rarity=${lien}`
+      )
       .then((res) => {
         setListe(res.data);
       });
@@ -28,6 +30,7 @@ function Boutique() {
   const filteredList = liste.filter((element) =>
     element.name.toLowerCase().includes(searchValue.toLowerCase())
   );
+
   return (
     <>
       <div className="boutique-container border-b-2 h-[300px] border-black">

@@ -66,17 +66,20 @@ class BoutiqueManager extends AbstractManager {
 
   async getFilter(request) {
     const { rarity } = request;
-    const full = '"Common","Rare","Epic","Legendary"';
-    const tableau = rarity
-      .split(",")
-      .map((value) => `"${value}"`)
-      .join(",");
-    const sql = `SELECT a.name, a.image, a.rarity, b.prix from avatar a join ${
-      this.table
-    } b on a.id = b.avatarId WHERE a.rarity IN (${
-      tableau.length === 2 ? full : tableau
-    })`;
-    const [rows] = await this.database.query(sql);
+    const full = ["Common", "Rare", "Epic", "Legendary"];
+    const whereClause = rarity ? "WHERE a.rarity IN (?)" : "";
+    const values = rarity
+      ? rarity.split(",").map((value) => value.trim())
+      : full;
+
+    const sql = `
+        SELECT a.name, a.image, a.rarity, b.prix
+        FROM avatar a
+        JOIN ${this.table} b ON a.id = b.avatarId
+        ${whereClause}
+    `;
+
+    const [rows] = await this.database.query(sql, [values]);
     return rows;
   }
 }

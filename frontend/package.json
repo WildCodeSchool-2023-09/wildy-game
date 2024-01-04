@@ -12,6 +12,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2",
+    "react-pacman": "^0.0.4",
     "react-router-dom": "^6.14.2",
     "react-router-hash-link": "^2.4.3",
     "sass": "^1.69.5"

@@ -9,6 +9,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Boutique from "./pages/Boutique";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Jeu from "./pages/Jeu";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <Signup />,
+      },
+      {
+        path: "pacman",
+        element: <Jeu />,
       },
     ],
   },

@@ -1,6 +1,6 @@
 import Pacman from "react-pacman";
-import "../styles/game.scss";
 import { useState } from "react";
+import "../styles/game.scss";
 import borne from "../assets/images/borne_game.png";
 
 function Jeu() {
@@ -18,6 +18,8 @@ function Jeu() {
 
   /* LAUNCH */
   const [start, setStart] = useState(false);
+
+  /* SCORES */
 
   return (
     <div className="game-container">

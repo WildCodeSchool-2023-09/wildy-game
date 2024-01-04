@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 
-function InputCheckbox({ value, setArrayFilter, arrayFilter, text, reset }) {
+function InputCheckbox({ value, setLien, lien, text, reset }) {
   const handleFilter = (prev) => {
     if (!prev.includes(text)) {
-      setArrayFilter([...prev, text]);
+      setLien([...prev, text]);
     } else {
-      setArrayFilter(prev.filter((element) => element !== text));
+      setLien(prev.filter((element) => element !== text));
     }
   };
   return (
@@ -15,7 +15,7 @@ function InputCheckbox({ value, setArrayFilter, arrayFilter, text, reset }) {
         checked={value}
         className="w-6 bg-color-first bouton-boutique"
         onChange={() => {
-          handleFilter(arrayFilter);
+          handleFilter(lien);
           reset((prev) => !prev);
         }}
       />
@@ -26,9 +26,9 @@ function InputCheckbox({ value, setArrayFilter, arrayFilter, text, reset }) {
 
 InputCheckbox.propTypes = {
   value: PropTypes.bool.isRequired,
-  setArrayFilter: PropTypes.func.isRequired,
+  setLien: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
-  arrayFilter: PropTypes.arrayOf(PropTypes.string).isRequired,
+  lien: PropTypes.arrayOf(PropTypes.string).isRequired,
   reset: PropTypes.func.isRequired,
 };
 

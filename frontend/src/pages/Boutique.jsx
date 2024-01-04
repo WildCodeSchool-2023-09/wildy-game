@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Searchbar from "../components/Boutique/Searchbar";
 import InputCheckbox from "../components/Boutique/InputCheckbox";
 import BoutiqueComponent from "../components/Boutique/BoutiqueComponent";
@@ -12,179 +13,24 @@ function Boutique() {
   const [epic, setEpic] = useState(false);
   const [legendary, setLegendary] = useState(false);
   const [hideAchieved, setHideAchieved] = useState(false);
-  const [arrayFilter, setArrayFilter] = useState([]);
-
-  const [listeFictive, setListeFictive] = useState([
-    {
-      name: "Blabla",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom1.png",
-      price: 500,
-      owned: true,
-    },
-    {
-      name: "ABCD",
-      rarity: "Rare",
-      path: "/Boutique/ImageRandom2.png",
-      price: 2200,
-    },
-    {
-      name: "Bloodborne",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom3.png",
-      price: 10,
-    },
-    {
-      name: "Goat",
-      rarity: "Epic",
-      path: "/Boutique/ImageRandom4.png",
-      price: 1500,
-    },
-    {
-      name: "Plusd'inspi",
-      rarity: "Legendary",
-      path: "/Boutique/ImageRandom5.png",
-      price: 300,
-    },
-    {
-      name: "Blabla",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom1.png",
-      price: 500,
-    },
-    {
-      name: "ABCD",
-      rarity: "Rare",
-      path: "/Boutique/ImageRandom2.png",
-      price: 2200,
-    },
-    {
-      name: "Bloodborne",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom3.png",
-      price: 10,
-    },
-    {
-      name: "Goat",
-      rarity: "Epic",
-      path: "/Boutique/ImageRandom4.png",
-      price: 1500,
-    },
-    {
-      name: "Plusd'inspi",
-      rarity: "Legendary",
-      path: "/Boutique/ImageRandom5.png",
-      price: 300,
-    },
-    {
-      name: "Blabla",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom1.png",
-      price: 500,
-    },
-    {
-      name: "ABCD",
-      rarity: "Rare",
-      path: "/Boutique/ImageRandom2.png",
-      price: 2200,
-    },
-    {
-      name: "Bloodborne",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom3.png",
-      price: 10,
-    },
-    {
-      name: "Goat",
-      rarity: "Epic",
-      path: "/Boutique/ImageRandom4.png",
-      price: 1500,
-    },
-    {
-      name: "Plusd'inspi",
-      rarity: "Legendary",
-      path: "/Boutique/ImageRandom5.png",
-      price: 300,
-    },
-    {
-      name: "Blabla",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom1.png",
-      price: 500,
-    },
-    {
-      name: "ABCD",
-      rarity: "Rare",
-      path: "/Boutique/ImageRandom2.png",
-      price: 2200,
-    },
-    {
-      name: "Bloodborne",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom3.png",
-      price: 10,
-    },
-    {
-      name: "Goat",
-      rarity: "Epic",
-      path: "/Boutique/ImageRandom4.png",
-      price: 1500,
-    },
-    {
-      name: "Plusd'inspi",
-      rarity: "Legendary",
-      path: "/Boutique/ImageRandom5.png",
-      price: 300,
-    },
-    {
-      name: "Blabla",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom1.png",
-      price: 500,
-    },
-    {
-      name: "ABCD",
-      rarity: "Rare",
-      path: "/Boutique/ImageRandom2.png",
-      price: 2200,
-    },
-    {
-      name: "Bloodborne",
-      rarity: "Common",
-      path: "/Boutique/ImageRandom3.png",
-      price: 10,
-    },
-    {
-      name: "Goat",
-      rarity: "Epic",
-      path: "/Boutique/ImageRandom4.png",
-      price: 1500,
-    },
-    {
-      name: "Plusd'inspi",
-      rarity: "Legendary",
-      path: "/Boutique/ImageRandom5.png",
-      price: 300,
-    },
-  ]);
-  console.info(setListeFictive);
+  const [lien, setLien] = useState([]);
+  const [liste, setListe] = useState([]);
 
   const [searchValue, setSearchValue] = useState("");
+  useEffect(() => {
+    axios
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/boutique/filter?rarity=${lien}`
+      )
+      .then((res) => {
+        setListe(res.data);
+      });
+  }, [lien]);
 
-  const filteredList = listeFictive
-    .filter((element) =>
-      element.name.toLowerCase().includes(searchValue.toLowerCase())
-    )
-    .filter((item) => {
-      if (arrayFilter.length === 0) {
-        return true;
-      }
-      return arrayFilter.some(
-        (selectedRarity) => item.rarity === selectedRarity
-      );
-    });
+  const filteredList = liste.filter((element) =>
+    element.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
-  console.info(filteredList);
   return (
     <>
       <div className="boutique-container border-b-2 h-[300px] border-black">
@@ -202,52 +48,55 @@ function Boutique() {
           <InputCheckbox
             className="filter"
             value={bSurPlace}
-            setArrayFilter={setBSurPlace}
+            setLien={setBSurPlace}
             text="Boutique sur place"
             reset={setBSurPlace}
+            lien={lien}
           />
           <InputCheckbox
             className="filter"
             value={bOnline}
-            setArrayFilter={setBOnline}
+            setLien={setBOnline}
             text="Boutique en ligne"
+            reset={setBOnline}
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
             value={common}
-            setArrayFilter={setArrayFilter}
+            setLien={setLien}
             text="Common"
             reset={setCommon}
-            arrayFilter={arrayFilter}
+            lien={lien}
           />
           <InputCheckbox
             value={rare}
-            setArrayFilter={setArrayFilter}
+            setLien={setLien}
             text="Rare"
             reset={setRare}
-            arrayFilter={arrayFilter}
+            lien={lien}
           />
           <InputCheckbox
             value={epic}
-            setArrayFilter={setArrayFilter}
+            setLien={setLien}
             text="Epic"
             reset={setEpic}
-            arrayFilter={arrayFilter}
+            lien={lien}
           />
           <InputCheckbox
             value={legendary}
-            setArrayFilter={setArrayFilter}
+            setLien={setLien}
             text="Legendary"
             reset={setLegendary}
-            arrayFilter={arrayFilter}
+            lien={lien}
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <InputCheckbox
             className="filter"
             value={hideAchieved}
-            setArrayFilter={setHideAchieved}
+            setLien={setHideAchieved}
             text="Cacher ceux possédés"
             reset={setHideAchieved}
+            lien={lien}
           />
           <div className="h-[1px] bg-black w-[80%] self-center" />
           <button
@@ -261,16 +110,16 @@ function Boutique() {
               setEpic(false);
               setLegendary(false);
               setHideAchieved(false);
-              setArrayFilter(() => []);
+              setLien(() => []);
             }}
           >
-            Réinitialiser
+            Réinitialiser ({liste.length})
           </button>
         </div>
         <div className="boutique-liste bg-color-shop2 w-[90%] p-10 flex-wrap">
           <div className="item-container flex w-full flex-wrap gap-10">
             {filteredList.map((item) => (
-              <div className="flex flex-col item h-[280px]">
+              <div key={item.image} className="flex flex-col item h-[280px]">
                 <BoutiqueComponent item={item} />
               </div>
             ))}

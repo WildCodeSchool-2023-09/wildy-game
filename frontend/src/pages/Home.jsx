@@ -104,7 +104,9 @@ export default function Home() {
             <div className="games-cards">
               <div className="game1">
                 <div className="game-button">
-                  <button type="button">START</button>
+                  <Link to="pacman">
+                    <button type="button">START</button>
+                  </Link>
                 </div>
               </div>
               <div className="game2">

@@ -17,10 +17,12 @@ router.delete("/avatars/:id", avatarControllers.destroy);
 /* ************************************************************************* */
 
 const playerControllers = require("./controllers/playerControllers");
+const inscription = require("./services/inscription");
+const hashPassword = require("./services/hashPassword");
 
 router.get("/players", playerControllers.browse);
 router.get("/players/:id", playerControllers.findById);
-router.post("/players", playerControllers.add);
+router.post("/players", inscription, hashPassword, playerControllers.add);
 router.put("/players/:id", playerControllers.edit);
 router.delete("/players/:id", playerControllers.destroy);
 

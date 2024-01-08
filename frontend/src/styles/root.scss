@@ -57,12 +57,30 @@ $font3:
   }
 }
 
-:root {
+.default {
   background-image: url(../assets/images/FondGlobal.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   scroll-behavior: smooth;
+  height: 100%;
+}
+.dark {
+  background-image: url(../assets/images/27479681.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+.theme {
+  position: fixed;
+  top: 100px;
+  left: 40px;
+  z-index: 100;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 5px 10px;
 }
 .s-coin {
   width: 100px;

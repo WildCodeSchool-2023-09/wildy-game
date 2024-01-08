@@ -48,8 +48,30 @@ export default function Home() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, [isVisible]);
 
+  const [theme, setTheme] = useState(true);
+
+  if (theme) {
+    document.body.classList.remove("dark");
+    document.body.classList.add("default");
+  } else {
+    document.body.classList.remove("default");
+    document.body.classList.add("dark");
+  }
+  const handleTheme = () => {
+    setTheme(!theme);
+  };
+
   return (
     <>
+      {theme ? (
+        <button className="theme" type="button" onClick={() => handleTheme()}>
+          🌙
+        </button>
+      ) : (
+        <button className="theme" type="button" onClick={() => handleTheme()}>
+          ☀️
+        </button>
+      )}
       <UpPage
         scrollToTop={scrollToTop}
         isVisible={isVisible}

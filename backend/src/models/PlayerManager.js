@@ -42,7 +42,7 @@ class PlayerManager extends AbstractManager {
 
   async checkEmail(email) {
     const [rows] = await this.database.query(
-      `select email from ${this.table} where email=?`,
+      `select * from ${this.table} where email=?`,
       [email]
     );
     return rows;

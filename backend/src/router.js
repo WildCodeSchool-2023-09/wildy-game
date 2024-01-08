@@ -37,4 +37,8 @@ router.post("/boutique", boutiqueControllers.add);
 router.put("/boutique/:id", boutiqueControllers.edit);
 router.delete("/boutique/:id", boutiqueControllers.destroy);
 
+const authControllers = require("./controllers/authControllers");
+
+router.post("/login", authControllers.login);
+
 module.exports = router;

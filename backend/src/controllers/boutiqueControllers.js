@@ -84,7 +84,9 @@ const destroy = async (req, res, next) => {
     if (result.affectedRows === 0) {
       res.status(404).send("id pas trouvée");
     } else {
-      res.status(200).send(`L'boutique ayant l'id: ${id} a bien été supprimée`);
+      res
+        .status(200)
+        .send(`La boutique ayant l'id: ${id} a bien été supprimée`);
     }
   } catch (err) {
     next(err);

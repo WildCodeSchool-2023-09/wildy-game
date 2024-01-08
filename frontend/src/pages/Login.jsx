@@ -14,12 +14,12 @@ function Login() {
           <input type="text" name="user" id="user" />
           <label htmlFor="password">Mot de passe</label>
           <input type="text" name="password" id="user" />
-          <Link to="/" className="link">
-            Mot de passe oublié ?
-          </Link>
           <button type="button" className="btn-connexion">
             CONNEXION
           </button>
+          <Link to="/" className="link">
+            Mot de passe oublié ?
+          </Link>
           <Link to="/signup" className="link">
             Créer un compte
           </Link>

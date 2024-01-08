@@ -33,6 +33,20 @@ function Navbar() {
   }, []);
 
   console.error(setLogin);
+
+  const [theme, setTheme] = useState(true);
+
+  if (theme) {
+    document.body.classList.remove("dark");
+    document.body.classList.add("default");
+  } else {
+    document.body.classList.remove("default");
+    document.body.classList.add("dark");
+  }
+  const handleTheme = () => {
+    setTheme(!theme);
+  };
+
   return (
     <nav
       className={`navbar ${navScrollClass}`}
@@ -103,6 +117,15 @@ function Navbar() {
           >
             LOG IN
           </NavHashLink>
+        )}
+        {theme ? (
+          <button className="theme" type="button" onClick={() => handleTheme()}>
+            🌙
+          </button>
+        ) : (
+          <button className="theme" type="button" onClick={() => handleTheme()}>
+            ☀️
+          </button>
         )}
       </div>
     </nav>

@@ -6,6 +6,7 @@
     display: none;
   }
 }
+
 .wrapper-home {
   display: flex;
   justify-content: center;
@@ -30,6 +31,29 @@
       z-index: 3;
       @media screen and (max-width: 391px) {
         height: 70vh;
+      }
+    }
+    .robot-container {
+      .robot {
+        position: absolute;
+        top: 67%;
+        left: 39%;
+        z-index: 3;
+        width: 100px;
+      }
+      .robot2 {
+        position: absolute;
+        top: 66.7%;
+        left: 39%;
+        z-index: 3;
+        width: 100px;
+        display: none;
+      }
+      &:hover .robot {
+        display: none;
+      }
+      &:hover .robot2 {
+        display: block;
       }
     }
     .start-video {
@@ -327,6 +351,7 @@
         }
         span.shop {
           font-size: 2rem;
+          color: $second-color;
         }
         span.coin {
           font-size: 2rem;

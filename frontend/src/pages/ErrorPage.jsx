@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import borne from "../assets/images/borne_arcade_404.png";
 import ParallaxCoin from "../components/ParallaxCoin";
 import start from "../assets/video/wildy_gamy_gameover_carre.mp4";
+import deadRobot from "../assets/images/deadrobot.png";
 import "../styles/home.scss";
 
 function ErrorPage() {
@@ -22,6 +23,11 @@ function ErrorPage() {
           >
             <source src={start} type="video/mp4" />
           </video>
+          <img
+            src={deadRobot}
+            alt="a dead little robot"
+            className="dead-robot"
+          />
         </div>
       </div>
     </Link>

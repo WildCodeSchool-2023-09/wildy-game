@@ -56,13 +56,36 @@ $font3:
     }
   }
 }
-
 :root {
+  scroll-behavior: smooth;
+}
+body {
+  background-image: url(../assets/images/FondGlobal.png);
+}
+.default {
   background-image: url(../assets/images/FondGlobal.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  height: 100%;
+}
+.dark {
+  background-image: url(../assets/images/27479681.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   scroll-behavior: smooth;
+  height: 100%;
+}
+.theme {
+  position: absolute;
+  right: 130px;
+
+  font-size: 1rem;
+  z-index: 100;
+  border: 1px solid rgb(250, 248, 248);
+  border-radius: 10px;
+  padding: 2px 10px;
 }
 .s-coin {
   width: 100px;
@@ -92,4 +115,11 @@ button {
   &:hover {
     opacity: 90%;
   }
+}
+.dead-robot {
+  position: absolute;
+  top: 71%;
+  left: 39%;
+  z-index: 100;
+  width: 100px;
 }

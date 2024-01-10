@@ -53,7 +53,7 @@ function Signup() {
               />
             </div>
             <div className="signup-column">
-              <label htmlFor="pseudo">Pseudonyme</label>
+              <label htmlFor="pseudo">Pseudo</label>
               <input
                 type="text"
                 name="pseudo"
@@ -62,42 +62,50 @@ function Signup() {
                 onChange={handleChange}
               />
             </div>
+            <div className="signup-column">
+              <label htmlFor="firstname">Prénom</label>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                value={user.firstname}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="signup-column">
+              <label htmlFor="lastname">Nom</label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                value={user.lastname}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="signup-column">
+              <label htmlFor="password">Mot de passe</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                value={user.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="signup-column">
+              <label htmlFor="password-confirm">Confirmer</label>
+              <input
+                type="password"
+                name="password-confirm"
+                id="password-confirm"
+                value={user.password}
+                onChange={handleChange}
+              />
+            </div>
+            <button type="submit" className="btn-connexion">
+              Inscription
+            </button>
           </div>
-          <label htmlFor="firstname">Prénom</label>
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            value={user.firstname}
-            onChange={handleChange}
-          />
-          <label htmlFor="lastname">Nom</label>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            value={user.lastname}
-            onChange={handleChange}
-          />
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={user.password}
-            onChange={handleChange}
-          />
-          <label htmlFor="password-confirm">Confirmer le mot de passe</label>
-          <input
-            type="password"
-            name="password-confirm"
-            id="password-confirm"
-            value={user.password}
-            onChange={handleChange}
-          />
-          <button type="submit" className="btn-connexion">
-            Inscription
-          </button>
         </form>
       </div>
     </div>

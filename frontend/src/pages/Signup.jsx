@@ -3,7 +3,7 @@ import axios from "axios";
 import borne from "../assets/images/borne_arcade_signup.png";
 import ParallaxCoin from "../components/ParallaxCoin";
 import "../styles/login.scss";
-import { success } from "../services/toast";
+import { success, failed } from "../services/toast";
 
 function Signup() {
   const [user, setUser] = useState({
@@ -31,7 +31,7 @@ function Signup() {
         success("Vous êtes bien enregistré!");
       }
     } catch (error) {
-      error("Erreur lors de l'enregistrement");
+      failed("Erreur lors de l'enregistrement");
     }
   };
 

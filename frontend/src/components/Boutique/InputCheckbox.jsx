@@ -9,7 +9,7 @@ function InputCheckbox({ value, setLien, lien, text, reset }) {
     }
   };
   return (
-    <div className="flex">
+    <div className="flex items-center">
       <input
         type="checkbox"
         checked={value}

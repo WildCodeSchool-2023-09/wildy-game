@@ -7,7 +7,7 @@ function BoutiqueComponent({ item }) {
       <img
         src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`}
         alt={item.name}
-        className="w-60 h-60 bg-black shadow-lg shadow-black"
+        className="w-60 h-60 bg-[#989898] shadow-lg shadow-black"
       />
       <div className="flex items-center justify-between mt-2">
         <p className="text-white">{item.name}</p>

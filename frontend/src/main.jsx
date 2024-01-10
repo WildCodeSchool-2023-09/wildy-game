@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { UserProvider } from "./contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 
 import App from "./pages/App";
@@ -46,7 +47,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer />
+    <UserProvider>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </UserProvider>
   </React.StrictMode>
 );

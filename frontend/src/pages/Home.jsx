@@ -7,6 +7,8 @@ import ParallaxCoin from "../components/ParallaxCoin";
 import UpPage from "../components/UpPage";
 import borne from "../assets/images/borne_arcade.png";
 import start from "../assets/video/wildy_gamy_carre.mp4";
+import robot from "../assets/images/robot.png";
+import robot2 from "../assets/images/Robotangry.png";
 import salle from "../assets/images/lateralement-femmes-jouer-danse-arcade.jpg";
 import "../styles/home.scss";
 
@@ -69,6 +71,10 @@ export default function Home() {
           >
             <source src={start} type="video/mp4" />
           </video>
+          <div className="robot-container">
+            <img src={robot} alt="little robot" className="robot" />
+            <img src={robot2} alt="little robot" className="robot2" />
+          </div>
         </div>
       </div>
       <div className="section-wrapper">

@@ -50,7 +50,7 @@ class PlayerManager extends AbstractManager {
 
   async checkPseudo(pseudo) {
     const [rows] = await this.database.query(
-      `select pseudo from ${this.table} where pseudo=?`,
+      `select * from ${this.table} where pseudo=?`,
       [pseudo]
     );
     return rows;

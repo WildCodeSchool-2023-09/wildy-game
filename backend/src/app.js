@@ -108,7 +108,7 @@ const reactBuildPath = `${__dirname}/../../frontend/dist`;
 // Serve react resources
 
 app.use(express.static(reactBuildPath));
-
+app.use(express.static("public"));
 // Redirect unhandled requests to the react index file
 
 app.get("*", (req, res) => {

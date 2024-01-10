@@ -4,6 +4,7 @@
 @import url("https://fonts.cdnfonts.com/css/upheaval");
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap");
 $font-color: white;
 $first-color: #920075;
 $second-color: #f9c80e;
@@ -15,6 +16,7 @@ $font2: "Play", sans-serif;
 $font3:
   "Press Start 2P",
   sans serif;
+$generic-font: "Montserrat", sans-serif;
 
 * {
   margin: 0;
@@ -80,7 +82,6 @@ body {
 .theme {
   position: absolute;
   right: 130px;
-
   font-size: 1rem;
   z-index: 100;
   border: 1px solid rgb(250, 248, 248);

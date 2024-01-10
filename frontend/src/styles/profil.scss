@@ -1,0 +1,123 @@
+@import "../styles/root.scss";
+
+.settings-wrapper {
+  position: relative;
+  top: 5rem;
+  .profil-header {
+    display: flex;
+    justify-content: start;
+    background-image: url("../assets/images/randomBanner.png");
+
+    height: 30vh;
+    padding: 10px 25px;
+    .avatar {
+      width: 200px;
+      border-radius: 30px;
+    }
+  }
+  .settings-container {
+    background-color: white;
+    display: flex;
+
+    .settings-menu {
+      background-color: $second-color;
+      width: 20vw;
+      height: fit-content;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 20px 25px 20px 25px;
+      h1 {
+        font-family: $generic-font;
+        color: black;
+        font-weight: 800;
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-family: $generic-font;
+        font-size: 1.3rem;
+      }
+      ul {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        li {
+          font-family: $generic-font;
+        }
+      }
+    }
+    .settings-content {
+      display: flex;
+      flex-direction: column;
+      width: 60svw;
+      align-items: center;
+      .exp-wrapper {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.3rem;
+        .title {
+          align-self: end;
+          font-family: $font3;
+          font-size: 0.7rem;
+          margin-bottom: 15px;
+        }
+      }
+      button {
+        height: 3rem;
+        width: 20rem;
+        font-size: 1.1rem;
+        color: #3d3d3d;
+        background-color: #f9c80e;
+        padding: 5px 30px;
+        border: none;
+        box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+        border-radius: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+/* EXP BAR COMPOSENT DEFAULT */
+.exp-container {
+  width: 40vw;
+  height: 0.9rem;
+  background-color: #f9c80e;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+  .exp {
+    position: absolute;
+    width: 40vw;
+    height: 0.9rem;
+    p {
+      font-size: 0.6rem;
+      font-family: $font3;
+    }
+  }
+  .exp-bar {
+    width: 20%;
+    height: 100%;
+    border-radius: 10px 0 10px 10px;
+    background-color: #008000;
+    justify-self: flex-start !important;
+    background-color: #e5e5f7;
+    opacity: 0.4;
+    background-color: #00d300;
+    opacity: 0.8;
+    background: repeating-linear-gradient(
+      -45deg,
+      #91d191,
+      #079d07 2px,
+      #00d300 10px,
+      #026402 10px
+    );
+  }
+}

@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const tables = require("../tables");
 
 const hashPassword = async (req, res, next) => {
   try {
@@ -11,9 +12,31 @@ const hashPassword = async (req, res, next) => {
       res.status(400).send("Password is required");
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).send("An error occurred while hashing the password");
+    next(error);
   }
 };
 
-module.exports = hashPassword;
+const verifyPassword = async (req, res, next) => {
+  try {
+    const [player] = await tables.player.checkPseudo(req.body.pseudo);
+    if (!player) {
+      res
+        .status(401)
+        .json({ error: "Il y'a une erreur dans votre email ou mot de passe" });
+    }
+
+    if (await bcrypt.compare(req.body.password, player.password)) {
+      delete player.password;
+      req.user = player;
+      next();
+    } else {
+      res.status(422).json({
+        error: "Oups, il y a une erreur",
+      });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { hashPassword, verifyPassword };

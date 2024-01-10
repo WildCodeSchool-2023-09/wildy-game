@@ -1,4 +1,5 @@
 // Import access to database tables
+const jwt = require("jsonwebtoken");
 const tables = require("../tables");
 
 // The B of BREAD - Browse (Read All) operation
@@ -90,6 +91,16 @@ const destroy = async (req, res, next) => {
     next(err);
   }
 };
+
+const login = async (req, res, next) => {
+  try {
+    const player = req.user;
+    const token = jwt.sign({ player }, process.env.APP_SECRET);
+    res.cookie("token", token).json({ user: req.user, token });
+  } catch (err) {
+    next(err);
+  }
+};
 // Ready to export the controller functions
 
 module.exports = {
@@ -98,4 +109,5 @@ module.exports = {
   add,
   edit,
   destroy,
+  login,
 };

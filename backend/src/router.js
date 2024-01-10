@@ -18,13 +18,14 @@ router.delete("/avatars/:id", avatarControllers.destroy);
 
 const playerControllers = require("./controllers/playerControllers");
 const inscription = require("./services/inscription");
-const hashPassword = require("./services/hashPassword");
+const { hashPassword, verifyPassword } = require("./services/hashPassword");
 
 router.get("/players", playerControllers.browse);
 router.get("/players/:id", playerControllers.findById);
 router.post("/players", inscription, hashPassword, playerControllers.add);
 router.put("/players/:id", playerControllers.edit);
 router.delete("/players/:id", playerControllers.destroy);
+router.post("/login", verifyPassword, playerControllers.login);
 
 /* ************************************************************************* */
 
@@ -36,9 +37,5 @@ router.get("/boutique/:id", boutiqueControllers.findById);
 router.post("/boutique", boutiqueControllers.add);
 router.put("/boutique/:id", boutiqueControllers.edit);
 router.delete("/boutique/:id", boutiqueControllers.destroy);
-
-const authControllers = require("./controllers/authControllers");
-
-router.post("/login", authControllers.login);
 
 module.exports = router;

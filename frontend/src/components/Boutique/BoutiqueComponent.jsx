@@ -5,7 +5,7 @@ function BoutiqueComponent({ item }) {
   return (
     <>
       <img
-        src={item.image}
+        src={`${import.meta.env.VITE_BACKEND_URL}/${item.image}`}
         alt={item.name}
         className="w-60 h-60 bg-black shadow-lg shadow-black"
       />

@@ -53,6 +53,7 @@
       flex-direction: column;
       width: 60svw;
       align-items: center;
+      justify-content: center;
       gap: 20px;
       margin-bottom: 30px;
       .exp-wrapper {
@@ -95,6 +96,55 @@
           font-family: $generic-font;
           font-weight: 500;
           color: white;
+        }
+        .profil-hv-content {
+          display: flex;
+          gap: 10px;
+          .hv-items {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #e0dbdb;
+            width: 8rem;
+            .item {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: $neutral-color;
+              border-radius: 50px;
+              width: 5rem;
+              margin: 10px;
+              height: 5rem;
+              button {
+                margin: 10px;
+                font-size: 6rem;
+                color: white;
+                height: 100%;
+                width: 100%;
+                background-color: $neutral-color;
+                border-radius: 50px;
+                box-shadow: none;
+              }
+            }
+            .price {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              font-size: 1rem;
+              color: black;
+            }
+            .sell {
+              background-color: $neutral-color;
+              width: 100%;
+              height: 25px;
+              color: white;
+              font-size: 0.7rem;
+              box-shadow: none;
+              margin-bottom: 0;
+              padding: 0;
+            }
+          }
         }
       }
     }

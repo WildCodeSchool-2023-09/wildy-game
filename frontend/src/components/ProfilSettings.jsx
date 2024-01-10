@@ -1,47 +1,49 @@
+import { useState } from "react";
 import ExpBar from "./ExpBar";
 
 import randomAvatar from "../../public/Boutique/ImageRandom2.png";
+import FavGames from "./settingsComponents/FavGames";
+import Collection from "./settingsComponents/Collection";
+import Hv from "./settingsComponents/Hv";
+import ProfilTheme from "./settingsComponents/ProfilTheme";
+import Friends from "./settingsComponents/Friends";
 
 export default function ProfilSettings() {
+  const [editmode, setEditmode] = useState(false);
+
   return (
     <div className="settings-wrapper">
       <div className="profil-header">
         {/* background banner */}
         <img src={randomAvatar} alt="" className="avatar" />
       </div>
-      <div className="settings-container">
-        <aside className="settings-menu">
-          <h1>Mon compte</h1>
-          <h2>Pseudo</h2>
-          <h2>adress@mail.com</h2>
-          <ul>
-            <li>Modifier mes informations</li>
-            <li>Historique d'achats</li>
-            <li>À propos</li>
-          </ul>
-        </aside>
+      <div className={`settings-container ${editmode && "justify-center"}`}>
+        {editmode === false && (
+          <aside className="settings-menu">
+            <h1>Mon compte</h1>
+            <h2>player.pseudo</h2>
+            <h2>player.email</h2>
+            <ul>
+              <li>Modifier mes informations</li>
+              <li>Historique d'achats</li>
+              <li>À propos</li>
+            </ul>
+          </aside>
+        )}
         <div className="settings-content">
           <div className="exp-wrapper">
             <ExpBar />
             <p className="title">player.title</p>
           </div>
-          <button type="button">Personnaliser le profil</button>
-          <section className="fav-games">
-            <h1>JEUX FAVORIS</h1>
-            <div className="games-cards">------fav games------</div>
-          </section>
-          <section className="collection">
-            <h1>COLLECTION</h1>
-            <div className="collection-content">------items------</div>
-          </section>
-          <section className="profil-hv">
-            <h1>PROPOSER DES ITEMS À L'ÉCHANGE</h1>
-            <div className="profil-hv-content">------items on sale------</div>
-          </section>
-          <section className="friends">
-            <h1>AMIS</h1>
-            <div className="friends-content">------friends------</div>
-          </section>
+
+          <button type="button" onClick={() => setEditmode(!editmode)}>
+            {editmode ? "Valider" : "Personnaliser le profil"}
+          </button>
+          {editmode && <ProfilTheme />}
+          <FavGames editmode={editmode} setEditmode={setEditmode} />
+          <Collection editmode={editmode} setEditmode={setEditmode} />
+          <Hv editmode={editmode} setEditmode={setEditmode} />
+          <Friends editmode={editmode} setEditmode={setEditmode} />
         </div>
       </div>
     </div>

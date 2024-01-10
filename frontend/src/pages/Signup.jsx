@@ -3,6 +3,7 @@ import axios from "axios";
 import borne from "../assets/images/borne_arcade_signup.png";
 import ParallaxCoin from "../components/ParallaxCoin";
 import "../styles/login.scss";
+import { success } from "../services/toast";
 
 function Signup() {
   const [user, setUser] = useState({
@@ -11,16 +12,29 @@ function Signup() {
     email: "",
     pseudo: "",
     password: "",
-    membreId: "12345",
+    membreId: "1234",
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/players`, user);
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/players`,
+        user
+      );
+
+      if (res.status === 201) {
+        success("Vous êtes bien enregistré!");
+      }
+    } catch (error) {
+      error("Erreur lors de l'enregistrement");
+    }
   };
+
   return (
     <div className="wrapper-login">
       <ParallaxCoin />

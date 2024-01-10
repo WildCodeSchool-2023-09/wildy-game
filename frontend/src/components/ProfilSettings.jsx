@@ -23,10 +23,25 @@ export default function ProfilSettings() {
         <div className="settings-content">
           <div className="exp-wrapper">
             <ExpBar />
-            <p className="title">TITRE</p>
+            <p className="title">player.title</p>
           </div>
-
           <button type="button">Personnaliser le profil</button>
+          <section className="fav-games">
+            <h1>JEUX FAVORIS</h1>
+            <div className="games-cards">------fav games------</div>
+          </section>
+          <section className="collection">
+            <h1>COLLECTION</h1>
+            <div className="collection-content">------items------</div>
+          </section>
+          <section className="profil-hv">
+            <h1>PROPOSER DES ITEMS À L'ÉCHANGE</h1>
+            <div className="profil-hv-content">------items on sale------</div>
+          </section>
+          <section className="friends">
+            <h1>AMIS</h1>
+            <div className="friends-content">------friends------</div>
+          </section>
         </div>
       </div>
     </div>

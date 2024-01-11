@@ -65,9 +65,7 @@ const add = async (req, res, next) => {
     const insertId = await tables.boutique.create(boutique);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId }); // <--- {insertID} est une syntaxe raccourcie! C'est possible en JS
-    // quand la clé et la valeur sont identiques.
-    // je pourrais écrire à la place {insertId : insertId}. Enfin si ESlint m'autorisait.
+    res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

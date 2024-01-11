@@ -13,13 +13,7 @@ import salle from "../assets/images/lateralement-femmes-jouer-danse-arcade.jpg";
 import "../styles/home.scss";
 
 export default function Home() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.info(data);
-  console.info(errors);
+  const { register, handleSubmit } = useForm();
 
   /* UP BUTTON */
   const [isVisible, setIsVisible] = useState(false);
@@ -157,7 +151,7 @@ export default function Home() {
               </div>
               <div className="contact-form-container">
                 <h1>Une question, une suggestion ? </h1>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit()}>
                   <input
                     type="text"
                     placeholder="Email"

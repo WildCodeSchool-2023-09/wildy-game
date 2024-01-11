@@ -12,7 +12,7 @@ function Signup() {
     email: "",
     pseudo: "",
     password: "",
-    membreId: "1234",
+    membreId: "3",
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,12 +26,17 @@ function Signup() {
         `${import.meta.env.VITE_BACKEND_URL}/api/players`,
         user
       );
-
       if (res.status === 201) {
         success("Vous êtes bien enregistré!");
       }
     } catch (error) {
-      failed("Erreur lors de l'enregistrement");
+      if (error.response.status === 400) {
+        failed("Veuillez remplir tous les champs");
+      } else if (error.response.status === 409) {
+        failed("Ce pseudo/email existe déjà");
+      } else {
+        failed("Erreur lors de l'enregistrement");
+      }
     }
   };
 

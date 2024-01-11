@@ -19,10 +19,17 @@ router.delete("/avatars/:id", avatarControllers.destroy);
 const playerControllers = require("./controllers/playerControllers");
 const inscription = require("./services/inscription");
 const { hashPassword, verifyPassword } = require("./services/hashPassword");
+const randMembreId = require("./services/randMembreId");
 
 router.get("/players", playerControllers.browse);
 router.get("/players/:id", playerControllers.findById);
-router.post("/players", inscription, hashPassword, playerControllers.add);
+router.post(
+  "/players",
+  inscription,
+  hashPassword,
+  randMembreId,
+  playerControllers.add
+);
 router.put("/players/:id", playerControllers.edit);
 router.delete("/players/:id", playerControllers.destroy);
 router.post("/login", verifyPassword, playerControllers.login);

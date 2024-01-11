@@ -10,6 +10,10 @@ import Friends from "./settingsComponents/Friends";
 
 export default function ProfilSettings() {
   const [editmode, setEditmode] = useState(false);
+  /* PROFIL THEME */
+  const [primaryColor, setPrimaryColor] = useState("#ffffff");
+  const [secondaryColor, setSecondaryColor] = useState("#b4b4b4");
+  const [textColor, setTextColor] = useState("#ffffff");
 
   return (
     <div className="settings-wrapper">
@@ -17,7 +21,10 @@ export default function ProfilSettings() {
         {/* background banner */}
         <img src={randomAvatar} alt="" className="avatar" />
       </div>
-      <div className={`settings-container ${editmode && "justify-center"}`}>
+      <div
+        className={`settings-container ${editmode && "justify-center"}`}
+        style={{ backgroundColor: primaryColor }}
+      >
         {editmode === false && (
           <aside className="settings-menu">
             <h1>Mon compte</h1>
@@ -39,11 +46,40 @@ export default function ProfilSettings() {
           <button type="button" onClick={() => setEditmode(!editmode)}>
             {editmode ? "Valider" : "Personnaliser le profil"}
           </button>
-          {editmode && <ProfilTheme />}
-          <FavGames editmode={editmode} setEditmode={setEditmode} />
-          <Collection editmode={editmode} setEditmode={setEditmode} />
-          <Hv editmode={editmode} setEditmode={setEditmode} />
-          <Friends editmode={editmode} setEditmode={setEditmode} />
+          {editmode && (
+            <ProfilTheme
+              primaryColor={primaryColor}
+              setPrimaryColor={setPrimaryColor}
+              secondaryColor={secondaryColor}
+              setSecondaryColor={setSecondaryColor}
+              textColor={textColor}
+              setTextColor={setTextColor}
+            />
+          )}
+          <FavGames
+            editmode={editmode}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+            textColor={textColor}
+          />
+          <Collection
+            editmode={editmode}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+            textColor={textColor}
+          />
+          <Hv
+            editmode={editmode}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+            textColor={textColor}
+          />
+          <Friends
+            editmode={editmode}
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+            textColor={textColor}
+          />
         </div>
       </div>
     </div>

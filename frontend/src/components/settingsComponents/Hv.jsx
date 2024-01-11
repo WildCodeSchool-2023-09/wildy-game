@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import coin from "../../assets/images/credit_1.png";
 
-export default function Hv({ editmode }) {
+export default function Hv({ editmode, secondaryColor, textColor }) {
   return (
-    <section className="profil-hv">
-      <h1>PROPOSER DES ITEMS À L'ÉCHANGE</h1>
+    <section className="profil-hv" style={{ backgroundColor: secondaryColor }}>
+      <h1 style={{ color: textColor }}>PROPOSER DES ITEMS À L'ÉCHANGE</h1>
       <div className="profil-hv-content">
         {editmode && (
           <div className="hv-items">
@@ -15,7 +15,7 @@ export default function Hv({ editmode }) {
               className="price
             "
             >
-              <p>price</p>
+              <input type="number" />
               <img src={coin} alt="pièce" className="h-6" />
             </div>
 
@@ -31,4 +31,6 @@ export default function Hv({ editmode }) {
 }
 Hv.propTypes = {
   editmode: PropTypes.bool.isRequired,
+  secondaryColor: PropTypes.string.isRequired,
+  textColor: PropTypes.string.isRequired,
 };

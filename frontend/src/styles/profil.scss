@@ -104,7 +104,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #e0dbdb;
+            background-color: $neutral-color-lighter;
             width: 8rem;
             .item {
               display: flex;
@@ -133,6 +133,11 @@
               width: 100%;
               font-size: 1rem;
               color: black;
+              input {
+                width: 100%;
+                text-align: center;
+                background-color: $neutral-color-lighter;
+              }
             }
             .sell {
               background-color: $neutral-color;
@@ -145,6 +150,64 @@
               padding: 0;
             }
           }
+        }
+        //////////* THEME SECTION */////////
+        .theme-select {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 50px;
+          .theme1-picker {
+            box-shadow: none;
+            width: 100px;
+            background-color: #3d2579;
+          }
+          .theme2-picker {
+            box-shadow: none;
+            width: 100px;
+            background-color: #000000;
+          }
+          .theme3-picker {
+            box-shadow: none;
+            width: 100px;
+            background-color: #d496a7;
+          }
+          .theme4-picker {
+            box-shadow: none;
+            width: 100px;
+            background-color: #011936;
+          }
+          .theme5-picker {
+            box-shadow: none;
+            width: 100px;
+            background-color: #415d43;
+          }
+          .theme6-picker {
+            box-shadow: none;
+            width: 100px;
+            background-color: #9a031e;
+          }
+          .reset {
+            box-shadow: none;
+            background-color: rgba($color: #000000, $alpha: 0);
+            width: fit-content;
+            color: black;
+          }
+          /*  .column {
+            display: flex;
+            flex-direction: column;
+            label {
+              text-align: center;
+              color: #ffffff;
+              font-family: $font2;
+            }
+            input {
+              margin: 0 auto;
+              width: 100px;
+              background-color: $neutral-color-light;
+            }
+          } */
         }
       }
     }

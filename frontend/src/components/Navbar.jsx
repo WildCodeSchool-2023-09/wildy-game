@@ -1,11 +1,12 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
+import { useUser } from "../contexts/UserContext";
 import manette from "../assets/anim_manette.json";
 import "../styles/navbar.scss";
 
 function Navbar() {
-  const [login, setLogin] = useState(false);
+  const { user } = useUser();
   const [isActive, setIsActive] = useState("");
   const handleClick = (url) => {
     setIsActive(url);
@@ -31,8 +32,6 @@ function Navbar() {
       window.removeEventListener("scroll", listenScrollEvent);
     };
   }, []);
-
-  console.error(setLogin);
 
   const [theme, setTheme] = useState(true);
 
@@ -107,7 +106,7 @@ function Navbar() {
         </li>
       </ul>
       <div className="navbar-right">
-        {login ? (
+        {user ? (
           <p>Avatar</p>
         ) : (
           <NavHashLink
@@ -115,7 +114,7 @@ function Navbar() {
             className={`link ${isActive === "login" && "is-active"}`}
             to="login"
           >
-            LOG IN
+            {user ? "EST CONNECTE" : "LOGIN"}
           </NavHashLink>
         )}
         {theme ? (

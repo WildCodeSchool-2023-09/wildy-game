@@ -12,7 +12,7 @@ const success = (text) =>
     theme: "colored",
   });
 
-const error = (text) =>
+const failed = (text) =>
   toast.error(text, {
     position: "top-right",
     autoClose: 5000,
@@ -35,4 +35,4 @@ const warn = (text) =>
     theme: "colored",
   });
 
-export { success, error, warn };
+export { success, failed, warn };

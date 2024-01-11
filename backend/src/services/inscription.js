@@ -16,13 +16,17 @@ const playerSchema = Joi.object({
 const inscription = async (req, res, next) => {
   const errors = [];
   const { firstname, lastname, pseudo, password, email } = req.body;
+
+  if (!firstname || !lastname || !pseudo || !password || !email) {
+    return res.status(400).json({ error: "Il manque un/ou plusieurs champs" });
+  }
   const { error } = playerSchema.validate(
     { firstname, lastname, pseudo, password, email },
     { abortEarly: false }
   );
 
   if (error) {
-    res.status(422).json({ validationErrors: error.details });
+    return res.status(422).json({ validationErrors: error.details });
   }
   const existEmail = await tables.player.checkEmail(email);
   if (existEmail.length !== 0) {
@@ -35,10 +39,9 @@ const inscription = async (req, res, next) => {
   }
 
   if (errors.length !== 0) {
-    res.status(409).json({ validationErrors: errors });
-  } else {
-    next();
+    return res.status(409).json({ validationErrors: errors });
   }
+  return next();
 };
 
 module.exports = inscription;

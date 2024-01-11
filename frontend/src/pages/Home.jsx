@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import ParallaxCoin from "../components/ParallaxCoin";
 import UpPage from "../components/UpPage";
+import GamesCard from "../components/gamesdisplay/GamesCard";
 import borne from "../assets/images/borne_arcade.png";
 import start from "../assets/video/wildy_gamy_carre.mp4";
 import robot from "../assets/images/robot.png";
@@ -101,25 +102,7 @@ export default function Home() {
         <ParallaxCoin />
         <section className="games" id="games">
           <div className="games-container">
-            <div className="games-cards">
-              <div className="game1">
-                <div className="game-button">
-                  <Link to="pacman">
-                    <button type="button">START</button>
-                  </Link>
-                </div>
-              </div>
-              <div className="game2">
-                <div className="game-button">
-                  <button type="button">START</button>
-                </div>
-              </div>
-              <div className="game3">
-                <div className="game-button">
-                  <button type="button">START</button>
-                </div>
-              </div>
-            </div>
+            <GamesCard />
             <h1 className="h-games">
               Gagne des <span className="coin">WILDY COINS</span> et viens les
               dépenser dans <br />

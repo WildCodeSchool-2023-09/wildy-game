@@ -13,6 +13,7 @@ import Boutique from "./pages/Boutique";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Jeu from "./pages/Jeu";
+import Profil from "./pages/Profil";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "pacman",
         element: <Jeu />,
+      },
+      {
+        path: "profil",
+        element: <Profil />,
       },
     ],
   },

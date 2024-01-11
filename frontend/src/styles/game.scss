@@ -11,8 +11,14 @@
     position: absolute;
     z-index: 2;
     transform: scale(1.2);
+    @media screen and (min-width: 1600px) {
+      transform: scale(2);
+    }
+    @media screen and (min-width: 1920px) {
+      margin-bottom: 160px;
+      transform: scale(3.065);
+    }
   }
-
   button {
     position: absolute;
     z-index: 100;
@@ -42,5 +48,13 @@
     height: 70vh;
     transform: scale(0.8);
     background-color: black;
+    @media screen and (min-width: 1600px) {
+      margin-bottom: 160px;
+      transform: scale(1.2);
+    }
+    @media screen and (min-width: 1920px) {
+      margin-bottom: 250px;
+      transform: scale(1.5);
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 import borne from "../assets/images/borne_arcade_signup.png";
 import ParallaxCoin from "../components/ParallaxCoin";
@@ -6,13 +7,14 @@ import "../styles/login.scss";
 import { success, failed } from "../services/toast";
 
 function Signup() {
+  const [created, setCreated] = useState(false);
   const [user, setUser] = useState({
     fistname: "",
     lastname: "",
     email: "",
     pseudo: "",
     password: "",
-    membreId: "3",
+    membreId: "4",
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,6 +30,7 @@ function Signup() {
       );
       if (res.status === 201) {
         success("Vous êtes bien enregistré!");
+        setCreated(true);
       }
     } catch (error) {
       if (error.response.status === 400) {
@@ -39,6 +42,10 @@ function Signup() {
       }
     }
   };
+
+  if (created) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <div className="wrapper-login">

@@ -56,6 +56,14 @@ class PlayerManager extends AbstractManager {
     return rows;
   }
 
+  async checkMembreId(membreId) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where membreId=?`,
+      [membreId]
+    );
+    return rows;
+  }
+
   async readAll() {
     // Execute the SQL SELECT query to retrieve all items from the "item" table
     const [rows] = await this.database.query(`select * from ${this.table}`);

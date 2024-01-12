@@ -1,4 +1,6 @@
 // Import access to database tables
+const fs = require("fs");
+const path = require("path");
 const jwt = require("jsonwebtoken");
 const tables = require("../tables");
 
@@ -75,6 +77,35 @@ const add = async (req, res, next) => {
   }
 };
 
+const addBanner = async (req, res, next) => {
+  // Extract the item data from the request body
+  const banner = req.file;
+  const extension = path.extname(banner.originalname);
+  await new Promise((resolve, reject) => {
+    fs.rename(
+      `${banner.destination}/${banner.filename}`,
+      `${banner.destination}/${banner.filename}${extension}`,
+      (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      }
+    );
+  });
+  try {
+    // Insert the item into the database
+    const insertId = await tables.player.createBanner(banner);
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
+    res.status(201).json({ insertId });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 const destroy = async (req, res, next) => {
@@ -110,4 +141,5 @@ module.exports = {
   edit,
   destroy,
   login,
+  addBanner,
 };

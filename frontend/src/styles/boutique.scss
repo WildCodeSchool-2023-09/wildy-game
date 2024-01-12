@@ -15,8 +15,7 @@
   .boutique-filtre {
     position: -webkit-sticky;
     position: sticky;
-    height: 89vh;
-    bottom: calc(100vh - (50px));
+    height: calc(89vh + 60px);
     top: 5rem;
     bottom: 0;
     scroll-behavior: none;

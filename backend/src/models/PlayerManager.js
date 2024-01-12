@@ -12,18 +12,14 @@ class PlayerManager extends AbstractManager {
   async create(player) {
     // Execute the SQL INSERT query to add a new item to the "item" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (firstname, lastname, pseudo, password, email, experience, credit, membreId, profilTheme, lvl) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname, lastname, pseudo, password, email, membreId) values (?, ?, ?, ?, ?, ?)`,
       [
         player.firstname,
         player.lastname,
         player.pseudo,
         player.password,
         player.email,
-        player.experience,
-        player.credit,
         player.membreId,
-        player.profilTheme,
-        player.lvl,
       ]
     );
 
@@ -42,6 +38,30 @@ class PlayerManager extends AbstractManager {
 
     // Return the first row of the result, which represents the item
     return rows[0];
+  }
+
+  async checkEmail(email) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where email=?`,
+      [email]
+    );
+    return rows;
+  }
+
+  async checkPseudo(pseudo) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where pseudo=?`,
+      [pseudo]
+    );
+    return rows;
+  }
+
+  async checkMembreId(membreId) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where membreId=?`,
+      [membreId]
+    );
+    return rows;
   }
 
   async readAll() {

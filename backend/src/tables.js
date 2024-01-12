@@ -5,10 +5,12 @@
 // Import the manager modules responsible for handling data operations on the tables
 const AvatarManager = require("./models/AvatarManager");
 const PlayerManager = require("./models/PlayerManager");
+const BoutiqueManager = require("./models/BoutiqueManager");
 
 const managers = [
   AvatarManager,
   PlayerManager,
+  BoutiqueManager,
   // Add other managers here
 ];
 

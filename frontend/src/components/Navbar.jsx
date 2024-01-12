@@ -1,11 +1,12 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
+import { useUser } from "../contexts/UserContext";
 import manette from "../assets/anim_manette.json";
 import "../styles/navbar.scss";
 
 function Navbar() {
-  const [login, setLogin] = useState(false);
+  const { user } = useUser();
   const [isActive, setIsActive] = useState("");
   const handleClick = (url) => {
     setIsActive(url);
@@ -32,7 +33,19 @@ function Navbar() {
     };
   }, []);
 
-  console.error(setLogin);
+  const [theme, setTheme] = useState(true);
+
+  if (theme) {
+    document.body.classList.remove("dark");
+    document.body.classList.add("default");
+  } else {
+    document.body.classList.remove("default");
+    document.body.classList.add("dark");
+  }
+  const handleTheme = () => {
+    setTheme(!theme);
+  };
+
   return (
     <nav
       className={`navbar ${navScrollClass}`}
@@ -93,7 +106,7 @@ function Navbar() {
         </li>
       </ul>
       <div className="navbar-right">
-        {login ? (
+        {user ? (
           <p>Avatar</p>
         ) : (
           <NavHashLink
@@ -101,8 +114,17 @@ function Navbar() {
             className={`link ${isActive === "login" && "is-active"}`}
             to="login"
           >
-            LOG IN
+            {user ? "EST CONNECTE" : "LOGIN"}
           </NavHashLink>
+        )}
+        {theme ? (
+          <button className="theme" type="button" onClick={() => handleTheme()}>
+            🌙
+          </button>
+        ) : (
+          <button className="theme" type="button" onClick={() => handleTheme()}>
+            ☀️
+          </button>
         )}
       </div>
     </nav>

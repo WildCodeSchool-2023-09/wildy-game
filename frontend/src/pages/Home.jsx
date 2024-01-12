@@ -5,19 +5,16 @@ import { Link } from "react-router-dom";
 
 import ParallaxCoin from "../components/ParallaxCoin";
 import UpPage from "../components/UpPage";
+import GamesCard from "../components/gamesdisplay/GamesCard";
 import borne from "../assets/images/borne_arcade.png";
 import start from "../assets/video/wildy_gamy_carre.mp4";
+import robot from "../assets/images/robot.png";
+import robot2 from "../assets/images/Robotangry.png";
 import salle from "../assets/images/lateralement-femmes-jouer-danse-arcade.jpg";
 import "../styles/home.scss";
 
 export default function Home() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.info(data);
-  console.info(errors);
+  const { register, handleSubmit } = useForm();
 
   /* UP BUTTON */
   const [isVisible, setIsVisible] = useState(false);
@@ -69,6 +66,10 @@ export default function Home() {
           >
             <source src={start} type="video/mp4" />
           </video>
+          <div className="robot-container">
+            <img src={robot} alt="little robot" className="robot" />
+            <img src={robot2} alt="little robot" className="robot2" />
+          </div>
         </div>
       </div>
       <div className="section-wrapper">
@@ -101,23 +102,7 @@ export default function Home() {
         <ParallaxCoin />
         <section className="games" id="games">
           <div className="games-container">
-            <div className="games-cards">
-              <div className="game1">
-                <div className="game-button">
-                  <button type="button">START</button>
-                </div>
-              </div>
-              <div className="game2">
-                <div className="game-button">
-                  <button type="button">START</button>
-                </div>
-              </div>
-              <div className="game3">
-                <div className="game-button">
-                  <button type="button">START</button>
-                </div>
-              </div>
-            </div>
+            <GamesCard />
             <h1 className="h-games">
               Gagne des <span className="coin">WILDY COINS</span> et viens les
               dépenser dans <br />
@@ -149,7 +134,7 @@ export default function Home() {
               </div>
               <div className="contact-form-container">
                 <h1>Une question, une suggestion ? </h1>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit()}>
                   <input
                     type="text"
                     placeholder="Email"

@@ -5,10 +5,10 @@ const tables = require("../tables");
 const browse = async (req, res, next) => {
   try {
     // Fetch all items from the database
-    const players = await tables.player.readAll();
+    const result = await tables.boutique.readAll();
 
     // Respond with the items in JSON format
-    res.json(players);
+    res.json(result);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -19,14 +19,14 @@ const browse = async (req, res, next) => {
 const findById = async (req, res, next) => {
   try {
     // Fetch a specific item from the database based on the provided ID
-    const player = await tables.player.read(req.params.id);
+    const boutique = await tables.boutique.read(req.params.id);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (player == null) {
+    if (boutique == null) {
       res.sendStatus(404);
     } else {
-      res.json(player);
+      res.json(boutique);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -38,56 +38,31 @@ const findById = async (req, res, next) => {
 // This operation is not yet implemented
 const edit = async (req, res, next) => {
   const id = parseInt(req.params.id, 10);
-  const {
-    firstname,
-    lastname,
-    pseudo,
-    password,
-    email,
-    experience,
-    credit,
-    membreId,
-    profilTheme,
-    lvl,
-    isAdmin,
-  } = req.body;
+  const { prix, avatarId } = req.body;
 
   try {
-    const playerToUpdate = {
-      id,
-      firstname,
-      lastname,
-      pseudo,
-      password,
-      email,
-      experience,
-      credit,
-      membreId,
-      profilTheme,
-      lvl,
-      isAdmin,
-    };
-    const result = await tables.player.update(playerToUpdate);
+    const result = await tables.boutique.update(prix, avatarId, id);
     if (result.affectedRows === 0) {
-      return res.status(404).send("Aucun player trouvé avec cet ID.");
+      return res.status(404).send("Aucun boutique trouvé avec cet ID.");
     }
+
     return res
       .status(200)
-      .send(`Le player ayant l'id: ${id} a été mis à jour.`);
+      .send(`L'boutique ayant l'id: ${id} a été mis à jour.`);
   } catch (err) {
-    // Only pass the error to the next middleware, don't send a response here
-    return next(err);
+    next(err);
+    return res.status(500).send("Une erreur s'est produite");
   }
 };
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the item data from the request body
-  const joueur = req.body;
+  const boutique = req.body;
 
   try {
     // Insert the item into the database
-    const insertId = await tables.player.create(joueur);
+    const insertId = await tables.boutique.create(boutique);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
@@ -102,23 +77,35 @@ const add = async (req, res, next) => {
 const destroy = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await tables.player.delete(id);
+    const result = await tables.boutique.delete(id);
 
     if (result.affectedRows === 0) {
       res.status(404).send("id pas trouvée");
     } else {
-      res.status(200).send(`Le player ayant l'id: ${id} a bien été supprimée`);
+      res
+        .status(200)
+        .send(`La boutique ayant l'id: ${id} a bien été supprimée`);
     }
   } catch (err) {
     next(err);
   }
 };
-// Ready to export the controller functions
 
+const filter = async (req, res, next) => {
+  try {
+    const result = await tables.boutique.getFilter(req.query);
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Ready to export the controller functions
 module.exports = {
   browse,
   findById,
   add,
   edit,
   destroy,
+  filter,
 };

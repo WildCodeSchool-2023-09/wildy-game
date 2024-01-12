@@ -25,19 +25,16 @@ const app = express();
 // 4. Be sure to only have URLs in the array with domains from which you want to allow requests.
 // For example: ["http://mysite.com", "http://another-domain.com"]
 
-/*
 const cors = require("cors");
 
 app.use(
   cors({
     origin: [
       process.env.FRONTEND_URL, // keep this one, after checking the value in `backend/.env`
-      "http://mysite.com",
-      "http://another-domain.com",
-    ]
+    ],
+    credentials: true,
   })
 );
-*/
 
 /* ************************************************************************* */
 
@@ -72,8 +69,9 @@ app.use(express.json());
 
 // Then, require the module and use it as middleware in your Express application:
 
-// const cookieParser = require("cookie-parser");
-// app.use(cookieParser());
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
 
 // Once `cookie-parser` is set up, you can read and set cookies in your routes.
 // For example, to set a cookie named "username" with the value "john":
@@ -112,7 +110,7 @@ const reactBuildPath = `${__dirname}/../../frontend/dist`;
 // Serve react resources
 
 app.use(express.static(reactBuildPath));
-
+app.use(express.static("public"));
 // Redirect unhandled requests to the react index file
 
 app.get("*", (req, res) => {
@@ -124,7 +122,6 @@ app.get("*", (req, res) => {
 // Middleware for Error Logging (Uncomment to enable)
 // Important: Error-handling middleware should be defined last, after other app.use() and routes calls.
 
-/*
 // Define a middleware function to log errors
 const logErrors = (err, req, res, next) => {
   // Log the error to the console for debugging purposes
@@ -137,7 +134,6 @@ const logErrors = (err, req, res, next) => {
 
 // Mount the logErrors middleware globally
 app.use(logErrors);
-*/
 
 /* ************************************************************************* */
 

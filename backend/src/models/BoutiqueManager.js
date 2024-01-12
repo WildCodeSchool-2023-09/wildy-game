@@ -1,31 +1,19 @@
 const AbstractManager = require("./AbstractManager");
 
-class PlayerManager extends AbstractManager {
+class BoutiqueManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "item" as configuration
-    super({ table: "player" });
+    super({ table: "boutique" });
   }
 
   // The C of CRUD - Create operation
 
-  async create(player) {
+  async create(boutique) {
     // Execute the SQL INSERT query to add a new item to the "item" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (id, firstname, lastname, pseudo, password, email, experience, credit, membreId, profilTheme, lvl) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        player.id,
-        player.firstname,
-        player.lastname,
-        player.pseudo,
-        player.password,
-        player.email,
-        player.experience,
-        player.credit,
-        player.membreId,
-        player.profilTheme,
-        player.lvl,
-      ]
+      `insert into ${this.table} (prix, avatarId) values (?, ?)`,
+      [boutique.prix, boutique.avatarId]
     );
 
     // Return the ID of the newly inserted item
@@ -56,30 +44,11 @@ class PlayerManager extends AbstractManager {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
 
-  async update(player) {
-    if (!player.id) {
-      throw new Error("Un ID est nécessaire pour mettre à jour l'avatar.");
-    }
+  async update(prix, avatarId, id) {
+    const query = `UPDATE ${this.table} SET prix = ?, avatarId = ? WHERE id = ?`;
 
-    const query = `UPDATE ${this.table} SET firstname = ?, lastname = ?, pseudo = ?, password= ?, email= ?, experience= ?, credit= ?, membreId= ?, profilTheme= ?, lvl= ? WHERE id = ?`;
+    const [result] = await this.database.query(query, [prix, avatarId, id]);
 
-    const [result] = await this.database.query(query, [
-      player.firstname,
-      player.lastname,
-      player.pseudo,
-      player.password,
-      player.email,
-      player.experience,
-      player.credit,
-      player.membreId,
-      player.profilTheme,
-      player.lvl,
-      player.id,
-    ]);
-
-    if (result.affectedRows === 0) {
-      throw new Error("Aucune ligne affectée, l'update a échoué");
-    }
     return result;
   }
 
@@ -94,6 +63,25 @@ class PlayerManager extends AbstractManager {
 
     return rows;
   }
+
+  async getFilter(request) {
+    const { rarity } = request;
+    const full = ["Common", "Rare", "Epic", "Legendary"];
+    const whereClause = rarity ? "WHERE a.rarity IN (?)" : "";
+    const values = rarity
+      ? rarity.split(",").map((value) => value.trim())
+      : full;
+
+    const sql = `
+        SELECT a.name, a.image, a.rarity, b.prix
+        FROM avatar a
+        JOIN ${this.table} b ON a.id = b.avatarId
+        ${whereClause}
+    `;
+
+    const [rows] = await this.database.query(sql, [values]);
+    return rows;
+  }
 }
 
-module.exports = PlayerManager;
+module.exports = BoutiqueManager;

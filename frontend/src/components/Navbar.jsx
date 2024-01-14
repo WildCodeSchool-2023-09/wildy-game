@@ -104,6 +104,17 @@ function Navbar() {
             Boutique
           </NavHashLink>
         </li>
+        <li>
+          {user.isAdmin && (
+            <NavHashLink
+              onClick={() => handleClick("boutique")}
+              className={`link ${isActive === "boutique" && "is-active"}`}
+              to="admin"
+            >
+              Admin
+            </NavHashLink>
+          )}
+        </li>
       </ul>
       <div className="navbar-right">
         {user ? (

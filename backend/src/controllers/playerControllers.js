@@ -96,7 +96,8 @@ const login = async (req, res, next) => {
   try {
     const player = req.user;
     const token = jwt.sign({ player }, process.env.APP_SECRET);
-    res.cookie("token", token).json({ user: req.user, token });
+    res.cookie("token", token);
+    res.json({ player });
   } catch (err) {
     next(err);
   }

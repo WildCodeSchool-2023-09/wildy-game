@@ -20,6 +20,7 @@ const playerControllers = require("./controllers/playerControllers");
 const inscription = require("./services/inscription");
 const { hashPassword, verifyPassword } = require("./services/hashPassword");
 const randMembreId = require("./services/randMembreId");
+/* const { verifyToken } = require("./services/jwt"); */
 
 router.get("/players", playerControllers.browse);
 router.get("/players/:id", playerControllers.findById);

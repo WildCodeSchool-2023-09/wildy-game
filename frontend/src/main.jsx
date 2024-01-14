@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Jeu from "./pages/Jeu";
 import Profil from "./pages/Profil";
+import Admin from "./pages/Admin";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "profil",
         element: <Profil />,
+      },
+      {
+        path: "admin",
+        element: <Admin />,
       },
     ],
   },

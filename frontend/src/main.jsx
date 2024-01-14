@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import Jeu from "./pages/Jeu";
 import Profil from "./pages/Profil";
 import Admin from "./pages/Admin";
+import Upload from "./pages/Upload";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "admin",
         element: <Admin />,
+      },
+      {
+        path: "upload",
+        element: <Upload />,
       },
     ],
   },

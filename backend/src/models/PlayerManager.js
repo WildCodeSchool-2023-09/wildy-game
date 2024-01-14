@@ -27,6 +27,17 @@ class PlayerManager extends AbstractManager {
     return result.insertId;
   }
 
+  async createBanner(banner) {
+    // Execute the SQL INSERT query to add a new item to the "item" table
+    const [result] = await this.database.query(
+      `update ${this.table} set banner=? where membreId = 1565`,
+      [banner.destination]
+    );
+
+    // Return the ID of the newly inserted item
+    return result.insertId;
+  }
+
   // The Rs of CRUD - Read operations
 
   async read(id) {

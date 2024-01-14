@@ -1,6 +1,9 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
+
+const upload = multer({ dest: "public/assets/banniere" });
 
 /* ************************************************************************* */
 // Define Your API Routes Here
@@ -34,6 +37,7 @@ router.post(
 router.put("/players/:id", playerControllers.edit);
 router.delete("/players/:id", playerControllers.destroy);
 router.post("/login", verifyPassword, playerControllers.login);
+router.post("/banner", upload.single("banner"), playerControllers.addBanner);
 
 /* ************************************************************************* */
 

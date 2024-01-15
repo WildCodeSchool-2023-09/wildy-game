@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ExpBar from "./ExpBar";
 
-import randomAvatar from "../../public/Boutique/ImageRandom2.png";
+import randomAvatar from "../assets/images/ImageRandom2.png";
 import FavGames from "./settingsComponents/FavGames";
 import Collection from "./settingsComponents/Collection";
 import Hv from "./settingsComponents/Hv";

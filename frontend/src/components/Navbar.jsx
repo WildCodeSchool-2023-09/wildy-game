@@ -104,7 +104,7 @@ function Navbar() {
             Boutique
           </NavHashLink>
         </li>
-        {user.isAdmin && (
+        {user.isAdmin ? (
           <li>
             <NavHashLink
               onClick={() => handleClick("boutique")}
@@ -114,11 +114,11 @@ function Navbar() {
               Admin
             </NavHashLink>
           </li>
-        )}
+        ) : null}
       </ul>
       <div className="navbar-right">
         {user ? (
-          <p>Avatar</p>
+          <a href="/">Avatar</a>
         ) : (
           <NavHashLink
             onClick={() => handleClick("login")}

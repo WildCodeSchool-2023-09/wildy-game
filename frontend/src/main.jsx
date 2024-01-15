@@ -64,7 +64,7 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <RouterProvider router={router} />
-      <ToastContainer />
+      <ToastContainer className="toast-position" />
     </UserProvider>
   </React.StrictMode>
 );

@@ -23,6 +23,7 @@ const playerControllers = require("./controllers/playerControllers");
 const inscription = require("./services/inscription");
 const { hashPassword, verifyPassword } = require("./services/hashPassword");
 const randMembreId = require("./services/randMembreId");
+const { verifyToken } = require("./services/jwt");
 
 router.get("/players", playerControllers.browse);
 router.get("/players/:id", playerControllers.findById);
@@ -37,6 +38,7 @@ router.put("/players/:id", playerControllers.edit);
 router.delete("/players/:id", playerControllers.destroy);
 router.post("/login", verifyPassword, playerControllers.login);
 router.post("/banner", upload.single("banner"), playerControllers.addBanner);
+router.get("/admin", verifyToken);
 
 /* ************************************************************************* */
 

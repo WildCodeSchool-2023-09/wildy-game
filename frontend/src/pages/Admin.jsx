@@ -17,7 +17,7 @@ function Admin() {
         failed("Vous n'êtes pas connecté en tant qu'admin");
         setAdmin(false);
       });
-  }, []); // Ajoutez un tableau de dépendances vide ici
+  }, []);
 
   if (admin === false) {
     return <Navigate to="/" replace />;

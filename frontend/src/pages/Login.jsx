@@ -27,10 +27,12 @@ function Login() {
       );
 
       if (res.status === 200) {
-        success(`Bienvenue ${player.pseudo}!`);
-        setUser(true);
+        success(`Bienvenue ${player.pseudo} !`);
+        setUser(res.data.player);
+        console.info(res.data.player);
       }
     } catch (error) {
+      console.error(error);
       failed("Mot de passe ou pseudo incorrect");
     }
   };

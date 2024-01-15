@@ -14,7 +14,6 @@ function Signup() {
     email: "",
     pseudo: "",
     password: "",
-    membreId: "4",
   });
   const handleChange = (event) => {
     const { name, value } = event.target;

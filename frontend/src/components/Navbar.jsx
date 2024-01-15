@@ -107,8 +107,8 @@ function Navbar() {
         {user.isAdmin ? (
           <li>
             <NavHashLink
-              onClick={() => handleClick("boutique")}
-              className={`link ${isActive === "boutique" && "is-active"}`}
+              onClick={() => handleClick("admin")}
+              className={`link ${isActive === "admin" && "is-active"}`}
               to="admin"
             >
               Admin

@@ -2,6 +2,9 @@
 .parallax-div {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  @media screen and (max-width: 835px) {
+    display: none;
+  }
   &::-webkit-scrollbar {
     display: none;
   }
@@ -212,14 +215,13 @@
         justify-content: space-around;
         align-items: center;
         gap: 5rem;
-        @media screen and (min-width: 361px) and (max-width: 835px) {
-          overflow-x: scroll;
-        }
+        flex-wrap: wrap;
+
         @media screen and (max-width: 360px) {
-          overflow-x: scroll;
-          width: 90vw;
-          height: 70vh;
           margin: 0 auto;
+          justify-content: center;
+          position: relative;
+          left: -2rem;
         }
         .game1 {
           background-image: url(../assets/images/pacmann.png);
@@ -230,7 +232,9 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
-
+          @media screen and (max-width: 360px) {
+            height: 10rem;
+          }
           .game-button {
             display: flex;
             align-items: flex-end;
@@ -263,44 +267,7 @@
             }
           }
         }
-        .game2 {
-          background-image: url(../assets/images/Streetfighter.png);
-          background-size: cover;
-          background-repeat: no-repeat;
-          flex-grow: 1;
-          height: 60vh;
-          display: flex;
-          align-items: flex-end;
-          justify-content: center;
 
-          .game-button {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            height: 50%;
-            width: 100%;
-            background: linear-gradient(
-              0deg,
-              rgba(61, 61, 61, 1) 26%,
-              rgba(61, 61, 61, 0) 100%
-            );
-            button {
-              margin: 1.5rem;
-              height: 3rem;
-              width: 15rem;
-              font-size: 1.7rem;
-              color: #3d3d3d;
-              background-color: #f9c80e;
-              padding: 5px 30px;
-              border: none;
-              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
-              border-radius: 1px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-          }
-        }
         .game3 {
           background-image: url(../assets/images/tetris.jpg);
           background-size: cover;
@@ -310,7 +277,9 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
-
+          @media screen and (max-width: 360px) {
+            height: 10rem;
+          }
           .game-button {
             display: flex;
             align-items: flex-end;
@@ -347,14 +316,21 @@
         font-family: $font3;
         text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
         @media screen and (max-width: 835px) {
-          font-size: 1rem;
+          margin-top: 35px;
+          font-size: 0.8rem;
         }
         span.shop {
           font-size: 2rem;
           color: $second-color;
+          @media screen and (max-width: 835px) {
+            font-size: 1rem;
+          }
         }
         span.coin {
           font-size: 2rem;
+          @media screen and (max-width: 835px) {
+            font-size: 1rem;
+          }
         }
       }
     }

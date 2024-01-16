@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Jeu from "./pages/Jeu";
 import Profil from "./pages/Profil";
+import Tetris from "./pages/Tetris";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "pacman",
         element: <Jeu />,
+      },
+      {
+        path: "tetris",
+        element: <Tetris />,
       },
       {
         path: "profil",

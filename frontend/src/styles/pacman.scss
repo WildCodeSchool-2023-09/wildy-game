@@ -1,4 +1,4 @@
-.game-container {
+.pacman-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,14 +12,15 @@
     z-index: 2;
     transform: scale(1.2);
     @media screen and (min-width: 1600px) {
-      transform: scale(2);
+      transform: scale(1.2);
     }
     @media screen and (min-width: 1920px) {
+      top: 13px;
       margin-bottom: 160px;
-      transform: scale(3.065);
+      transform: scale(2.1);
     }
   }
-  button {
+  .pacman-play {
     position: absolute;
     z-index: 100;
     top: 45vh;
@@ -54,7 +55,7 @@
     }
     @media screen and (min-width: 1920px) {
       margin-bottom: 250px;
-      transform: scale(1.5);
+      transform: scale(1.2);
     }
   }
 }

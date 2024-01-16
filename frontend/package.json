@@ -16,6 +16,7 @@
     "react-pacman": "^0.0.4",
     "react-router-dom": "^6.14.2",
     "react-router-hash-link": "^2.4.3",
+    "react-tetris": "^0.4.0",
     "react-toastify": "^9.1.3",
     "sass": "^1.69.5"
   },

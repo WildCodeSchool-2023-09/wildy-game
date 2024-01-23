@@ -51,4 +51,6 @@ router.post("/boutique", boutiqueControllers.add);
 router.put("/boutique/:id", boutiqueControllers.edit);
 router.delete("/boutique/:id", boutiqueControllers.destroy);
 
+/* ************************************************************************* */
+
 module.exports = router;

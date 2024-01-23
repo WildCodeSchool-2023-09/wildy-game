@@ -2,17 +2,82 @@
 
 .settings-wrapper {
   position: relative;
-  top: 5rem;
+
   .profil-header {
     display: flex;
     justify-content: flex-start;
-    background-image: url("../assets/images/randomBanner.png");
-
+    align-items: center;
+    position: relative;
     height: 30vh;
     padding: 10px 25px;
+    .banner {
+      background-image: url("../assets/images/randomBanner.png");
+      background-repeat: none;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+    .edit-mode-banner {
+      filter: invert(20%);
+    }
     .avatar {
+      background-image: url("../assets/images/ImageRandom2.png");
+      background-repeat: none;
+      background-size: cover;
       width: 200px;
-      border-radius: 30px;
+      height: 200px;
+      border-radius: 50%;
+      border: #030303 1px solid;
+      z-index: 1;
+      box-shadow:
+        -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
+        5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+      @media screen and (min-width: 1500px) {
+        transform: scale(1.5);
+        margin-left: 30px;
+      }
+    }
+    .edit-mode-avatar {
+      filter: invert(20%);
+      z-index: 1;
+    }
+    .edit-avatar {
+      position: absolute;
+      top: 10px;
+      left: 190px;
+      z-index: 4;
+      &:hover {
+        transform: scale(1.2);
+        transition: 1s ease;
+      }
+
+      @media screen and (min-width: 1500px) {
+        top: 50px;
+        left: 250px;
+      }
+    }
+    .edit-avatar:hover + .edit-mode-avatar {
+      filter: saturate(50%);
+    }
+    .edit-banner {
+      position: absolute;
+      top: 10px;
+      left: 95%;
+      z-index: 4;
+      &:hover {
+        transform: scale(1.1);
+        transition: 1s ease;
+      }
+      &:hover + .edit-mode-banner {
+        filter: saturate(50%);
+      }
+      @media screen and (min-width: 1500px) {
+        top: 50px;
+        left: 250px;
+      }
     }
   }
   .settings-container {
@@ -234,5 +299,81 @@
       #00d300 10px,
       #026402 10px
     );
+  }
+}
+/* EDIT AVATAR */
+.modal-container {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  width: 100svw;
+  height: 100vh;
+  background-color: rgba(61, 61, 61, 0.7);
+  backdrop-filter: blur(3.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal {
+    width: 50%;
+    height: 70%;
+    background-color: $neutral-color-light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .chose-color {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      input {
+        height: 50px;
+        width: 80%;
+        margin: 30px;
+      }
+    }
+    .confirm {
+      height: 3rem;
+      width: 20rem;
+      font-size: 1.1rem;
+      color: #3d3d3d;
+      background-color: #f9c80e;
+      padding: 5px 30px;
+      border: none;
+      box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+      border-radius: 1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .close {
+      position: relative;
+      top: 15px;
+      left: 45%;
+    }
+    .avatar-form {
+      height: 100%;
+    }
+    .banner-form {
+      width: 100%;
+      height: 100%;
+    }
+    .redeem {
+      width: 100%;
+      height: 100%;
+      label {
+        font-size: 2rem;
+        font-family: $generic-font;
+        font-weight: 700;
+      }
+      input {
+        width: 80%;
+        height: 3rem;
+      }
+    }
   }
 }

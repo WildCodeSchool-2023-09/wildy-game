@@ -1,8 +1,10 @@
+import PropTypes from "prop-types";
 import axios from "axios";
 import { useState } from "react";
 import { success, failed } from "../services/toast";
+import close from "../assets/images/close.svg";
 
-function Upload() {
+function Upload({ handleCloseEdit }) {
   const [file, setFile] = useState();
 
   const handleChange = (e) => {
@@ -27,10 +29,13 @@ function Upload() {
     }
   };
   return (
-    <div className="mt-96 ">
+    <div className="modal">
+      <button type="button" className="close" onClick={() => handleCloseEdit()}>
+        <img src={close} alt="close" width={30} />
+      </button>
       <form
         method="post"
-        className="flex justify-center flex-col items-center"
+        className="banner-form flex justify-center gap-20 flex-col items-center"
         encType="multipart/form-data"
         onSubmit={handleSubmit}
       >
@@ -41,10 +46,20 @@ function Upload() {
           accept="image/png, image/jpeg"
           onChange={handleChange}
         />
-        <button type="submit">Valider</button>
+        <button
+          type="submit"
+          className="confirm"
+          onClick={() => handleCloseEdit()}
+        >
+          Valider
+        </button>
       </form>
     </div>
   );
 }
+
+Upload.propTypes = {
+  handleCloseEdit: PropTypes.func.isRequired,
+};
 
 export default Upload;

@@ -45,7 +45,7 @@ export default function ProfilTheme({
         <button
           type="button"
           className="theme3-picker"
-          onClick={() => handleTheme("#D496A7", "#F1DEDE", "#ffffff")}
+          onClick={() => handleTheme("#D496A7", "#F1DEDE", "#000000")}
         />
         <button
           type="button"

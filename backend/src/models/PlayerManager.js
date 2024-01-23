@@ -124,6 +124,23 @@ class PlayerManager extends AbstractManager {
 
     return rows;
   }
+
+  async createCode(code, credit) {
+    const [result] = await this.database.query(
+      `insert into bon (code, gain_credit) values (?, ?)`,
+      [code, credit]
+    );
+
+    return result.insertId;
+  }
+
+  async useCode(creditId, id) {
+    const [result] = await this.database.query(
+      `insert into redeemed (playerId, bonId) values (?, ?)`,
+      [id, creditId]
+    );
+    return result.insertId;
+  }
 }
 
 module.exports = PlayerManager;

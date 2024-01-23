@@ -133,6 +133,30 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
+
+const adminAddCode = async (req, res) => {
+  try {
+    const insertId = await tables.player.createCode(
+      req.body.code,
+      req.body.credit
+    );
+    res.status(201).json({ insertId });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+const addCredit = async (req, res) => {
+  try {
+    const credit = await tables.player.useCode(
+      req.body.credit,
+      req.body.playerId
+    );
+    res.status(201).json({ credit });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
 // Ready to export the controller functions
 
 module.exports = {
@@ -143,4 +167,6 @@ module.exports = {
   destroy,
   login,
   addBanner,
+  adminAddCode,
+  addCredit,
 };

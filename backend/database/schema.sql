@@ -269,6 +269,24 @@ LOCK TABLES `scoreboard` WRITE;
 /*!40000 ALTER TABLE `scoreboard` DISABLE KEYS */;
 /*!40000 ALTER TABLE `scoreboard` ENABLE KEYS */;
 UNLOCK TABLES;
+
+CREATE TABLE `bon` (
+  id int NOT NULL AUTO_INCREMENT,
+  code VARCHAR(255) NOT NULL UNIQUE,
+  gain_credit int NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE redeemed (
+  id int NOT NULL AUTO_INCREMENT,
+  playerId int NOT NULL,
+  bonId int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_redeemed_player` (`playerId`),
+  KEY `fk_redeemed_bon` (`bonId`),
+  CONSTRAINT `fk_redeemed_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`),
+  CONSTRAINT `fk_redeemed_bon` FOREIGN KEY (`bonId`) REFERENCES `bon` (`id`)
+);
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

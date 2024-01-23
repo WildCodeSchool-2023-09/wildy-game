@@ -39,6 +39,8 @@ router.delete("/players/:id", playerControllers.destroy);
 router.post("/login", verifyPassword, playerControllers.login);
 router.post("/banner", upload.single("banner"), playerControllers.addBanner);
 router.get("/admin", verifyToken);
+router.post("/admin/addcode", playerControllers.adminAddCode);
+router.post("/player/addcredit", playerControllers.addCredit);
 
 /* ************************************************************************* */
 

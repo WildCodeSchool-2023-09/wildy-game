@@ -97,9 +97,9 @@ function Navbar() {
         </li>
         <li>
           <NavHashLink
-            onClick={() => handleClick("boutique")}
-            className={`link ${isActive === "boutique" && "is-active"}`}
-            to="boutique"
+            onClick={() => handleClick("upload")}
+            className={`link ${isActive === "upload" && "is-active"}`}
+            to="upload"
           >
             Boutique
           </NavHashLink>

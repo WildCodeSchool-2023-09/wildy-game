@@ -94,9 +94,18 @@ const addBanner = async (req, res, next) => {
       }
     );
   });
+  const { token } = req.cookies;
+  if (!token) {
+    return res.status(401).json({ error: "Token non fournie" });
+  }
   try {
     // Insert the item into the database
-    const insertId = await tables.player.createBanner(banner);
+    const decoded = jwt.verify(token, process.env.APP_SECRET);
+    const insertId = await tables.player.createBanner(
+      banner,
+      decoded.player.id,
+      extension
+    );
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
@@ -104,6 +113,8 @@ const addBanner = async (req, res, next) => {
     // Pass any errors to the error-handling middleware
     next(err);
   }
+
+  return null;
 };
 
 // The D of BREAD - Destroy (Delete) operation

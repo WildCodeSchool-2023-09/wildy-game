@@ -27,11 +27,12 @@ class PlayerManager extends AbstractManager {
     return result.insertId;
   }
 
-  async createBanner(banner) {
+  async createBanner(banner, id, extension) {
     // Execute the SQL INSERT query to add a new item to the "item" table
+
     const [result] = await this.database.query(
-      `update ${this.table} set banner=? where membreId = 1565`,
-      [banner.destination]
+      `update ${this.table} set banner=? where id= ?`,
+      [`${banner.destination}/${banner.filename}${extension}`, id]
     );
 
     // Return the ID of the newly inserted item

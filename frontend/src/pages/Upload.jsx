@@ -17,7 +17,8 @@ function Upload() {
       formData.append("banner", file);
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/banner`,
-        formData
+        formData,
+        { withCredentials: true }
       );
       if (res.status === 200) {
         success(`La bannière a été ajoutée`);

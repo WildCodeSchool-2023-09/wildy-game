@@ -134,10 +134,28 @@ class PlayerManager extends AbstractManager {
     return result.insertId;
   }
 
-  async useCode(creditId, id) {
+  async useCode(code, id) {
+    const [codeid] = await this.database.query(
+      `select id, gain_credit from bon where code=?`,
+      [code]
+    );
+    if (codeid.length === 0) {
+      return 0;
+    }
+    const [used] = await this.database.query(
+      `select * from redeemed where playerId=? and bonId=?`,
+      [id, codeid[0].id]
+    );
+    if (used.length > 0) {
+      return "déjà utilisé";
+    }
     const [result] = await this.database.query(
       `insert into redeemed (playerId, bonId) values (?, ?)`,
-      [id, creditId]
+      [id, codeid[0].id]
+    );
+    await this.database.query(
+      `update player set credit = credit + ? where id = ?`,
+      [codeid[0].gain_credit, id]
     );
     return result.insertId;
   }

@@ -148,13 +148,16 @@ const adminAddCode = async (req, res) => {
 
 const addCredit = async (req, res) => {
   try {
-    const credit = await tables.player.useCode(
-      req.body.credit,
-      req.body.playerId
-    );
-    res.status(201).json({ credit });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+    const test = await tables.player.useCode(req.body.code, req.body.id);
+    if (test === 0 || test === "déjà utilisé") {
+      if (test === 0) {
+        return res.status(400).json({ error: "Code invalide / inexistant" });
+      }
+      return res.status(400).json({ error: "Code déjà utilisé" });
+    }
+    return res.status(201).json({ insertId: test });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
   }
 };
 // Ready to export the controller functions

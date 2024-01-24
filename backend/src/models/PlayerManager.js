@@ -162,7 +162,7 @@ class PlayerManager extends AbstractManager {
     if (used.length > 0) {
       return "déjà utilisé";
     }
-    const [result] = await this.database.query(
+    await this.database.query(
       `insert into redeemed (playerId, bonId) values (?, ?)`,
       [id, codeid[0].id]
     );
@@ -170,7 +170,7 @@ class PlayerManager extends AbstractManager {
       `update player set credit = credit + ? where id = ?`,
       [codeid[0].gain_credit, id]
     );
-    return result.insertId;
+    return codeid[0].gain_credit;
   }
 }
 

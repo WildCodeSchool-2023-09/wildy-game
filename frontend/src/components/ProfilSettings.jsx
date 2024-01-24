@@ -56,7 +56,7 @@ export default function ProfilSettings() {
       );
 
       if (res.status === 201) {
-        success(`Code utilisé avec succes !`);
+        success(`Code utilisé avec succes +${res.data.gain} !`);
       }
     } catch (error) {
       failed(error.response.data.error);
@@ -215,13 +215,10 @@ export default function ProfilSettings() {
             >
               <img src={close} alt="close" width={30} />
             </button>
-            <form
-              action="submit"
-              className="redeem flex flex-col gap-8 justify-center items-center"
-            >
+            <form className="redeem flex flex-col gap-8 justify-center items-center">
               <label htmlFor="reedem">Ajouter un code</label>
               <input
-                type="search"
+                type="text"
                 value={inputValue}
                 onChange={handleInputChangle}
                 className="text-center text-xl font-montserrat font-bold"

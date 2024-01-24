@@ -138,13 +138,20 @@ const login = async (req, res, next) => {
   try {
     const player = req.user;
     const token = jwt.sign({ player }, process.env.APP_SECRET);
-    res.cookie("token", token, { httpOnly: true });
+    res.cookie("token", token, { httpOnly: true, path: "/" });
     res.json({ player });
   } catch (err) {
     next(err);
   }
 };
-
+const logout = async (req, res, next) => {
+  try {
+    res.clearCookie("token");
+    res.sendStatus(200);
+  } catch (err) {
+    next(err);
+  }
+};
 const adminAddCode = async (req, res) => {
   try {
     const insertId = await tables.player.createCode(
@@ -183,4 +190,5 @@ module.exports = {
   addBanner,
   adminAddCode,
   addCredit,
+  logout,
 };

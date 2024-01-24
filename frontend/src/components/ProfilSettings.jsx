@@ -108,8 +108,6 @@ export default function ProfilSettings() {
             <h2>player.pseudo</h2>
             <h2>player.email</h2>
             <ul>
-              <li>Modifier mes informations</li>
-              <li>Historique d'achats</li>
               <li>
                 <button
                   type="button"

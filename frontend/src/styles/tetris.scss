@@ -27,6 +27,9 @@
       transform: scale(2.2);
       top: -200px;
     }
+    @media screen and (max-width: 1160px) {
+      display: none;
+    }
   }
 
   .game-wrapper {
@@ -38,6 +41,12 @@
     top: 20rem;
     height: 25rem;
     z-index: 2;
+    @media screen and (max-width: 1160px) {
+      width: 95svw;
+      height: 85vh;
+      top: 12rem;
+      border-radius: 20px;
+    }
 
     @media screen and (min-width: 1920px) {
       width: 40rem;
@@ -57,6 +66,9 @@
         top: 2rem;
         z-index: 3;
       }
+      @media screen and (max-width: 1160px) {
+        left: 2rem;
+      }
     }
 
     .tetris-board {
@@ -71,14 +83,20 @@
       transform: scale(0.7);
       left: -2.5rem;
 
-      @media screen and (min-width: 1600px) and (max-width: 1919) {
-      }
       @media screen and (min-width: 1920px) {
         width: 200%;
         height: 80%;
         transform: scale(0.8);
         left: -40px;
         top: 20px;
+      }
+      @media screen and (max-width: 1160px) {
+        height: 100%;
+        transform: scale(0.5);
+        flex-direction: column;
+        flex-wrap: wrap;
+        left: -37%;
+        width: 95svw;
       }
     }
     .game-over {
@@ -96,6 +114,10 @@
         top: 10rem;
         left: 11rem;
         transform: scale(1.2);
+      }
+      @media screen and (max-width: 1160px) {
+        left: 13%;
+        top: 40%;
       }
       .new-game {
         position: relative;

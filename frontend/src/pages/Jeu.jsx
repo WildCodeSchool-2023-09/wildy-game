@@ -1,6 +1,6 @@
 import Pacman from "react-pacman";
 import { useState } from "react";
-import "../styles/game.scss";
+import "../styles/pacman.scss";
 import borne from "../assets/images/borne_game.png";
 
 function Jeu() {
@@ -22,11 +22,15 @@ function Jeu() {
   /* SCORES */
 
   return (
-    <div className="game-container">
+    <div className="pacman-container">
       <img src={borne} alt="" className="borne-arcade" />
       <div className="game">{start && <Pacman />}</div>
       {!start && (
-        <button type="button" onClick={() => setStart(!start)}>
+        <button
+          type="button"
+          className="pacman-play"
+          onClick={() => setStart(!start)}
+        >
           PLAY
         </button>
       )}

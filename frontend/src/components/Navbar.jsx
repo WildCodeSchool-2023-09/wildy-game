@@ -1,11 +1,15 @@
 import { Player } from "@lottiefiles/react-lottie-player";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { useUser } from "../contexts/UserContext";
+
 import manette from "../assets/anim_manette.json";
 import "../styles/navbar.scss";
 
 function Navbar() {
+  const location = useLocation();
+
   const { user } = useUser();
   const [isActive, setIsActive] = useState("");
   const handleClick = (url) => {
@@ -48,7 +52,9 @@ function Navbar() {
 
   return (
     <nav
-      className={`navbar ${navScrollClass}`}
+      className={`navbar ${navScrollClass} ${
+        location.pathname === "/profil" && "scrolled relative"
+      }`}
       style={{ height: navSize, transition: "all 1s" }}
     >
       <NavHashLink
@@ -128,15 +134,24 @@ function Navbar() {
             {user ? "EST CONNECTE" : "LOGIN"}
           </NavHashLink>
         )}
-        {theme ? (
-          <button className="theme" type="button" onClick={() => handleTheme()}>
-            🌙
-          </button>
-        ) : (
-          <button className="theme" type="button" onClick={() => handleTheme()}>
-            ☀️
-          </button>
-        )}
+        {location.pathname === "/" &&
+          (theme ? (
+            <button
+              className="theme"
+              type="button"
+              onClick={() => handleTheme()}
+            >
+              🌙
+            </button>
+          ) : (
+            <button
+              className="theme"
+              type="button"
+              onClick={() => handleTheme()}
+            >
+              ☀️
+            </button>
+          ))}
       </div>
     </nav>
   );

@@ -23,6 +23,9 @@
       margin-bottom: 160px;
       transform: scale(2.1);
     }
+    @media screen and (max-width: 1160px) {
+      display: none;
+    }
   }
   .pacman-play {
     position: absolute;
@@ -62,9 +65,17 @@
       position: relative;
       top: -8vh;
     }
+    @media screen and (max-width: 1160px) {
+      width: 95svw;
+      height: 85vh;
+      border-radius: 20px;
+    }
     .pacman {
       @media screen and (min-width: 1920px) {
         transform: scale(1.3);
+      }
+      @media screen and (max-width: 1160px) {
+        transform: scale(0.8);
       }
     }
   }

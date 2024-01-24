@@ -41,7 +41,8 @@ router.post("/banner", upload.single("banner"), playerControllers.addBanner);
 router.get("/admin", verifyToken);
 router.post("/admin/addcode", playerControllers.adminAddCode);
 router.post("/players/addcredit", playerControllers.addCredit);
-/* router.post("/players/") */
+router.get("/players/logout", playerControllers.logout);
+
 /* ************************************************************************* */
 
 const boutiqueControllers = require("./controllers/boutiqueControllers");

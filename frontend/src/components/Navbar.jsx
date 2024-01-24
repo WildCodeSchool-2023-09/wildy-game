@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { useUser } from "../contexts/UserContext";
+import Logout from "./Logout";
 
 import manette from "../assets/anim_manette.json";
 import "../styles/navbar.scss";
@@ -126,14 +127,14 @@ function Navbar() {
       </ul>
       <div className="navbar-right">
         {user ? (
-          <Link to="/profil-settings">Avatar</Link>
+          <Logout user={user} />
         ) : (
           <NavHashLink
             onClick={() => handleClick("login")}
             className={`link ${isActive === "login" && "is-active"}`}
             to="login"
           >
-            {user ? "EST CONNECTE" : "LOGIN"}
+            LOGIN
           </NavHashLink>
         )}
         {location.pathname === "/" &&

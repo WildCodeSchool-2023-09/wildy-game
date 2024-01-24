@@ -20,6 +20,10 @@ $font3:
   sans serif;
 $generic-font: "Montserrat", sans-serif;
 
+.font-montserrat {
+  font-family: $generic-font;
+}
+
 * {
   margin: 0;
   padding: 0;

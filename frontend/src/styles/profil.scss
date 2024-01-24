@@ -46,7 +46,7 @@
     }
     .edit-avatar {
       position: absolute;
-      top: 10px;
+      top: 30px;
       left: 190px;
       z-index: 4;
       &:hover {
@@ -76,7 +76,7 @@
       }
       @media screen and (min-width: 1500px) {
         top: 50px;
-        left: 250px;
+        left: 95%;
       }
     }
   }

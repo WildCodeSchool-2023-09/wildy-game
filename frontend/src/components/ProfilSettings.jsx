@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useUser } from "../contexts/UserContext";
 import ExpBar from "./ExpBar";
+import { success, failed } from "../services/toast";
 
 import FavGames from "./settingsComponents/FavGames";
 import Collection from "./settingsComponents/Collection";
@@ -13,6 +15,11 @@ import Upload from "../pages/Upload";
 import close from "../assets/images/close.svg";
 
 export default function ProfilSettings() {
+  const { user } = useUser();
+  const [redeemBody, setRedeemBody] = useState({
+    code: "",
+    id: 0,
+  });
   const [editmode, setEditmode] = useState(false);
   /* PROFIL THEME */
   const [primaryColor, setPrimaryColor] = useState("#ffffff");
@@ -22,12 +29,37 @@ export default function ProfilSettings() {
   const [modalAvatar, setModalAvatar] = useState(false);
   const [modalBanner, setModalBanner] = useState(false);
   const [redeem, setRedeem] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChangle = (e) => {
+    setInputValue(e.target.value.toUpperCase());
+  };
+
   const handleCloseEdit = () => {
     if (modalAvatar) {
       setModalAvatar(false);
     }
     if (modalBanner) {
       setModalBanner(false);
+    }
+  };
+
+  const handleRedeem = async (event) => {
+    event.preventDefault();
+    const updatedRedeemBody = { ...redeemBody, code: inputValue, id: user.id };
+    setRedeemBody(updatedRedeemBody);
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/player/addcredit`,
+        updatedRedeemBody,
+        { withCredentials: true }
+      );
+
+      if (res.status === 201) {
+        success(`Code utilisé avec succes !`);
+      }
+    } catch (error) {
+      failed(error.response.data.error);
     }
   };
 
@@ -79,11 +111,14 @@ export default function ProfilSettings() {
               <li>Modifier mes informations</li>
               <li>Historique d'achats</li>
               <li>
-                <button type="button" onClick={() => setRedeem(true)}>
+                <button
+                  type="button"
+                  onClick={() => setRedeem(true)}
+                  className="font-bold"
+                >
                   Ajouter un code
                 </button>
               </li>
-              <li>À propos</li>
             </ul>
           </aside>
         )}
@@ -185,11 +220,18 @@ export default function ProfilSettings() {
               className="redeem flex flex-col gap-8 justify-center items-center"
             >
               <label htmlFor="reedem">Ajouter un code</label>
-              <input type="text" />
+              <input
+                type="search"
+                value={inputValue}
+                onChange={handleInputChangle}
+                className="text-center text-xl font-montserrat font-bold"
+              />
               <button
                 className="confirm"
-                type="submit"
-                onClick={() => setRedeem(false)}
+                type="button"
+                onClick={(e) => {
+                  handleRedeem(e);
+                }}
               >
                 Confirmer
               </button>

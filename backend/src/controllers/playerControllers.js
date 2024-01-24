@@ -147,10 +147,7 @@ const login = async (req, res, next) => {
 
 const adminAddCode = async (req, res) => {
   try {
-    const insertId = await tables.player.createCode(
-      req.body.code,
-      req.body.credit
-    );
+    const insertId = await tables.player.createCode(req.body.credit);
     res.status(201).json({ insertId });
   } catch (err) {
     res.status(400).json({ error: err.message });

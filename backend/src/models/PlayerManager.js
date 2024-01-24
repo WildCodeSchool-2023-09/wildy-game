@@ -126,7 +126,19 @@ class PlayerManager extends AbstractManager {
     return rows;
   }
 
-  async createCode(code, credit) {
+  async createCode(credit) {
+    function generateRandomString(length) {
+      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let result = "";
+      for (let i = 0; i < length; i += 1) {
+        result += characters.charAt(
+          Math.floor(Math.random() * characters.length)
+        );
+      }
+      return result;
+    }
+
+    const code = generateRandomString(8);
     const [result] = await this.database.query(
       `insert into bon (code, gain_credit) values (?, ?)`,
       [code, credit]

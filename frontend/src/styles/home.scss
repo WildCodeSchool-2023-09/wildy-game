@@ -43,6 +43,11 @@
         left: 39%;
         z-index: 3;
         width: 100px;
+        pointer-events: all;
+        @media screen and (min-width: 1920px) {
+          transform: scale(1.4);
+          top: 72%;
+        }
       }
       .robot2 {
         position: absolute;
@@ -51,6 +56,11 @@
         z-index: 3;
         width: 100px;
         display: none;
+        pointer-events: all;
+        @media screen and (min-width: 1920px) {
+          transform: scale(1.4);
+          top: 72%;
+        }
       }
       &:hover .robot {
         display: none;

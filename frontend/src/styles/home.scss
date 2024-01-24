@@ -47,7 +47,7 @@
         left: 39%;
         z-index: 3;
         width: 100px;
-            pointer-events: all;
+        pointer-events: all;
         @media screen and (max-width: 1100px) {
           top: 60vh;
         }
@@ -63,7 +63,7 @@
         z-index: 3;
         width: 100px;
         display: none;
-       pointer-events: all;
+        pointer-events: all;
         @media screen and (max-width: 1100px) {
           top: 60vh;
         }
@@ -189,9 +189,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 200px;
   .parallax-div {
     width: 100svw;
+    top: 200vh;
   }
   .games {
     height: 100vh;
@@ -222,9 +222,10 @@
         justify-content: space-around;
         align-items: center;
         gap: 5rem;
-        flex-wrap: wrap;
-        @media screen and (max-width: 800px) {
+
+        @media screen and (max-width: 1000px) {
           flex-direction: column;
+          height: 100vh;
         }
         @media screen and (max-width: 391px) {
           margin: 0 auto;
@@ -240,6 +241,9 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
+          @media screen and (max-width: 1000px) {
+            width: 90%;
+          }
           @media screen and (max-width: 800px) {
             height: 10rem;
           }
@@ -288,6 +292,9 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
+          @media screen and (max-width: 1000px) {
+            width: 90%;
+          }
           @media screen and (max-width: 600px) {
             height: 10rem;
           }
@@ -324,6 +331,7 @@
         }
       }
       .h-games {
+        padding-top: 50px;
         font-size: 1.2rem;
         text-align: center;
         letter-spacing: 2.5px;
@@ -358,6 +366,7 @@
   align-items: center;
   .parallax-div {
     width: 100svw;
+    top: 300vh;
   }
   .contact {
     height: 100vh;
@@ -369,9 +378,6 @@
     }
     @media screen and (max-width: 600px) {
       margin-top: 80px;
-    }
-    @media screen and (min-width: 835px) and (max-width: 1160px) {
-      margin-top: 200px;
     }
 
     .contact-container {

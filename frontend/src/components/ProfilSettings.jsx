@@ -50,7 +50,7 @@ export default function ProfilSettings() {
     setRedeemBody(updatedRedeemBody);
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/player/addcredit`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/players/addcredit`,
         updatedRedeemBody,
         { withCredentials: true }
       );

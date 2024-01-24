@@ -76,6 +76,38 @@ const destroy = async (req, res, next) => {
   return res.status(200).send("Destroy operation completed");
 };
 
+const browseByPlayerId = async (req, res, next) => {
+  try {
+    const collection = await tables.collection.getCollectionByPlayerId(
+      req.params.id
+    );
+
+    if (!collection) {
+      res.sendStatus(404);
+    } else {
+      res.json(collection);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const browseByAvatarId = async (req, res, next) => {
+  try {
+    const collection = await tables.collection.getCollectionByAvatarId(
+      req.params.id
+    );
+
+    if (!collection) {
+      res.sendStatus(404);
+    } else {
+      res.json(collection);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
@@ -83,4 +115,6 @@ module.exports = {
   add,
   edit,
   destroy,
+  browseByPlayerId,
+  browseByAvatarId,
 };

@@ -47,8 +47,13 @@
         left: 39%;
         z-index: 3;
         width: 100px;
+            pointer-events: all;
         @media screen and (max-width: 1100px) {
           top: 60vh;
+        }
+        @media screen and (min-width: 1920px) {
+          transform: scale(1.4);
+          top: 72%;
         }
       }
       .robot2 {
@@ -58,8 +63,14 @@
         z-index: 3;
         width: 100px;
         display: none;
+       pointer-events: all;
         @media screen and (max-width: 1100px) {
           top: 60vh;
+        }
+        pointer-events: all;
+        @media screen and (min-width: 1920px) {
+          transform: scale(1.4);
+          top: 72%;
         }
       }
       &:hover .robot {

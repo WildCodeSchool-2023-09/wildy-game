@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         element: <Tetris />,
       },
       {
-        path: "profil",
+        path: "profil-settings",
         element: <Profil />,
       },
       {

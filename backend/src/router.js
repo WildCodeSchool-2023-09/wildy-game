@@ -56,4 +56,14 @@ router.delete("/boutique/:id", boutiqueControllers.destroy);
 
 /* ************************************************************************* */
 
+const collectionControllers = require("./controllers/collectionControllers");
+
+router.get("/collection", collectionControllers.browse);
+router.get("/collection/:id", collectionControllers.findById);
+router.post("/collection", collectionControllers.add);
+router.put("/collection/:id", collectionControllers.edit);
+router.delete("/collection/:id", collectionControllers.destroy);
+
+/* ************************************************************************* */
+
 module.exports = router;

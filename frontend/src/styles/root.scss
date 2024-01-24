@@ -20,6 +20,10 @@ $font3:
   sans serif;
 $generic-font: "Montserrat", sans-serif;
 
+.font-montserrat {
+  font-family: $generic-font;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,6 +31,7 @@ $generic-font: "Montserrat", sans-serif;
 }
 
 .link {
+  cursor: pointer;
   &:hover {
     opacity: 70%;
   }
@@ -74,7 +79,7 @@ body {
   height: 100%;
 }
 .dark {
-  background-image: url(../assets/images/27479681.png);
+  background-image: url(../assets/images/fond-dark.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

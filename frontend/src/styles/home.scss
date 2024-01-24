@@ -2,7 +2,7 @@
 .parallax-div {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  @media screen and (max-width: 835px) {
+  @media screen and (max-width: 1100px) {
     display: none;
   }
   &::-webkit-scrollbar {
@@ -20,12 +20,12 @@
 
   .parallax-div {
     width: 100svw;
-    position: absolute;
   }
   .container-home {
     display: flex;
     position: relative;
-    bottom: -5vh;
+    bottom: -9vh;
+    height: 100vh;
 
     .borne-arcade {
       margin: 0 auto;
@@ -35,22 +35,43 @@
       @media screen and (max-width: 391px) {
         height: 70vh;
       }
+      @media screen and (max-width: 1100px) {
+        height: 90vh;
+      }
     }
     .robot-container {
+      z-index: 3;
       .robot {
         position: absolute;
-        top: 67%;
+        top: 60%;
         left: 39%;
         z-index: 3;
         width: 100px;
+        pointer-events: all;
+        @media screen and (max-width: 1100px) {
+          top: 60vh;
+        }
+        @media screen and (min-width: 1920px) {
+          transform: scale(1.4);
+          top: 72%;
+        }
       }
       .robot2 {
         position: absolute;
-        top: 66.7%;
+        top: 60.7%;
         left: 39%;
         z-index: 3;
         width: 100px;
         display: none;
+        pointer-events: all;
+        @media screen and (max-width: 1100px) {
+          top: 60vh;
+        }
+        pointer-events: all;
+        @media screen and (min-width: 1920px) {
+          transform: scale(1.4);
+          top: 72%;
+        }
       }
       &:hover .robot {
         display: none;
@@ -61,7 +82,7 @@
     }
     .start-video {
       position: absolute;
-      top: 35.5%;
+      top: 32.5%;
       left: 20.7%;
       width: 59%;
       @media screen and (max-width: 361px) {
@@ -77,18 +98,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .parallax-div {
     width: 100svw;
-    position: absolute;
-    top: 100vh;
   }
   .infos {
-    position: absolute;
-    top: 100vh;
-    height: 100vh;
     width: 75vw;
     padding-top: 15vh;
-
+    z-index: 1;
+    display: flex;
     .infos-container {
       color: white;
       height: 70vh;
@@ -97,20 +115,21 @@
       width: 100%;
       z-index: 5;
       display: flex;
-      @media screen and (max-width: 835px) {
+      @media screen and (min-width: 601) and (max-width: 1000px) {
         flex-direction: column;
-      }
-      @media screen and (max-width: 391px) {
-        width: 90vw;
         height: auto;
+      }
+      @media screen and (max-width: 1160px) {
+        width: 90vw;
         margin-left: -20px;
+        height: auto;
       }
 
       img {
         height: 90%;
         margin: auto 2.5%;
-        @media screen and (min-width: 731px) and (max-width: 835px) {
-          height: 40%;
+        @media screen and (min-width: 731px) and (max-width: 1160px) {
+          max-height: 400px;
         }
         @media screen and (max-width: 730px) {
           display: none;
@@ -123,9 +142,6 @@
         margin: 2vh 2vw 2vh 0;
         justify-self: center;
         align-self: center;
-        @media screen and (min-width: 731px) and (max-width: 835px) {
-          height: 50%;
-        }
 
         h1 {
           font-size: 3rem;
@@ -134,7 +150,7 @@
           @media screen and (min-width: 1600px) {
             font-size: 5rem;
           }
-          @media screen and (min-width: 361px) and (max-width: 835px) {
+          @media screen and (min-width: 361px) and (max-width: 1160px) {
             font-size: 2rem;
             margin-top: 5%;
           }
@@ -147,7 +163,7 @@
           @media screen and (min-width: 1600px) {
             font-size: 2rem;
           }
-          @media screen and (min-width: 361px) and (max-width: 835px) {
+          @media screen and (min-width: 361px) and (max-width: 1160px) {
             font-size: 1rem;
             text-align: justify;
           }
@@ -160,7 +176,7 @@
         height: 60%;
         width: 3px;
         background: white;
-        @media screen and (min-width: 361px) and (max-width: 835px) {
+        @media screen and (min-width: 361px) and (max-width: 730px) {
           display: none;
         }
       }
@@ -173,27 +189,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 200px;
   .parallax-div {
     width: 100svw;
-    position: absolute;
-    top: 200vh;
-    @media screen and (max-width: 391px) {
-      top: 230vh;
-    }
   }
   .games {
-    position: absolute;
-    top: 200vh;
     height: 100vh;
     width: 75vw;
     padding-top: 15vh;
-    @media screen and (max-width: 391px) {
-      top: 250vh;
-    }
+    z-index: 1;
 
     .games-container {
       color: white;
-      height: 70vh;
       width: 100%;
       z-index: 5;
       display: flex;
@@ -216,12 +223,13 @@
         align-items: center;
         gap: 5rem;
         flex-wrap: wrap;
-
-        @media screen and (max-width: 360px) {
+        @media screen and (max-width: 800px) {
+          flex-direction: column;
+        }
+        @media screen and (max-width: 391px) {
           margin: 0 auto;
           justify-content: center;
           position: relative;
-          left: -2rem;
         }
         .game1 {
           background-image: url(../assets/images/pacmann.png);
@@ -232,8 +240,11 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
-          @media screen and (max-width: 360px) {
+          @media screen and (max-width: 800px) {
             height: 10rem;
+          }
+          @media screen and (max-width: 900px) {
+            height: 13rem;
           }
           .game-button {
             display: flex;
@@ -277,8 +288,11 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
-          @media screen and (max-width: 360px) {
+          @media screen and (max-width: 600px) {
             height: 10rem;
+          }
+          @media screen and (max-width: 900px) {
+            height: 13rem;
           }
           .game-button {
             display: flex;
@@ -344,20 +358,20 @@
   align-items: center;
   .parallax-div {
     width: 100svw;
-    position: absolute;
-    top: 300vh;
-    @media screen and (max-width: 391px) {
-      top: 388vh;
-    }
   }
   .contact {
-    position: absolute;
-    top: 300vh;
     height: 100vh;
     width: 75vw;
     padding-top: 15vh;
+    z-index: 1;
     @media screen and (max-width: 391px) {
-      top: 380vh;
+      margin-top: 400px;
+    }
+    @media screen and (max-width: 600px) {
+      margin-top: 80px;
+    }
+    @media screen and (min-width: 835px) and (max-width: 1160px) {
+      margin-top: 200px;
     }
 
     .contact-container {
@@ -367,7 +381,8 @@
       z-index: 5;
       display: flex;
       gap: 10%;
-      @media screen and (max-width: 835px) {
+      @media screen and (max-width: 1160px) {
+        margin-top: 200px;
         flex-direction: column;
       }
 
@@ -387,11 +402,8 @@
             width: 40vw;
             height: 50vh;
           }
-          @media screen and (min-width: 731px) and (max-width: 835px) {
+          @media screen and (min-width: 331px) and (max-width: 1160px) {
             width: 75vw;
-          }
-          @media screen and (max-width: 391px) {
-            width: 70vw;
           }
         }
       }
@@ -400,6 +412,7 @@
         flex-direction: column;
         gap: 2rem;
         flex-grow: 1;
+
         h1 {
           font-size: 2rem;
           text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);

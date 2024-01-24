@@ -2,7 +2,7 @@
 .parallax-div {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  @media screen and (max-width: 835px) {
+  @media screen and (max-width: 1499px) {
     display: none;
   }
   &::-webkit-scrollbar {
@@ -34,6 +34,9 @@
       z-index: 3;
       @media screen and (max-width: 391px) {
         height: 70vh;
+      }
+      @media screen and (max-width: 1499px) {
+        height: 90vh;
       }
     }
     .robot-container {
@@ -91,7 +94,7 @@
 
     .infos-container {
       color: white;
-      height: 70vh;
+      height: auto;
       max-height: max-content;
       background-color: $first-color;
       width: 100%;
@@ -102,7 +105,6 @@
       }
       @media screen and (max-width: 391px) {
         width: 90vw;
-        height: auto;
         margin-left: -20px;
       }
 
@@ -216,12 +218,13 @@
         align-items: center;
         gap: 5rem;
         flex-wrap: wrap;
-
-        @media screen and (max-width: 360px) {
+        @media screen and (max-width: 800px) {
+          flex-direction: column;
+        }
+        @media screen and (max-width: 391px) {
           margin: 0 auto;
           justify-content: center;
           position: relative;
-          left: -2rem;
         }
         .game1 {
           background-image: url(../assets/images/pacmann.png);
@@ -232,8 +235,11 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
-          @media screen and (max-width: 360px) {
+          @media screen and (max-width: 800px) {
             height: 10rem;
+          }
+          @media screen and (max-width: 900px) {
+            height: 13rem;
           }
           .game-button {
             display: flex;
@@ -277,8 +283,11 @@
           display: flex;
           align-items: flex-end;
           justify-content: center;
-          @media screen and (max-width: 360px) {
+          @media screen and (max-width: 600px) {
             height: 10rem;
+          }
+          @media screen and (max-width: 900px) {
+            height: 13rem;
           }
           .game-button {
             display: flex;
@@ -357,7 +366,11 @@
     width: 75vw;
     padding-top: 15vh;
     @media screen and (max-width: 391px) {
-      top: 380vh;
+      margin-top: 400px;
+    }
+    @media screen and (max-width: 600px) {
+      top: 320vh;
+      margin-top: 100px;
     }
 
     .contact-container {
@@ -367,7 +380,8 @@
       z-index: 5;
       display: flex;
       gap: 10%;
-      @media screen and (max-width: 835px) {
+      @media screen and (max-width: 600px) {
+        margin-top: 200px;
         flex-direction: column;
       }
 
@@ -387,11 +401,8 @@
             width: 40vw;
             height: 50vh;
           }
-          @media screen and (min-width: 731px) and (max-width: 835px) {
+          @media screen and (min-width: 331px) and (max-width: 835px) {
             width: 75vw;
-          }
-          @media screen and (max-width: 391px) {
-            width: 70vw;
           }
         }
       }
@@ -400,6 +411,7 @@
         flex-direction: column;
         gap: 2rem;
         flex-grow: 1;
+
         h1 {
           font-size: 2rem;
           text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);

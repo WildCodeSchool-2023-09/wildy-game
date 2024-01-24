@@ -1,5 +1,5 @@
 import { Player } from "@lottiefiles/react-lottie-player";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { useUser } from "../contexts/UserContext";
@@ -53,7 +53,7 @@ function Navbar() {
   return (
     <nav
       className={`navbar ${navScrollClass} ${
-        location.pathname === "/profil" && "scrolled relative"
+        location.pathname === "/profil-settings" && "scrolled relative"
       }`}
       style={{ height: navSize, transition: "all 1s" }}
     >
@@ -87,6 +87,7 @@ function Navbar() {
             onClick={() => handleClick("games")}
             className={`link ${isActive === "games" && "is-active"}`}
             to="/#games"
+            spy
           >
             Jeux{" "}
           </NavHashLink>
@@ -96,19 +97,20 @@ function Navbar() {
           <NavHashLink
             onClick={() => handleClick("contact")}
             className={`link ${isActive === "contact" && "is-active"}`}
+            smooth
             to="/#contact"
           >
             Nos Salles{" "}
           </NavHashLink>
         </li>
         <li>
-          <NavHashLink
-            onClick={() => handleClick("upload")}
-            className={`link ${isActive === "upload" && "is-active"}`}
-            to="upload"
+          <Link
+            onClick={() => handleClick("boutique")}
+            className={`link ${isActive === "boutique" && "is-active"}`}
+            to="/boutique"
           >
             Boutique
-          </NavHashLink>
+          </Link>
         </li>
         {user.isAdmin ? (
           <li>
@@ -124,7 +126,7 @@ function Navbar() {
       </ul>
       <div className="navbar-right">
         {user ? (
-          <a href="/">Avatar</a>
+          <Link to="/profil-settings">Avatar</Link>
         ) : (
           <NavHashLink
             onClick={() => handleClick("login")}

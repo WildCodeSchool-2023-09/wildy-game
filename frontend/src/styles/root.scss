@@ -27,6 +27,7 @@ $generic-font: "Montserrat", sans-serif;
 }
 
 .link {
+  cursor: pointer;
   &:hover {
     opacity: 70%;
   }

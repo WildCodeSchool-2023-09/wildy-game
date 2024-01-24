@@ -147,10 +147,7 @@ const login = async (req, res, next) => {
 
 const adminAddCode = async (req, res) => {
   try {
-    const insertId = await tables.player.createCode(
-      req.body.code,
-      req.body.credit
-    );
+    const insertId = await tables.player.createCode(req.body.credit);
     res.status(201).json({ insertId });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -159,14 +156,14 @@ const adminAddCode = async (req, res) => {
 
 const addCredit = async (req, res) => {
   try {
-    const test = await tables.player.useCode(req.body.code, req.body.id);
-    if (test === 0 || test === "déjà utilisé") {
-      if (test === 0) {
+    const result = await tables.player.useCode(req.body.code, req.body.id);
+    if (result === 0 || result === "déjà utilisé") {
+      if (result === 0) {
         return res.status(400).json({ error: "Code invalide / inexistant" });
       }
       return res.status(400).json({ error: "Code déjà utilisé" });
     }
-    return res.status(201).json({ insertId: test });
+    return res.status(201).json({ gain: result });
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }

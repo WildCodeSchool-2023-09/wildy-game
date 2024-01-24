@@ -124,7 +124,7 @@ function Navbar() {
       </ul>
       <div className="navbar-right">
         {user ? (
-          <a href="/">Avatar</a>
+          <NavHashLink to="profil">Avatar</NavHashLink>
         ) : (
           <NavHashLink
             onClick={() => handleClick("login")}

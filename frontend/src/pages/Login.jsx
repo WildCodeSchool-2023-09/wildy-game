@@ -29,7 +29,7 @@ function Login() {
       if (res.status === 200) {
         success(`Bienvenue ${player.pseudo} !`);
         setUser(res.data.player);
-        console.info(res.data.player);
+        window.localStorage.setItem("player", JSON.stringify(res.data.player));
       }
     } catch (error) {
       console.error(error);

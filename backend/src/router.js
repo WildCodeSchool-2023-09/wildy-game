@@ -40,7 +40,8 @@ router.post("/login", verifyPassword, playerControllers.login);
 router.post("/banner", upload.single("banner"), playerControllers.addBanner);
 router.get("/admin", verifyToken);
 router.post("/admin/addcode", playerControllers.adminAddCode);
-router.post("/player/addcredit", playerControllers.addCredit);
+router.post("/players/addcredit", playerControllers.addCredit);
+router.get("/players/logout", playerControllers.logout);
 
 /* ************************************************************************* */
 
@@ -62,7 +63,14 @@ router.get("/collection/:id", collectionControllers.findById);
 router.post("/collection", collectionControllers.add);
 router.put("/collection/:id", collectionControllers.edit);
 router.delete("/collection/:id", collectionControllers.destroy);
-
+router.get("/collection/player/:id", collectionControllers.browseByPlayerId);
+router.get("/collection/avatar/:id", collectionControllers.browseByAvatarId);
+router.get(
+  "/collection/avatars/:id",
+  collectionControllers.browseAvatarsByPlayerId
+);
 /* ************************************************************************* */
+
+/* const amisControllers = require("./controllers/amisControllers"); */
 
 module.exports = router;

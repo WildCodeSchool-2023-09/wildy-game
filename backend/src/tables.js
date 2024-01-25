@@ -6,13 +6,15 @@
 const AvatarManager = require("./models/AvatarManager");
 const PlayerManager = require("./models/PlayerManager");
 const BoutiqueManager = require("./models/BoutiqueManager");
-const collectionManager = require("./models/collectionManager");
+const CollectionManager = require("./models/CollectionManager");
+const AmisManager = require("./models/AmisManager");
 
 const managers = [
   AvatarManager,
   PlayerManager,
   BoutiqueManager,
-  collectionManager,
+  CollectionManager,
+  AmisManager,
   // Add other managers here
 ];
 

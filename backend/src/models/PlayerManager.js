@@ -52,6 +52,17 @@ class PlayerManager extends AbstractManager {
     return rows[0];
   }
 
+  async readByUsername(pseudo) {
+    // Execute the SQL SELECT query to retrieve a specific item by its username
+    const [rows] = await this.database.query(
+      `select id, firstname, lastname, pseudo, email, experience, credit, membreId, profilTheme, lvl, banner, activeAvatar from ${this.table} where pseudo = ?`,
+      [pseudo]
+    );
+
+    // Return the first row of the result, which represents the item
+    return rows[0];
+  }
+
   async checkEmail(email) {
     const [rows] = await this.database.query(
       `select * from ${this.table} where email=?`,

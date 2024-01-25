@@ -183,14 +183,7 @@ export default function ProfilSettings() {
               <img src={close} alt="close" width={30} />
             </button>
             <div className="avatar-form">
-              {avatarList.map((avatar) => (
-                <div
-                  key={avatar.image}
-                  className="flex flex-col item h-[280px]"
-                >
-                  <ProfilAvatars item={avatar} />
-                </div>
-              ))}
+              <ProfilAvatars avatarList={avatarList} />
             </div>
             <div className="chose-color">
               <input type="color" />

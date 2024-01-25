@@ -437,15 +437,17 @@
   top: 0;
   z-index: 4;
   width: 100svw;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(61, 61, 61, 0.7);
   backdrop-filter: blur(3.5px);
   display: flex;
   justify-content: center;
-  align-items: center;
+
   .modal {
+    padding: 20px;
+    margin-top: 4rem;
     width: 50%;
-    height: 70%;
+    height: fit-content;
     background-color: $neutral-color-light;
     display: flex;
     flex-direction: column;
@@ -485,11 +487,35 @@
     }
     .close {
       position: relative;
-      top: 15px;
-      left: 45%;
+      top: -10px;
+      left: 49%;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
     .avatar-form {
       height: 100%;
+      display: flex;
+      gap: 10px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      .avatar-choice {
+        position: relative;
+        button {
+        }
+        img {
+          width: 100px;
+          height: 100px;
+        }
+        .tick {
+          position: absolute;
+          width: 20px;
+          right: -8px;
+          top: -54px;
+        }
+      }
     }
     .banner-form {
       width: 100%;

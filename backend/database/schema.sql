@@ -225,6 +225,7 @@ CREATE TABLE `player` (
   `membreId` varchar(50) NOT NULL,
   `profilTheme` int NOT NULL DEFAULT '0',
   `lvl` int NOT NULL DEFAULT '1',
+  `banner` varchar(255) default NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
   `activeAvatar` int,
   PRIMARY KEY (`id`),
@@ -301,11 +302,3 @@ CREATE TABLE redeemed (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
-ALTER TABLE `player`
-ADD `avatarId` int;
-
-ALTER TABLE `player`
-ADD CONSTRAINT `fk_player_avatar`
-FOREIGN KEY (`avatarId`) REFERENCES `collection` (`id`);
--- Dump completed on 2023-12-15  9:37:37

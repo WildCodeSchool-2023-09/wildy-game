@@ -10,7 +10,8 @@ function TetrisGame() {
       e.key === "ArrowUp" ||
       e.key === "ArrowDown" ||
       e.key === "ArrowLeft" ||
-      e.key === "ArrowRight"
+      e.key === "ArrowRight" ||
+      e.key === " "
     ) {
       e.preventDefault();
     }

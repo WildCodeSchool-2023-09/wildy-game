@@ -65,6 +65,10 @@ router.put("/collection/:id", collectionControllers.edit);
 router.delete("/collection/:id", collectionControllers.destroy);
 router.get("/collection/player/:id", collectionControllers.browseByPlayerId);
 router.get("/collection/avatar/:id", collectionControllers.browseByAvatarId);
+router.get(
+  "/collection/avatars/:id",
+  collectionControllers.browseAvatarsByPlayerId
+);
 /* ************************************************************************* */
 
 /* const amisControllers = require("./controllers/amisControllers"); */

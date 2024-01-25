@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { success } from "../services/toast";
 import { useUser } from "../contexts/UserContext";
@@ -33,7 +33,9 @@ function Logout({ user }) {
   }
   return (
     <div>
-      <p>{user.pseudo}</p>
+      <Link to="profil-settings">
+        <p>{user.pseudo}</p>
+      </Link>
       <button type="button" onClick={handleLogout}>
         Logout
       </button>

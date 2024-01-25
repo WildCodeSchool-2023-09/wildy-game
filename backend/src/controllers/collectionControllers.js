@@ -108,6 +108,23 @@ const browseByAvatarId = async (req, res, next) => {
   }
 };
 
+const browseAvatarsByPlayerId = async (req, res, next) => {
+  try {
+    const collection = await tables.collection.getAvatarsOfPlayerId(
+      req.params.id
+    );
+
+    if (!collection) {
+      res.sendStatus(404);
+    } else {
+      res.json(collection);
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+    next(err);
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
@@ -117,4 +134,5 @@ module.exports = {
   destroy,
   browseByPlayerId,
   browseByAvatarId,
+  browseAvatarsByPlayerId,
 };

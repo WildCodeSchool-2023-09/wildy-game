@@ -6,13 +6,11 @@ import Footer from "../components/Footer";
 import { useUser } from "../contexts/UserContext";
 
 function App() {
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
   useEffect(() => {
-    if (user === false) {
-      const player = JSON.parse(window.localStorage.getItem("player"));
-      if (player) {
-        setUser(player);
-      }
+    const player = JSON.parse(window.localStorage.getItem("player"));
+    if (player) {
+      setUser(player);
     }
   }, []);
 

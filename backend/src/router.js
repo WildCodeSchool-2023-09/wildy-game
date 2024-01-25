@@ -37,11 +37,12 @@ router.post(
 router.put("/players/:id", playerControllers.edit);
 router.delete("/players/:id", playerControllers.destroy);
 router.post("/login", verifyPassword, playerControllers.login);
+router.get("/logout", playerControllers.logout);
 router.post("/banner", upload.single("banner"), playerControllers.addBanner);
 router.get("/admin", verifyToken);
 router.post("/admin/addcode", playerControllers.adminAddCode);
 router.post("/players/addcredit", playerControllers.addCredit);
-router.get("/players/logout", playerControllers.logout);
+router.get("/player/:pseudo", playerControllers.readByPseudo);
 
 /* ************************************************************************* */
 

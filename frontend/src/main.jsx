@@ -17,6 +17,7 @@ import Profil from "./pages/Profil";
 import Admin from "./pages/Admin";
 import Upload from "./pages/Upload";
 import Tetris from "./pages/Tetris";
+import ProfilVisiteur from "./components/ProfilVisiteur";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "profil-settings",
         element: <Profil />,
+      },
+      {
+        path: "profil/:pseudo",
+        element: <ProfilVisiteur />,
       },
       {
         path: "admin",

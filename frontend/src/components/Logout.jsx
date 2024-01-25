@@ -12,14 +12,14 @@ function Logout({ user }) {
     event.preventDefault();
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/players/logout`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/logout`,
         {
           withCredentials: true,
           credentials: "include",
         }
       );
       if (res.status === 200) {
-        localStorage.clear();
+        localStorage.removeItem("player");
         setUser(false);
         success(`Vous avez été déconnecté !`);
         setRefresh(true);

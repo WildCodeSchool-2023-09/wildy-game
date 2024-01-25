@@ -138,7 +138,7 @@ const login = async (req, res, next) => {
   try {
     const player = req.user;
     const token = jwt.sign({ player }, process.env.APP_SECRET);
-    res.cookie("token", token, { httpOnly: true, path: "/" });
+    res.cookie("token", token, { httpOnly: true });
     res.json({ player });
   } catch (err) {
     next(err);
@@ -175,6 +175,18 @@ const addCredit = async (req, res) => {
     return res.status(400).json({ error: error.message });
   }
 };
+
+const readByPseudo = async (req, res) => {
+  try {
+    const result = await tables.player.readByUsername(req.params.pseudo);
+    if (!result) {
+      return res.status(404).json({ error: "Introuvable" });
+    }
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
 // Ready to export the controller functions
 
 module.exports = {
@@ -188,4 +200,5 @@ module.exports = {
   adminAddCode,
   addCredit,
   logout,
+  readByPseudo,
 };

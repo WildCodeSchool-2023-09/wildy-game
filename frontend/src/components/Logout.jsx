@@ -12,7 +12,7 @@ function Logout({ user }) {
     event.preventDefault();
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/player/logout`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/players/logout`,
         {
           withCredentials: true,
           credentials: "include",
@@ -33,7 +33,9 @@ function Logout({ user }) {
   }
   return (
     <div>
-      <Link to="profil-settings">{user.pseudo}</Link>
+      <Link to="profil-settings">
+        <p>{user.pseudo}</p>
+      </Link>
       <button type="button" onClick={handleLogout}>
         Logout
       </button>

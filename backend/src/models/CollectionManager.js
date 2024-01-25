@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class collectionManager extends AbstractManager {
+class CollectionManager extends AbstractManager {
   constructor() {
     // Call the constructor of the parent class (AbstractManager)
     // and pass the table name "item" as configuration
@@ -66,6 +66,30 @@ class collectionManager extends AbstractManager {
     );
     return rows;
   }
+
+  async getCollectionByPlayerId(id) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where playerId = ?`,
+      [id]
+    );
+    return rows;
+  }
+
+  async getCollectionByAvatarId(id) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where avatarId = ?`,
+      [id]
+    );
+    return rows;
+  }
+
+  async getAvatarsOfPlayerId(playerId) {
+    const [rows] = await this.database.query(
+      `SELECT a.image, a.name, a.rarity from avatar as a JOIN collection as c ON a.id = c.avatarId WHERE c.playerId = ?`,
+      [playerId]
+    );
+    return rows;
+  }
 }
 
-module.exports = collectionManager;
+module.exports = CollectionManager;

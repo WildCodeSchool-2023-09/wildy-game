@@ -199,7 +199,13 @@
           font-family: $generic-font;
           font-weight: 500;
           color: white;
+          color: #689be7;
+          font-size: 2rem;
+          @media screen and (max-width: 600px) {
+            text-align: center;
+          }
         }
+
         .profil-hv-content {
           display: flex;
           gap: 10px;
@@ -302,6 +308,91 @@
     }
   }
 }
+.collection {
+  gap: 30px;
+  .collection-header {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    .rarities {
+      display: flex;
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+      h3 {
+        padding-right: 20px;
+        @media screen and (max-width: 600px) {
+          text-align: center;
+        }
+      }
+      .rarities-container {
+        display: flex;
+        gap: 3px;
+        @media screen and (max-width: 600px) {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+      .rarity {
+        width: 60px;
+        height: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+          visibility: hidden;
+          font-size: 0.8rem;
+          @media screen and (max-width: 600px) {
+            visibility: visible;
+          }
+        }
+        &:hover p {
+          visibility: visible;
+        }
+      }
+      .common {
+        background-color: #ffffff;
+      }
+      .rare {
+        background-color: #689be7;
+      }
+      .epic {
+        background-color: #b131d6;
+      }
+      .legendary {
+        background-color: #fc9307;
+      }
+    }
+  }
+  .collection-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+
+    .avatar-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 200px;
+      h3 {
+        font-family: $font3;
+      }
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
 /* EXP BAR COMPOSENT DEFAULT */
 .exp-container {
   width: 40vw;
@@ -311,6 +402,7 @@
   align-items: center;
   border-radius: 10px;
   text-align: center;
+  color: #008000;
   .exp {
     position: absolute;
     width: 40vw;

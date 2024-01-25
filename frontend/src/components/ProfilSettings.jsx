@@ -50,7 +50,7 @@ export default function ProfilSettings() {
     setRedeemBody(updatedRedeemBody);
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/player/addcredit`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/players/addcredit`,
         updatedRedeemBody,
         { withCredentials: true }
       );
@@ -63,15 +63,21 @@ export default function ProfilSettings() {
     }
   };
 
+  console.info(user);
+
   /* AVATARS */
   const [avatarList, setAvatarList] = useState([]);
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/collection=`)
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/collection/avatars/${user.id}`
+      )
       .then((res) => {
         setAvatarList(res.data);
-      });
-  }, []);
+      })
+      .catch((err) => console.error(err));
+  }, [user]);
+
   return (
     <div className="settings-wrapper">
       <div className="profil-header">
@@ -150,6 +156,7 @@ export default function ProfilSettings() {
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
             textColor={textColor}
+            avatarList={avatarList}
           />
           <Hv
             editmode={editmode}

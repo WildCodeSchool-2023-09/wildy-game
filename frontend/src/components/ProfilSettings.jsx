@@ -63,8 +63,6 @@ export default function ProfilSettings() {
     }
   };
 
-  console.info(user);
-
   /* AVATARS */
   const [avatarList, setAvatarList] = useState([]);
   useEffect(() => {
@@ -77,6 +75,25 @@ export default function ProfilSettings() {
       })
       .catch((err) => console.error(err));
   }, [user]);
+
+  /* THEME */
+  const [userTheme, setUserTheme] = useState(0);
+
+  const handleUserTheme = async () => {
+    const updateTheme = { profilTheme: userTheme };
+    try {
+      const res = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/players/${user.id}/addtheme`,
+        updateTheme,
+        { withCredentials: true }
+      );
+      if (res.status === 200) {
+        success("Thème modifié avec succès ! ");
+      }
+    } catch (error) {
+      failed(error.response.data.error);
+    }
+  };
 
   return (
     <div className="settings-wrapper">
@@ -111,8 +128,8 @@ export default function ProfilSettings() {
         {editmode === false && (
           <aside className="settings-menu">
             <h1>Mon compte</h1>
-            <h2>player.pseudo</h2>
-            <h2>player.email</h2>
+            <h2>{user.pseudo}</h2>
+            <h2>{user.email}</h2>
             <ul>
               <li>
                 <button
@@ -131,10 +148,27 @@ export default function ProfilSettings() {
             <ExpBar />
             <p className="title">player.title</p>
           </div>
+          {editmode ? (
+            <button
+              type="button"
+              onClick={() => {
+                setEditmode(!editmode);
+                handleUserTheme();
+              }}
+            >
+              Valider
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                setEditmode(!editmode);
+              }}
+            >
+              Personnaliser le profil
+            </button>
+          )}
 
-          <button type="button" onClick={() => setEditmode(!editmode)}>
-            {editmode ? "Valider" : "Personnaliser le profil"}
-          </button>
           {editmode && (
             <ProfilTheme
               primaryColor={primaryColor}
@@ -143,6 +177,7 @@ export default function ProfilSettings() {
               setSecondaryColor={setSecondaryColor}
               textColor={textColor}
               setTextColor={setTextColor}
+              setUserTheme={setUserTheme}
             />
           )}
           <FavGames

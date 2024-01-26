@@ -187,6 +187,21 @@ const readByPseudo = async (req, res) => {
     return res.status(400).json({ error: error.message });
   }
 };
+
+const modifyTheme = async (req, res) => {
+  try {
+    const result = await tables.player.updateTheme(
+      req.body.profilTheme,
+      req.params.id
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Un erreur est survenue" });
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
 // Ready to export the controller functions
 
 module.exports = {
@@ -201,4 +216,5 @@ module.exports = {
   addCredit,
   logout,
   readByPseudo,
+  modifyTheme,
 };

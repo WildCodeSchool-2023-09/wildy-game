@@ -189,6 +189,32 @@ const readByPseudo = async (req, res) => {
   }
 };
 
+const editAvatar = async (req, res) => {
+  try {
+    const result = await tables.player.updateAvatar(
+      req.params.id,
+      req.body.avatarId
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Joueur ou avatar incorrect" });
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+const findByAvatar = async (req, res) => {
+  try {
+    const result = await tables.player.getAvatar(req.params.id);
+    if (!result) {
+      return res.status(404).json({ error: "Introuvable" });
+    }
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
 const modifyTheme = async (req, res) => {
   try {
     const result = await tables.player.updateTheme(
@@ -217,5 +243,7 @@ module.exports = {
   addCredit,
   logout,
   readByPseudo,
+  editAvatar,
+  findByAvatar,
   modifyTheme,
 };

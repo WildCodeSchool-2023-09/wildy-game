@@ -1,13 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { success } from "../services/toast";
 import { useUser } from "../contexts/UserContext";
 
 function Logout({ user }) {
   const { setUser } = useUser();
-  const [refresh, setRefresh] = useState(false);
+  const navigate = useNavigate();
+
   const handleLogout = async (event) => {
     event.preventDefault();
     try {
@@ -22,15 +22,13 @@ function Logout({ user }) {
         localStorage.removeItem("player");
         setUser(false);
         success(`Vous avez été déconnecté !`);
-        setRefresh(true);
+        navigate("/", { replace: true });
       }
     } catch (error) {
       console.error(error);
     }
   };
-  if (refresh) {
-    return <Navigate to="/" replace />;
-  }
+
   return (
     <div>
       <Link to="profil-settings">

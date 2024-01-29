@@ -191,6 +191,25 @@ class PlayerManager extends AbstractManager {
     );
     return codeid[0].gain_credit;
   }
+
+  async updateAvatar(id, avatarId) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table}
+      SET activeAvatar = ?
+      WHERE id = ?
+      `,
+      [avatarId, id]
+    );
+    return result;
+  }
+
+  async getAvatar(id) {
+    const [result] = await this.database.query(
+      `select a.image from avatar as a join player as p on a.id = p.activeAvatar where p.id = ?`,
+      [id]
+    );
+    return result;
+  }
 }
 
 module.exports = PlayerManager;

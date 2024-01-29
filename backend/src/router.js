@@ -25,6 +25,8 @@ const { hashPassword, verifyPassword } = require("./services/hashPassword");
 const randMembreId = require("./services/randMembreId");
 const { verifyToken } = require("./services/jwt");
 
+router.put("/players/avatar/:id", playerControllers.editAvatar);
+router.get("/players/avatar/:id", playerControllers.findByAvatar);
 router.get("/players", playerControllers.browse);
 router.get("/players/:id", playerControllers.findById);
 router.post(

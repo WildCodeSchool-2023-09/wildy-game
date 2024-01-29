@@ -230,7 +230,7 @@ CREATE TABLE `player` (
   `activeAvatar` int,
   PRIMARY KEY (`id`),
   KEY `fk_player_collection` (`activeAvatar`),
-  CONSTRAINT `fk_player_collection` FOREIGN KEY (`activeAvatar`) REFERENCES `collection` (`id`),
+  CONSTRAINT `fk_player_collection` FOREIGN KEY (`activeAvatar`) REFERENCES `collection` (`avatarId`),
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `membreId` (`membreId`)

@@ -13,6 +13,15 @@ class AdminManager extends AbstractManager {
     );
     return rows;
   }
+
+  async delete(id) {
+    const [rows] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [id]
+    );
+
+    return rows;
+  }
 }
 
 module.exports = AdminManager;

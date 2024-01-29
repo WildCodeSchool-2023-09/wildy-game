@@ -264,32 +264,32 @@
           align-items: center;
           flex-wrap: wrap;
           gap: 50px;
-          .theme1-picker {
+          .theme4-purple-picker {
             box-shadow: none;
             width: 100px;
             background-color: #3d2579;
           }
-          .theme2-picker {
+          .theme1-black-picker {
             box-shadow: none;
             width: 100px;
             background-color: #000000;
           }
-          .theme3-picker {
+          .theme5-pink-picker {
             box-shadow: none;
             width: 100px;
             background-color: #d496a7;
           }
-          .theme4-picker {
+          .theme3-blue-picker {
             box-shadow: none;
             width: 100px;
             background-color: #011936;
           }
-          .theme5-picker {
+          .theme2-green-picker {
             box-shadow: none;
             width: 100px;
             background-color: #415d43;
           }
-          .theme6-picker {
+          .theme6-red-picker {
             box-shadow: none;
             width: 100px;
             background-color: #9a031e;
@@ -310,25 +310,28 @@
   .collection-header {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     @media screen and (max-width: 600px) {
       flex-direction: column;
     }
     .rarities {
       display: flex;
-
-      @media screen and (max-width: 600px) {
+      align-items: center;
+      flex-wrap: wrap;
+      @media screen and (max-width: 660px) {
         flex-direction: column;
       }
       h3 {
         padding-right: 20px;
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 660px) {
           text-align: center;
         }
       }
       .rarities-container {
         display: flex;
         gap: 3px;
-        @media screen and (max-width: 600px) {
+        flex-wrap: wrap;
+        @media screen and (max-width: 660px) {
           flex-direction: row;
           justify-content: center;
         }

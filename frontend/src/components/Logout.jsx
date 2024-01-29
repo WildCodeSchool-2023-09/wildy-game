@@ -51,7 +51,7 @@ Logout.propTypes = {
     membreId: PropTypes.string,
     profilTheme: PropTypes.number,
     lvl: PropTypes.number,
-    isAdmin: PropTypes.bool,
+    isAdmin: PropTypes.number,
     banner: PropTypes.string,
   }).isRequired,
 };

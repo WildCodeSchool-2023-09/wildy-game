@@ -15,6 +15,10 @@ function Navbar() {
   const [isActive, setIsActive] = useState("");
   const handleClick = (url) => {
     setIsActive(url);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const [navScrollClass, setNavScrollClass] = useState("");
@@ -54,7 +58,9 @@ function Navbar() {
   return (
     <nav
       className={`navbar ${navScrollClass} ${
-        location.pathname === "/profil-settings" && "scrolled relative"
+        (location.pathname === "/profil-settings" ||
+          location.pathname === "/profil") &&
+        "scrolled relative"
       }`}
       style={{ height: navSize, transition: "all 1s" }}
     >

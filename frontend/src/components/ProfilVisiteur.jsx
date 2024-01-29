@@ -47,36 +47,38 @@ export default function ProfilVisiteur() {
     return <p>Joueur non trouvable</p>;
   }
   return (
-    <div className="settings-wrapper">
-      <div className="profil-header">
-        <div className="avatar" />
-        <div className="banner" />
-      </div>
-      <div
-        className="settings-container"
-        style={{ backgroundColor: primaryColor }}
-      >
-        <div className="settings-content mx-auto">
-          <div className="exp-wrapper">
-            <ExpBar />
-            <p className="title">player.title</p>
+    <div className="profil mt-20">
+      <div className="settings-wrapper">
+        <div className="profil-header">
+          <div className="avatar" />
+          <div className="banner" />
+        </div>
+        <div
+          className="settings-container"
+          style={{ backgroundColor: primaryColor }}
+        >
+          <div className="settings-content mx-auto">
+            <div className="exp-wrapper">
+              <ExpBar />
+              <p className="title">player.title</p>
+            </div>
+            <FavGames
+              primaryColor={primaryColor}
+              secondaryColor={secondaryColor}
+              textColor={textColor}
+            />
+            <Collection
+              primaryColor={primaryColor}
+              secondaryColor={secondaryColor}
+              textColor={textColor}
+              avatarList={avatarList}
+            />
+            <Friends
+              primaryColor={primaryColor}
+              secondaryColor={secondaryColor}
+              textColor={textColor}
+            />
           </div>
-          <FavGames
-            primaryColor={primaryColor}
-            secondaryColor={secondaryColor}
-            textColor={textColor}
-          />
-          <Collection
-            primaryColor={primaryColor}
-            secondaryColor={secondaryColor}
-            textColor={textColor}
-            avatarList={avatarList}
-          />
-          <Friends
-            primaryColor={primaryColor}
-            secondaryColor={secondaryColor}
-            textColor={textColor}
-          />
         </div>
       </div>
     </div>

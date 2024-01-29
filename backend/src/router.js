@@ -45,7 +45,7 @@ router.get("/admin", verifyToken);
 router.post("/admin/addcode", playerControllers.adminAddCode);
 router.post("/players/addcredit", playerControllers.addCredit);
 router.get("/player/:pseudo", playerControllers.readByPseudo);
-
+router.put("/players/:id/addtheme", playerControllers.modifyTheme);
 /* ************************************************************************* */
 
 const boutiqueControllers = require("./controllers/boutiqueControllers");

@@ -89,10 +89,10 @@ class PlayerManager extends AbstractManager {
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all items from the "item" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [result] = await this.database.query(`select * from ${this.table}`);
 
     // Return the array of items
-    return rows;
+    return result;
   }
 
   // The U of CRUD - Update operation
@@ -122,6 +122,14 @@ class PlayerManager extends AbstractManager {
     if (result.affectedRows === 0) {
       throw new Error("Aucune ligne affectée, l'update a échoué");
     }
+    return result;
+  }
+
+  async updateTheme(theme, id) {
+    const [result] = await this.database.query(
+      `update ${this.table} SET profilTheme = ? where id = ?`,
+      [theme, id]
+    );
     return result;
   }
 

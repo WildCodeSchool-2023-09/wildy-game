@@ -213,7 +213,10 @@ export default function ProfilSettings() {
             >
               <img src={close} alt="close" width={30} />
             </button>
-            <form className="redeem flex flex-col gap-8 justify-center items-center">
+            <form
+              className="redeem flex flex-col gap-8 justify-center items-center"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <label htmlFor="reedem">Ajouter un code</label>
               <input
                 type="text"

@@ -15,7 +15,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100svw;
+  width: 99svw;
   height: 100vh;
 
   .parallax-div {
@@ -93,7 +93,7 @@
   }
 }
 .section-wrapper {
-  width: 100svw;
+  width: 99svw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,10 +103,11 @@
     width: 100svw;
   }
   .infos {
-    width: 75vw;
+    width: 60%;
     padding-top: 15vh;
     z-index: 1;
     display: flex;
+
     .infos-container {
       color: white;
       height: 70vh;
@@ -184,18 +185,19 @@
   }
 }
 .section-wrapper2 {
-  width: 100svw;
+  width: 99svw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .parallax-div {
     width: 100svw;
     top: 200vh;
   }
   .games {
     height: 100vh;
-    width: 75vw;
+    width: 65%;
     padding-top: 15vh;
     z-index: 1;
 
@@ -234,7 +236,7 @@
         }
         .game1 {
           background-image: url(../assets/images/pacmann.png);
-          background-size: cover;
+          background-size: contain;
           background-repeat: no-repeat;
           flex-grow: 1;
           height: 60vh;
@@ -285,7 +287,7 @@
 
         .game3 {
           background-image: url(../assets/images/tetris.jpg);
-          background-size: cover;
+          background-size: contain;
           background-repeat: no-repeat;
           flex-grow: 1;
           height: 60vh;
@@ -359,20 +361,22 @@
   }
 }
 .section-wrapper3 {
-  width: 100svw;
+  width: 99svw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .parallax-div {
     width: 100svw;
     top: 300vh;
   }
   .contact {
     height: 100vh;
-    width: 75vw;
+    width: 75%;
     padding-top: 15vh;
     z-index: 1;
+
     @media screen and (max-width: 391px) {
       margin-top: 400px;
     }
@@ -397,6 +401,7 @@
         flex-direction: column;
         gap: 2rem;
         flex-grow: 1;
+        width: 50%;
         h1 {
           font-size: 2rem;
           text-shadow: 15px 7px 3px rgba(0, 0, 0, 0.4);
@@ -405,8 +410,8 @@
           border-radius: 10px;
           justify-self: center;
           @media screen and (min-width: 1600px) {
-            width: 40vw;
             height: 50vh;
+            width: 100%;
           }
           @media screen and (min-width: 331px) and (max-width: 1160px) {
             width: 75vw;
@@ -418,6 +423,7 @@
         flex-direction: column;
         gap: 2rem;
         flex-grow: 1;
+        width: 50%;
 
         h1 {
           font-size: 2rem;
@@ -440,7 +446,7 @@
             background-color: $first-color;
             height: 180px;
             @media screen and (min-width: 1600px) {
-              height: 31vh;
+              height: 36.5vh;
             }
           }
           input[type="submit"] {

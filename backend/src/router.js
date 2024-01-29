@@ -56,6 +56,7 @@ router.get("/boutique/:id", boutiqueControllers.findById);
 router.post("/boutique", boutiqueControllers.add);
 router.put("/boutique/:id", boutiqueControllers.edit);
 router.delete("/boutique/:id", boutiqueControllers.destroy);
+router.post("/boutique/avatar/:id", boutiqueControllers.addAvatar);
 
 /* ************************************************************************* */
 

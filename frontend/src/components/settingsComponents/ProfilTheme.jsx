@@ -1,20 +1,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-
 import PropTypes from "prop-types";
+import { useUser } from "../../contexts/UserContext";
 
 export default function ProfilTheme({
-  setPrimaryColor,
   secondaryColor,
-  setSecondaryColor,
   textColor,
-  setTextColor,
-  setUserTheme,
+  handleTheme,
+  handleUserContextTheme,
 }) {
-  const handleTheme = (primary, secondary, text) => {
-    setPrimaryColor(primary);
-    setSecondaryColor(secondary);
-    setTextColor(text);
-  };
+  const { user, setUser } = useUser();
 
   return (
     <section
@@ -28,8 +22,7 @@ export default function ProfilTheme({
           className="theme1-black-picker"
           onClick={() => {
             handleTheme("#000000", "#3d3d3d", "#ffffff");
-
-            setUserTheme(1);
+            setUser({ ...user, profilTheme: 1 });
           }}
         />
         <button
@@ -37,8 +30,7 @@ export default function ProfilTheme({
           className="theme2-green-picker"
           onClick={() => {
             handleTheme("#415D43", "#709775", "#000000");
-
-            setUserTheme(2);
+            setUser({ ...user, profilTheme: 2 });
           }}
         />
         <button
@@ -46,7 +38,7 @@ export default function ProfilTheme({
           className="theme3-blue-picker"
           onClick={() => {
             handleTheme("#011936", "#465362", "#ffffff");
-            setUserTheme(3);
+            setUser({ ...user, profilTheme: 3 });
           }}
         />
         <button
@@ -54,8 +46,8 @@ export default function ProfilTheme({
           className="theme4-purple-picker"
           onClick={() => {
             handleTheme("#3D2579", "#F36D84", "#ffffff");
-
-            setUserTheme(4);
+            handleUserContextTheme();
+            setUser({ ...user, profilTheme: 4 });
           }}
         />
         <button
@@ -63,8 +55,8 @@ export default function ProfilTheme({
           className="theme5-pink-picker"
           onClick={() => {
             handleTheme("#D496A7", "#F1DEDE", "#000000");
-
-            setUserTheme(5);
+            handleUserContextTheme();
+            setUser({ ...user, profilTheme: 5 });
           }}
         />
         <button
@@ -72,7 +64,8 @@ export default function ProfilTheme({
           className="theme6-red-picker"
           onClick={() => {
             handleTheme("#9A031E", "#f9c80e", "#000000");
-            setUserTheme(6);
+            setUser({ ...user, profilTheme: 6 });
+            handleUserContextTheme();
           }}
         />
         <button
@@ -80,7 +73,8 @@ export default function ProfilTheme({
           className="reset"
           onClick={() => {
             handleTheme("#ffffff", "#b4b4b4", "#ffffff");
-            setUserTheme(0);
+            setUser({ ...user, profilTheme: 0 });
+            handleUserContextTheme();
           }}
         >
           Défault
@@ -90,10 +84,8 @@ export default function ProfilTheme({
   );
 }
 ProfilTheme.propTypes = {
-  setPrimaryColor: PropTypes.func.isRequired,
-  setSecondaryColor: PropTypes.func.isRequired,
-  setTextColor: PropTypes.func.isRequired,
+  handleTheme: PropTypes.func.isRequired,
   secondaryColor: PropTypes.string.isRequired,
   textColor: PropTypes.string.isRequired,
-  setUserTheme: PropTypes.func.isRequired,
+  handleUserContextTheme: PropTypes.func.isRequired,
 };

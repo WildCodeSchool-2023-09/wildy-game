@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import tick from "../../assets/images/accept.svg";
 
-export default function ProfilAvatars({ avatarList }) {
+export default function ProfilAvatars({ avatarList, setAvatar }) {
   const [selectedAvatar, setSelectedAvatar] = useState("");
 
   const borderSelected = "4px solid #699F4C";
@@ -13,11 +13,12 @@ export default function ProfilAvatars({ avatarList }) {
         <div key={avatar.image} className="avatar-choice">
           <button
             type="button"
-            onClick={() =>
+            onClick={() => {
               setSelectedAvatar(
                 `${import.meta.env.VITE_BACKEND_URL}/${avatar.image}`
-              )
-            }
+              );
+              setAvatar(avatar.id);
+            }}
             style={
               selectedAvatar ===
               `${import.meta.env.VITE_BACKEND_URL}/${avatar.image}`
@@ -48,4 +49,5 @@ export default function ProfilAvatars({ avatarList }) {
 
 ProfilAvatars.propTypes = {
   avatarList: PropTypes.arrayOf.isRequired,
+  setAvatar: PropTypes.func.isRequired,
 };

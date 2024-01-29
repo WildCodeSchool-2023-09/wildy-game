@@ -187,6 +187,21 @@ const readByPseudo = async (req, res) => {
     return res.status(400).json({ error: error.message });
   }
 };
+
+const editAvatar = async (req, res) => {
+  try {
+    const result = await tables.player.updateAvatar(
+      req.params.id,
+      req.body.avatarId
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Joueur ou avatar incorrect" });
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
 // Ready to export the controller functions
 
 module.exports = {
@@ -201,4 +216,5 @@ module.exports = {
   addCredit,
   logout,
   readByPseudo,
+  editAvatar,
 };

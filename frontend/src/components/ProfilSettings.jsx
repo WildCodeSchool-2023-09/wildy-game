@@ -30,8 +30,28 @@ export default function ProfilSettings() {
   const [modalBanner, setModalBanner] = useState(false);
   const [redeem, setRedeem] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [avatar, setAvatar] = useState({});
 
-  const handleInputChangle = (e) => {
+  console.info(user);
+
+  const handleAvatarChange = async () => {
+    const avatarObject = { avatarId: avatar };
+    try {
+      const res = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/players/avatar/${user.id}`,
+        avatarObject,
+        { withCredentials: true }
+      );
+      if (res.status === 200) {
+        success(`Avatar modifié avec succès !`);
+      }
+    } catch (error) {
+      failed(error.response.data.error);
+      console.error(error.response.data.error);
+    }
+  };
+
+  const handleInputChange = (e) => {
     setInputValue(e.target.value.toUpperCase());
   };
 
@@ -62,8 +82,6 @@ export default function ProfilSettings() {
       failed(error.response.data.error);
     }
   };
-
-  console.info(user);
 
   /* AVATARS */
   const [avatarList, setAvatarList] = useState([]);
@@ -183,7 +201,7 @@ export default function ProfilSettings() {
               <img src={close} alt="close" width={30} />
             </button>
             <div className="avatar-form">
-              <ProfilAvatars avatarList={avatarList} />
+              <ProfilAvatars avatarList={avatarList} setAvatar={setAvatar} />
             </div>
             <div className="chose-color">
               <input type="color" />
@@ -191,7 +209,10 @@ export default function ProfilSettings() {
             <button
               type="button"
               className="confirm"
-              onClick={() => handleCloseEdit()}
+              onClick={() => {
+                handleCloseEdit();
+                handleAvatarChange();
+              }}
             >
               Confirmer
             </button>
@@ -218,7 +239,7 @@ export default function ProfilSettings() {
               <input
                 type="text"
                 value={inputValue}
-                onChange={handleInputChangle}
+                onChange={handleInputChange}
                 className="text-center text-xl font-montserrat font-bold"
               />
               <button

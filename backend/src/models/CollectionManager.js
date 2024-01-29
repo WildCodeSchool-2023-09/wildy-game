@@ -85,7 +85,7 @@ class CollectionManager extends AbstractManager {
 
   async getAvatarsOfPlayerId(playerId) {
     const [rows] = await this.database.query(
-      `SELECT a.image, a.name, a.rarity from avatar as a JOIN collection as c ON a.id = c.avatarId WHERE c.playerId = ?`,
+      `SELECT a.id, a.image, a.name, a.rarity from avatar as a JOIN collection as c ON a.id = c.avatarId WHERE c.playerId = ?`,
       [playerId]
     );
     return rows;

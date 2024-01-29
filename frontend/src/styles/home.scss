@@ -53,7 +53,7 @@
         }
         @media screen and (min-width: 1920px) {
           transform: scale(1.4);
-          top: 72%;
+          top: 67vh;
         }
       }
       .robot2 {
@@ -70,7 +70,7 @@
         pointer-events: all;
         @media screen and (min-width: 1920px) {
           transform: scale(1.4);
-          top: 72%;
+          top: 67vh;
         }
       }
       &:hover .robot {

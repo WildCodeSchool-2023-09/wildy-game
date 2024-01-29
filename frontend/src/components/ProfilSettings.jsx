@@ -15,7 +15,7 @@ import Upload from "../pages/Upload";
 import close from "../assets/images/close.svg";
 
 export default function ProfilSettings() {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const [redeemBody, setRedeemBody] = useState({
     code: "",
     id: 0,
@@ -31,9 +31,19 @@ export default function ProfilSettings() {
   const [redeem, setRedeem] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [avatar, setAvatar] = useState({});
+  const [avatarImage, setavatarImage] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/players/avatar/${user.id}`)
+      .then((res) => {
+        setavatarImage(res.data[0].image);
+      })
+      .catch((err) => console.error(err));
+  }, [user.activeAvatar]);
 
   console.info(user);
-
+  console.info("avatar image :", avatarImage);
   const handleAvatarChange = async () => {
     const avatarObject = { avatarId: avatar };
     try {
@@ -44,6 +54,7 @@ export default function ProfilSettings() {
       );
       if (res.status === 200) {
         success(`Avatar modifié avec succès !`);
+        setUser({ ...user, activeAvatar: avatar });
       }
     } catch (error) {
       failed(error.response.data.error);
@@ -109,7 +120,11 @@ export default function ProfilSettings() {
             <p className="hidden">edit</p>
           </button>
         )}
-        <div className={`avatar ${editmode && "edit-mode-avatar"}`} />
+        <img
+          src={`${import.meta.env.VITE_BACKEND_URL}/${avatarImage}`}
+          className={`avatar ${editmode && "edit-mode-avatar"}`}
+          alt="avatar"
+        />
         {editmode && (
           <button
             type="button"

@@ -194,6 +194,14 @@ class PlayerManager extends AbstractManager {
     );
     return result;
   }
+
+  async getAvatar(id) {
+    const [result] = await this.database.query(
+      `select a.image from avatar as a join player as p on a.id = p.activeAvatar where p.id = ?`,
+      [id]
+    );
+    return result;
+  }
 }
 
 module.exports = PlayerManager;

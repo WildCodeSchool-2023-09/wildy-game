@@ -136,14 +136,11 @@ export default function ProfilSettings() {
   const handleUserTheme = async () => {
     const updateTheme = { profilTheme: user.profilTheme };
     try {
-      const res = await axios.put(
+      await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/api/players/${user.id}/addtheme`,
         updateTheme,
         { withCredentials: true }
       );
-      if (res.status === 200) {
-        success("Thème modifié avec succès ! ");
-      }
     } catch (error) {
       failed(error.response.data.error);
     }
@@ -190,7 +187,29 @@ export default function ProfilSettings() {
 
   /* COLOR WHEEL */
 
-  const [color, setColor] = useState("#989898");
+  const [color, setColor] = useState(user.avatarColor);
+  console.info(user.avatarColor);
+
+  const handleAvatarColor = async () => {
+    const updateColor = { avatarColor: color };
+    try {
+      const res = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/players/${
+          user.id
+        }/updtavatarcolor`,
+        updateColor,
+        { withCredentials: true }
+      );
+      if (res.status === 200) {
+        success("Couleur d'avatar modifiée avec succès !");
+      }
+    } catch (error) {
+      failed(error);
+    }
+  };
+  useEffect(() => {
+    setColor(user.avatarColor);
+  }, [user]);
 
   return (
     <div className="settings-wrapper">
@@ -335,6 +354,7 @@ export default function ProfilSettings() {
               onClick={() => {
                 handleCloseEdit();
                 handleAvatarChange();
+                handleAvatarColor();
               }}
             >
               Confirmer

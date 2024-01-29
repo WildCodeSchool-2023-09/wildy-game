@@ -58,7 +58,9 @@ function Navbar() {
   return (
     <nav
       className={`navbar ${navScrollClass} ${
-        location.pathname === "/profil-settings" && "scrolled relative"
+        (location.pathname === "/profil-settings" ||
+          location.pathname === "/profil") &&
+        "scrolled relative"
       }`}
       style={{ height: navSize, transition: "all 1s" }}
     >

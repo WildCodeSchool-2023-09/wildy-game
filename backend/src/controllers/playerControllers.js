@@ -29,6 +29,7 @@ const findById = async (req, res, next) => {
     if (player == null) {
       res.sendStatus(404);
     } else {
+      delete player.password;
       res.json(player);
     }
   } catch (err) {

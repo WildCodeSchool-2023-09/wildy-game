@@ -283,6 +283,58 @@
           }
         }
 
+        .game2 {
+          background-image: url(../assets/images/Snake.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          flex-grow: 1;
+          height: 60vh;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          @media screen and (max-width: 1000px) {
+            width: 90%;
+          }
+          @media screen and (max-width: 800px) {
+            height: 10rem;
+          }
+          @media screen and (max-width: 900px) {
+            height: 13rem;
+          }
+          .game-button {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 50%;
+            width: 100%;
+            background: linear-gradient(
+              0deg,
+              rgba(61, 61, 61, 1) 26%,
+              rgba(61, 61, 61, 0) 100%
+            );
+            @media screen and (max-width: 391px) {
+              height: 80%;
+            }
+
+            button {
+              margin: 1.5rem;
+              height: 3rem;
+              width: 15rem;
+              font-size: 1.7rem;
+              color: #3d3d3d;
+              background-color: #f9c80e;
+              padding: 5px 30px;
+              border: none;
+              box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+              border-radius: 1px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+
         .game3 {
           background-image: url(../assets/images/tetris.jpg);
           background-size: cover;

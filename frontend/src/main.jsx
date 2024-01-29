@@ -17,6 +17,7 @@ import Profil from "./pages/Profil";
 import Admin from "./pages/Admin";
 import Upload from "./pages/Upload";
 import Tetris from "./pages/Tetris";
+import Snake from "./pages/Snake";
 import ProfilVisiteur from "./components/ProfilVisiteur";
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "pacman",
         element: <Jeu />,
+      },
+      {
+        path: "snake",
+        element: <Snake />,
       },
       {
         path: "tetris",

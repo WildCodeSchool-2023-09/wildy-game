@@ -15,6 +15,10 @@ function Navbar() {
   const [isActive, setIsActive] = useState("");
   const handleClick = (url) => {
     setIsActive(url);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const [navScrollClass, setNavScrollClass] = useState("");

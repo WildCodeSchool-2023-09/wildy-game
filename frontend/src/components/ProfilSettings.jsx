@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useUser } from "../contexts/UserContext";
 import ExpBar from "./ExpBar";
@@ -29,7 +31,36 @@ export default function ProfilSettings() {
   const [inputValue, setInputValue] = useState("");
   const [avatar, setAvatar] = useState({});
   const [avatarImage, setavatarImage] = useState("");
+  /* CLOSE MODAL */
 
+  const handleCloseEdit = () => {
+    if (modalAvatar) {
+      setModalAvatar(false);
+    }
+    if (modalBanner) {
+      setModalBanner(false);
+    }
+  };
+
+  const closeOnEscapeKeyDown = useCallback((e) => {
+    if (
+      e.charCode === 27 ||
+      e.keyCode === 27 ||
+      e.charCode === 53 ||
+      e.keyCode === 53
+    ) {
+      setModalBanner(false);
+      setModalAvatar(false);
+    }
+  }, []);
+  useEffect(() => {
+    document.body.addEventListener("keydown", closeOnEscapeKeyDown);
+    return function cleanup() {
+      document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
+    };
+  }, [closeOnEscapeKeyDown]);
+
+  /* GET AVATAR */
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/players/avatar/${user.id}`)
@@ -61,15 +92,6 @@ export default function ProfilSettings() {
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value.toUpperCase());
-  };
-
-  const handleCloseEdit = () => {
-    if (modalAvatar) {
-      setModalAvatar(false);
-    }
-    if (modalBanner) {
-      setModalBanner(false);
-    }
   };
 
   const handleRedeem = async (event) => {
@@ -166,24 +188,30 @@ export default function ProfilSettings() {
     handleUserContextTheme();
   }, [user.profilTheme]);
 
+  /* COLOR WHEEL */
+
+  const [color, setColor] = useState("#989898");
+
   return (
     <div className="settings-wrapper">
       <div className="profil-header">
-        {editmode && (
-          <button
-            type="button"
-            className="edit-avatar"
-            onClick={() => setModalAvatar(true)}
-          >
-            <img src={editPen} alt="pen to edit" width={30} />
-            <p className="hidden">edit</p>
-          </button>
-        )}
-        <img
-          src={`${import.meta.env.VITE_BACKEND_URL}/${avatarImage}`}
-          className={`avatar ${editmode && "edit-mode-avatar"}`}
-          alt="avatar"
-        />
+        <div className="avatar-container" style={{ backgroundColor: color }}>
+          {editmode && (
+            <button
+              type="button"
+              className="edit-avatar"
+              onClick={() => setModalAvatar(true)}
+            >
+              <img src={editPen} alt="pen to edit" width={30} />
+              <p className="hidden">edit</p>
+            </button>
+          )}
+          <img
+            src={`${import.meta.env.VITE_BACKEND_URL}/${avatarImage}`}
+            className={`avatar ${editmode && "edit-mode-avatar"}`}
+            alt="avatar"
+          />
+        </div>
         {editmode && (
           <button
             type="button"
@@ -293,12 +321,14 @@ export default function ProfilSettings() {
             >
               <img src={close} alt="close" width={30} />
             </button>
-            <div className="avatar-form">
-              <ProfilAvatars avatarList={avatarList} setAvatar={setAvatar} />
-            </div>
-            <div className="chose-color">
-              <input type="color" />
-            </div>
+
+            <ProfilAvatars
+              avatarList={avatarList}
+              setAvatar={setAvatar}
+              color={color}
+              setColor={setColor}
+            />
+
             <button
               type="button"
               className="confirm"
@@ -313,7 +343,7 @@ export default function ProfilSettings() {
         </div>
       )}
       {modalBanner && (
-        <div className="modal-container">
+        <div className="modal-container" onClick={() => setModalBanner(false)}>
           <Upload handleCloseEdit={handleCloseEdit} />
         </div>
       )}

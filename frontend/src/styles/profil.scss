@@ -26,56 +26,63 @@
     .edit-mode-banner {
       filter: invert(20%);
     }
-    .avatar {
-      width: 200px !important;
-      height: 200px !important;
+    .avatar-container {
+      width: 200px;
+      height: 200px;
+      z-index: 1;
       border-radius: 50%;
-      border: #030303 1px solid;
-      z-index: 1;
-      box-shadow:
-        -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
-        5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-      @media screen and (max-width: 600px) {
-        width: 150px;
-        height: 150px;
+      .avatar {
+        width: 200px !important;
+        height: 200px !important;
+        border-radius: 50%;
+        border: #030303 1px solid;
+        z-index: 1;
+        box-shadow:
+          -5px -5px 10px 0px rgba(255, 255, 255, 0.5),
+          5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+        @media screen and (max-width: 600px) {
+          width: 150px;
+          height: 150px;
+        }
+        @media screen and (max-width: 1499px) {
+          width: 150px;
+          height: 150px;
+        }
+        @media screen and (min-width: 1500px) {
+          transform: scale(1.1);
+          margin-left: 30px;
+        }
       }
-      @media screen and (max-width: 1499px) {
-        width: 150px;
-        height: 150px;
+
+      .edit-mode-avatar {
+        filter: invert(20%);
+        z-index: 1;
       }
-      @media screen and (min-width: 1500px) {
-        transform: scale(1.1);
-        margin-left: 30px;
-      }
-    }
-    .edit-mode-avatar {
-      filter: invert(20%);
-      z-index: 1;
-    }
-    .edit-avatar {
-      position: absolute;
-      top: 30px;
-      left: 190px;
-      z-index: 4;
-      &:hover {
-        transform: scale(1.2);
-        transition: 1s ease;
-      }
-      @media screen and (max-width: 600px) {
-        left: 150px;
+      .edit-avatar {
+        position: absolute;
         top: 30px;
-        left: 55%;
+        left: 190px;
+        z-index: 4;
+        &:hover {
+          transform: scale(1.2);
+          transition: 1s ease;
+        }
+        @media screen and (max-width: 600px) {
+          left: 150px;
+          top: 30px;
+          left: 55%;
+        }
+        @media screen and (min-width: 600px) and (max-width: 1499px) {
+          left: 10%;
+        }
+        @media screen and (min-width: 1500px) {
+          top: 50px;
+          left: 250px;
+        }
       }
-      @media screen and (min-width: 600px) and (max-width: 1499px) {
-        left: 10%;
+      .edit-avatar:hover + .edit-mode-avatar {
+        filter: saturate(50%);
       }
-      @media screen and (min-width: 1500px) {
-        top: 50px;
-        left: 250px;
-      }
-    }
-    .edit-avatar:hover + .edit-mode-avatar {
-      filter: saturate(50%);
     }
     .edit-banner {
       position: absolute;

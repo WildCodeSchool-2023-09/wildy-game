@@ -133,6 +133,14 @@ class PlayerManager extends AbstractManager {
     return result;
   }
 
+  async updateAvatarColor(avatarColor, id) {
+    const [result] = await this.database.query(
+      `update ${this.table} SET avatarColor = ? where id = ?`,
+      [avatarColor, id]
+    );
+    return result;
+  }
+
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an item by its ID
 

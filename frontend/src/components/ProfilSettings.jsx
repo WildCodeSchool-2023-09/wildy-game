@@ -209,7 +209,7 @@ export default function ProfilSettings() {
   };
   useEffect(() => {
     setColor(user.avatarColor);
-  }, [user]);
+  }, [user.avatarColor]);
 
   return (
     <div className="settings-wrapper">

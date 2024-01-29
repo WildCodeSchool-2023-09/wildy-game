@@ -16,7 +16,6 @@ const managers = [
   BoutiqueManager,
   CollectionManager,
   AmisManager,
-  // AdminManager,
   // Add other managers here
 ];
 
@@ -29,6 +28,8 @@ managers.forEach((ManagerClass) => {
 
   tables[manager.table] = manager;
 });
+
+// Ajout manager a la main car bug quand on vise la même table (dans ce cas player)
 tables.admin = new AdminManager();
 /* ************************************************************************* */
 

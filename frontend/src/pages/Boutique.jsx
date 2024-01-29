@@ -3,6 +3,7 @@ import axios from "axios";
 import Searchbar from "../components/Boutique/Searchbar";
 import InputCheckbox from "../components/Boutique/InputCheckbox";
 import BoutiqueComponent from "../components/Boutique/BoutiqueComponent";
+import BuyValidate from "../components/Boutique/BuyValidate";
 import "../styles/boutique.scss";
 
 function Boutique() {
@@ -15,6 +16,8 @@ function Boutique() {
   const [hideAchieved, setHideAchieved] = useState(false);
   const [lien, setLien] = useState([]);
   const [liste, setListe] = useState([]);
+  const [modalValidate, setModalValidate] = useState(false);
+  const [avatarId, setAvatarId] = useState({});
 
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
@@ -39,6 +42,15 @@ function Boutique() {
         </div>
       </div>
       <div className="boutique-main flex w-full">
+        {modalValidate && (
+          <div className="checkValidate z-[2] absolute w-full h-full bg-slate-400/75 flex items-center justify-center">
+            <BuyValidate
+              setModalValidate={setModalValidate}
+              modalValidate={modalValidate}
+              avatarId={avatarId}
+            />
+          </div>
+        )}
         <div className="boutique-filtre bg-color-shop1 flex flex-col gap-2 pt-4 px-6 min-w-[240px]">
           <Searchbar
             searchValue={searchValue}
@@ -117,10 +129,15 @@ function Boutique() {
           </button>
         </div>
         <div className="boutique-liste bg-color-shop2 w-[90%] p-10 flex-wrap">
-          <div className="item-container flex w-full flex-wrap gap-10">
+          <div className="item-container flex w-full flex-wrap gap-10 relative">
             {filteredList.map((item) => (
               <div key={item.image} className="flex flex-col item h-[280px]">
-                <BoutiqueComponent item={item} />
+                <BoutiqueComponent
+                  item={item}
+                  setModalValidate={setModalValidate}
+                  modalValidate={modalValidate}
+                  setAvatarId={setAvatarId}
+                />
               </div>
             ))}
           </div>

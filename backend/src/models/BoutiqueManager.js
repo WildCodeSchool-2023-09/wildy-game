@@ -73,7 +73,7 @@ class BoutiqueManager extends AbstractManager {
       : full;
 
     const sql = `
-        SELECT a.name, a.image, a.rarity, b.prix
+        SELECT a.id, a.name, a.image, a.rarity, b.prix
         FROM avatar a
         JOIN ${this.table} b ON a.id = b.avatarId
         ${whereClause}
@@ -81,6 +81,39 @@ class BoutiqueManager extends AbstractManager {
 
     const [rows] = await this.database.query(sql, [values]);
     return rows;
+  }
+
+  async createAvatar(id, avatarId) {
+    const [check] = await this.database.query(
+      `select * from collection where avatarId = ? and playerId = ?`,
+      [avatarId, id]
+    );
+    if (check.length !== 0) {
+      return 0;
+    }
+
+    const [[prix]] = await this.database.query(
+      `select prix from ${this.table} where avatarId = ?`,
+      [avatarId]
+    );
+    const [[credit]] = await this.database.query(
+      `select credit from player where id = ?`,
+      [id]
+    );
+    if (credit.credit < prix.prix) {
+      return "pas assez de crédits";
+    }
+
+    const [rows] = await this.database.query(
+      `insert into collection (playerId, avatarId) values (?,?)`,
+      [id, avatarId]
+    );
+
+    await this.database.query(`update player set credit = ? where id = ?`, [
+      credit.credit - prix.prix,
+      id,
+    ]);
+    return rows.insertId;
   }
 }
 

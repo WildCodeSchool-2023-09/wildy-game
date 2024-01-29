@@ -8,7 +8,6 @@ import { useUser } from "../contexts/UserContext";
 
 function App() {
   const { setUser } = useUser();
-  /* const [nbRefresh, setNbRefresh] = useState(0); */
   useEffect(() => {
     const player = JSON.parse(window.localStorage.getItem("player"));
     if (player) {

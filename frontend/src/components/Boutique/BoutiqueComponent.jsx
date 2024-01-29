@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import piece from "../../assets/images/credit_1.png";
+import cart from "../../assets/images/cart.svg";
 
-function BoutiqueComponent({ item }) {
+function BoutiqueComponent({
+  item,
+  setModalValidate,
+  modalValidate,
+  setAvatarId,
+}) {
   return (
     <>
       <img
@@ -14,6 +20,15 @@ function BoutiqueComponent({ item }) {
         <div className="flex text-white">
           <p>{item.prix}</p>
           <img src={piece} alt="coin" className="h-6" />
+          <button
+            type="button"
+            onClick={() => {
+              setModalValidate(!modalValidate);
+              setAvatarId(item.id);
+            }}
+          >
+            <img src={cart} alt="cart" className="h-6" />
+          </button>
         </div>
       </div>
     </>
@@ -22,6 +37,9 @@ function BoutiqueComponent({ item }) {
 
 BoutiqueComponent.propTypes = {
   item: PropTypes.bool.isRequired,
+  setModalValidate: PropTypes.func.isRequired,
+  modalValidate: PropTypes.bool.isRequired,
+  setAvatarId: PropTypes.func.isRequired,
 };
 
 export default BoutiqueComponent;

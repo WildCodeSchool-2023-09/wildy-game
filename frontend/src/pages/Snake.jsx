@@ -10,7 +10,7 @@ const SNAKE_START = [
 ];
 const APPLE_START = [8, 3];
 const SCALE = 40;
-const SPEED = 100;
+const SPEED = 120;
 const DIRECTIONS = {
   38: [0, -1], // up
   40: [0, 1], // down
@@ -107,12 +107,42 @@ function Snake() {
 
   useEffect(() => {
     if (!gameOver) {
-      if (score > 35) {
+      if (score > 36) {
         setSpeed(30);
-      } else if (score > 25) {
+      } else if (score > 35) {
+        setSpeed(35);
+      } else if (score > 34) {
+        setSpeed(40);
+      } else if (score > 32) {
+        setSpeed(45);
+      } else if (score > 30) {
         setSpeed(50);
-      } else if (score > 15) {
+      } else if (score > 28) {
+        setSpeed(55);
+      } else if (score > 26) {
+        setSpeed(60);
+      } else if (score > 24) {
+        setSpeed(65);
+      } else if (score > 22) {
+        setSpeed(70);
+      } else if (score > 20) {
+        setSpeed(75);
+      } else if (score > 18) {
         setSpeed(80);
+      } else if (score > 16) {
+        setSpeed(85);
+      } else if (score > 14) {
+        setSpeed(90);
+      } else if (score > 12) {
+        setSpeed(95);
+      } else if (score > 10) {
+        setSpeed(100);
+      } else if (score > 8) {
+        setSpeed(105);
+      } else if (score > 6) {
+        setSpeed(110);
+      } else if (score > 3) {
+        setSpeed(115);
       } else {
         setSpeed(SPEED);
       }
@@ -149,14 +179,11 @@ function Snake() {
           height={`${CANVAS_SIZE[1]}px`}
         />
         <div className="score">Score: {score}</div>
-        {gameOver && (
+        {!start && (
           <button type="button" className="game-over" onClick={startGame}>
-            GAME OVER RETRY?
+            {gameOver ? "GAME OVER, RETRY ?" : "PLAY"}
           </button>
         )}
-        <button type="button" className="play" onClick={startGame}>
-          PLAY
-        </button>
       </div>
     </div>
   );

@@ -1,29 +1,38 @@
 .game-container {
   transform: scale(0.7);
+  @media screen and (min-width: 1920px) {
+    transform: scale(0.9);
+  }
   .snake-wraper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 60%;
+    height: 80%;
     width: 1220px;
     position: relative;
-    top: -280px;
+    top: -10em;
     background-color: #000;
+    @media screen and (min-width: 1920px) {
+      top: -20em;
+    }
     .score {
       position: absolute;
       color: white;
-      top: 150px;
-      left: 200px;
+      top: 5em;
+      left: 5em;
+      font-size: 2rem;
+      @media screen and (min-width: 1920px) {
+        top: 10em;
+      }
     }
     .canvas-snake {
       position: relative;
-      top: -4%;
       background-color: #000000;
       margin: 0 auto;
       position: relative;
-      width: 600px;
-      height: 600px;
+      width: 34em;
+      height: 34em;
       margin-top: 3rem;
       border: 3px solid rgb(139, 92, 112) !important;
     }

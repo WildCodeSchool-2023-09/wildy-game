@@ -148,7 +148,7 @@ function Snake() {
       }
     }
   }, [score, gameOver]);
-  console.info("score", score);
+
   document.addEventListener("keydown", function (e) {
     if (
       e.key === "ArrowUp" ||
@@ -179,14 +179,11 @@ function Snake() {
           height={`${CANVAS_SIZE[1]}px`}
         />
         <div className="score">Score: {score}</div>
-        {gameOver && (
+        {!start && (
           <button type="button" className="game-over" onClick={startGame}>
-            GAME OVER RETRY?
+            {gameOver ? "GAME OVER, RETRY ?" : "PLAY"}
           </button>
         )}
-        <button type="button" className="play" onClick={startGame}>
-          PLAY
-        </button>
       </div>
     </div>
   );

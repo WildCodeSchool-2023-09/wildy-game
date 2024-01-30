@@ -228,6 +228,7 @@ CREATE TABLE `player` (
   `banner` varchar(255) default NULL,
   `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
   `activeAvatar` int,
+  `avatarColor`varchar(7) NOT NULL DEFAULT '#989898',
   PRIMARY KEY (`id`),
   KEY `fk_player_collection` (`activeAvatar`),
   CONSTRAINT `fk_player_collection` FOREIGN KEY (`activeAvatar`) REFERENCES `collection` (`avatarId`),

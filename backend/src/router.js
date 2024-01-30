@@ -23,7 +23,7 @@ const playerControllers = require("./controllers/playerControllers");
 const inscription = require("./services/inscription");
 const { hashPassword, verifyPassword } = require("./services/hashPassword");
 const randMembreId = require("./services/randMembreId");
-const { verifyToken } = require("./services/jwt");
+const { verifyToken, verifyTokenFirstLogin } = require("./services/jwt");
 
 router.put("/players/avatar/:id", playerControllers.editAvatar);
 router.get("/players/avatar/:id", playerControllers.findByAvatar);
@@ -41,7 +41,7 @@ router.delete("/players/:id", playerControllers.destroy);
 router.post("/login", verifyPassword, playerControllers.login);
 router.get("/logout", playerControllers.logout);
 router.post("/banner", upload.single("banner"), playerControllers.addBanner);
-router.get("/admin", verifyToken);
+router.get("/admin", verifyTokenFirstLogin);
 router.post("/admin/addcode", playerControllers.adminAddCode);
 router.post("/players/addcredit", playerControllers.addCredit);
 router.get("/player/:pseudo", playerControllers.readByPseudo);
@@ -79,6 +79,7 @@ router.get(
 // Admin
 const adminControllers = require("./controllers/adminControllers");
 
-router.get("/admin/test", adminControllers.browse);
+router.get("/admin/players", verifyToken, adminControllers.browse);
+router.delete("/admin/players/:id", verifyToken, adminControllers.destroy);
 
 module.exports = router;

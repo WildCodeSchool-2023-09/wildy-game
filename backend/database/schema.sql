@@ -1,7 +1,6 @@
--- SQLBook: Code
 -- MySQL dump 10.13  Distrib 8.0.35, for Win64 (x86_64)
 --
--- Host: localhost    Database: wildy_gamy
+-- Host: 127.0.0.1    Database: wildy_gamy
 -- ------------------------------------------------------
 -- Server version	8.0.35
 
@@ -30,8 +29,8 @@ CREATE TABLE `amis` (
   PRIMARY KEY (`id`),
   KEY `fk_amis_player1` (`playerId1`),
   KEY `fk_amis_player2` (`playerId2`),
-  CONSTRAINT `fk_amis_player1` FOREIGN KEY (`playerId1`) REFERENCES `player` (`id`),
-  CONSTRAINT `fk_amis_player2` FOREIGN KEY (`playerId2`) REFERENCES `player` (`id`)
+  CONSTRAINT `fk_amis_player1` FOREIGN KEY (`playerId1`) REFERENCES `player` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_amis_player2` FOREIGN KEY (`playerId2`) REFERENCES `player` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,10 +38,8 @@ CREATE TABLE `amis` (
 -- Dumping data for table `amis`
 --
 
-LOCK TABLES `amis` WRITE;
 /*!40000 ALTER TABLE `amis` DISABLE KEYS */;
 /*!40000 ALTER TABLE `amis` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `avatar`
@@ -57,17 +54,40 @@ CREATE TABLE `avatar` (
   `image` varchar(255) NOT NULL,
   `rarity` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `avatar`
 --
 
-LOCK TABLES `avatar` WRITE;
 /*!40000 ALTER TABLE `avatar` DISABLE KEYS */;
+INSERT INTO `avatar` VALUES (53,'skeleton1','assets/avatar/skeleton1.png','Rare'),(54,'ange','assets/avatar/ange.png','Epic'),(55,'angel','assets/avatar/angel.png','Legendary'),(56,'anonymous','assets/avatar/anonymous.png','Common'),(57,'bye','assets/avatar/bye.png','Rare'),(58,'cat1','assets/avatar/cat1.png','Epic'),(59,'cat2','assets/avatar/cat2.png','Legendary'),(60,'demon','assets/avatar/demon.png','Common'),(61,'demon1','assets/avatar/demon1.png','Rare'),(62,'demon2','assets/avatar/demon2.png','Epic'),(63,'demon3','assets/avatar/demon3.png','Legendary'),(64,'demon4','assets/avatar/demon4.png','Common'),(65,'dev1','assets/avatar/dev1.png','Rare'),(66,'dev2','assets/avatar/dev2.png','Epic'),(67,'dev3','assets/avatar/dev3.png','Legendary'),(68,'dev4','assets/avatar/dev4.png','Common'),(69,'dev5','assets/avatar/dev5.png','Rare'),(70,'dev6','assets/avatar/dev6.png','Epic'),(71,'dev7','assets/avatar/dev7.png','Legendary'),(72,'dev8','assets/avatar/dev8.png','Common'),(73,'dev9','assets/avatar/dev9.png','Rare'),(74,'dev10','assets/avatar/dev10.png','Epic'),(75,'dog','assets/avatar/dog.png','Legendary'),(76,'elemental1','assets/avatar/elemental1.png','Common'),(77,'elemental2','assets/avatar/elemental2.png','Rare'),(78,'elemental3','assets/avatar/elemental3.png','Epic'),(79,'elemental4','assets/avatar/elemental4.png','Legendary'),(80,'elemental5','assets/avatar/elemental5.png','Common'),(81,'elemental6','assets/avatar/elemental6.png','Rare'),(82,'gobelin','assets/avatar/gobelin.png','Epic'),(83,'gobelinPieces','assets/avatar/gobelinPieces.png','Legendary'),(84,'group1','assets/avatar/group1.png','Common'),(85,'group2','assets/avatar/group2.png','Rare'),(86,'group3','assets/avatar/group3.png','Epic'),(87,'group4','assets/avatar/group4.png','Legendary'),(88,'hero','assets/avatar/hero.png','Common'),(89,'hero1','assets/avatar/hero1.png','Rare'),(90,'hero2','assets/avatar/hero2.png','Epic'),(91,'hero3','assets/avatar/hero3.png','Legendary'),(92,'hero4','assets/avatar/hero4.png','Common'),(93,'hero5','assets/avatar/hero5.png','Rare'),(94,'hero6','assets/avatar/hero6.png','Epic'),(95,'hero7','assets/avatar/hero7.png','Legendary'),(96,'hero8','assets/avatar/hero8.png','Common'),(97,'hero9','assets/avatar/hero9.png','Rare'),(98,'hero10','assets/avatar/hero10.png','Epic'),(99,'hero11','assets/avatar/hero11.png','Legendary'),(100,'hero12','assets/avatar/hero12.png','Common'),(101,'hero13','assets/avatar/hero13.png','Rare'),(102,'hero14','assets/avatar/hero14.png','Epic'),(103,'hero15','assets/avatar/hero15.png','Legendary'),(104,'hero16','assets/avatar/hero16.png','Common'),(105,'hero17','assets/avatar/hero17.png','Rare'),(106,'merci','assets/avatar/merci.png','Epic'),(107,'monster1','assets/avatar/monster1.png','Legendary'),(108,'monster2','assets/avatar/monster2.png','Common'),(109,'monster3','assets/avatar/monster3.png','Rare'),(110,'monster4','assets/avatar/monster4.png','Epic'),(111,'orc1','assets/avatar/orc1.png','Legendary'),(112,'orc2','assets/avatar/orc2.png','Common'),(113,'robot','assets/avatar/robot.png','Rare'),(114,'skeleton2','assets/avatar/skeleton2.png','Epic'),(115,'skeleton3','assets/avatar/skeleton3.png','Legendary'),(116,'skeleton4','assets/avatar/skeleton4.png','Common'),(117,'skeleton5','assets/avatar/skeleton5.png','Rare'),(118,'skeleton6','assets/avatar/skeleton6.png','Epic'),(119,'skeleton7','assets/avatar/skeleton7.png','Legendary'),(120,'skeleton8','assets/avatar/skeleton8.png','Common'),(121,'skeleton9','assets/avatar/skeleton9.png','Rare'),(122,'troll','assets/avatar/troll.png','Epic'),(123,'vampire1','assets/avatar/vampire1.png','Legendary'),(124,'vampire2','assets/avatar/vampire2.png','Common'),(125,'vampire3','assets/avatar/vampire3.png','Rare'),(126,'vampire4','assets/avatar/vampire4.png','Epic'),(127,'welcome','assets/avatar/welcome.png','Legendary'),(128,'zombi1','assets/avatar/zombi1.png','Common'),(129,'zombi2','assets/avatar/zombi2.png','Rare');
 /*!40000 ALTER TABLE `avatar` ENABLE KEYS */;
-UNLOCK TABLES;
+
+--
+-- Table structure for table `bon`
+--
+
+DROP TABLE IF EXISTS `bon`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bon` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) NOT NULL,
+  `gain_credit` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bon`
+--
+
+/*!40000 ALTER TABLE `bon` DISABLE KEYS */;
+INSERT INTO `bon` VALUES (1,'TEST',30000),(2,'TEST2',9999);
+/*!40000 ALTER TABLE `bon` ENABLE KEYS */;
 
 --
 -- Table structure for table `boutique`
@@ -81,22 +101,18 @@ CREATE TABLE `boutique` (
   `prix` int NOT NULL,
   `avatarId` int NOT NULL,
   PRIMARY KEY (`id`),
-
   KEY `fk_boutique` (`avatarId`),
-  CONSTRAINT `fk_boutique` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`)
-  ON DELETE CASCADE
-
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_boutique` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `boutique`
 --
 
-LOCK TABLES `boutique` WRITE;
 /*!40000 ALTER TABLE `boutique` DISABLE KEYS */;
+INSERT INTO `boutique` VALUES (1,2000,60),(2,2000,53),(3,1000,54),(4,100,55),(5,10,56),(6,1,57),(7,500,58),(8,9999,59);
 /*!40000 ALTER TABLE `boutique` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `collection`
@@ -112,19 +128,18 @@ CREATE TABLE `collection` (
   PRIMARY KEY (`id`),
   KEY `fk_collection_player` (`playerId`),
   KEY `fk_collection_avatar` (`avatarId`),
-  CONSTRAINT `fk_collection_avatar` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`),
-  CONSTRAINT `fk_collection_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_collection_avatar` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_collection_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `collection`
 --
 
-LOCK TABLES `collection` WRITE;
 /*!40000 ALTER TABLE `collection` DISABLE KEYS */;
+INSERT INTO `collection` VALUES (28,2,54),(31,2,55),(32,2,59),(33,2,53);
 /*!40000 ALTER TABLE `collection` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `fav`
@@ -140,8 +155,8 @@ CREATE TABLE `fav` (
   PRIMARY KEY (`id`),
   KEY `fk_fav_game` (`gameId`),
   KEY `fk_fav_player` (`playerId`),
-  CONSTRAINT `fk_fav_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`),
-  CONSTRAINT `fk_fav_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`)
+  CONSTRAINT `fk_fav_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_fav_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -149,10 +164,8 @@ CREATE TABLE `fav` (
 -- Dumping data for table `fav`
 --
 
-LOCK TABLES `fav` WRITE;
 /*!40000 ALTER TABLE `fav` DISABLE KEYS */;
 /*!40000 ALTER TABLE `fav` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `game`
@@ -172,10 +185,8 @@ CREATE TABLE `game` (
 -- Dumping data for table `game`
 --
 
-LOCK TABLES `game` WRITE;
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `hv`
@@ -192,8 +203,8 @@ CREATE TABLE `hv` (
   PRIMARY KEY (`id`),
   KEY `fk_HV_player` (`playerId`),
   KEY `fk_HV_avatar` (`avatarId`),
-  CONSTRAINT `fk_HV_avatar` FOREIGN KEY (`avatarId`) REFERENCES `collection` (`avatarId`),
-  CONSTRAINT `fk_HV_player` FOREIGN KEY (`playerId`) REFERENCES `collection` (`playerId`)
+  CONSTRAINT `fk_HV_avatar` FOREIGN KEY (`avatarId`) REFERENCES `collection` (`avatarId`) ON DELETE CASCADE,
+  CONSTRAINT `fk_HV_player` FOREIGN KEY (`playerId`) REFERENCES `collection` (`playerId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -201,10 +212,8 @@ CREATE TABLE `hv` (
 -- Dumping data for table `hv`
 --
 
-LOCK TABLES `hv` WRITE;
 /*!40000 ALTER TABLE `hv` DISABLE KEYS */;
 /*!40000 ALTER TABLE `hv` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `player`
@@ -225,28 +234,53 @@ CREATE TABLE `player` (
   `membreId` varchar(50) NOT NULL,
   `profilTheme` int NOT NULL DEFAULT '0',
   `lvl` int NOT NULL DEFAULT '1',
-  `banner` varchar(255) default NULL,
-  `isAdmin` tinyint(1) NOT NULL DEFAULT 0,
-  `activeAvatar` int,
-  `avatarColor`varchar(7) NOT NULL DEFAULT '#989898',
+  `banner` varchar(255) DEFAULT NULL,
+  `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
+  `activeAvatar` int DEFAULT NULL,
+  `avatarColor` varchar(7) NOT NULL DEFAULT '#989898',
   PRIMARY KEY (`id`),
-  KEY `fk_player_collection` (`activeAvatar`),
-  CONSTRAINT `fk_player_collection` FOREIGN KEY (`activeAvatar`) REFERENCES `collection` (`avatarId`),
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `membreId` (`membreId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+  UNIQUE KEY `membreId` (`membreId`),
+  KEY `fk_player_collection` (`activeAvatar`),
+  CONSTRAINT `fk_player_collection` FOREIGN KEY (`activeAvatar`) REFERENCES `collection` (`avatarId`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `player`
 --
 
-LOCK TABLES `player` WRITE;
 /*!40000 ALTER TABLE `player` DISABLE KEYS */;
+INSERT INTO `player` VALUES (2,'admin','admin','admin','$2a$13$AHX2ZMS8qfEjoIMmHM6fke9kT5Dxf1K6U6It7pFBTOHNe2qu.KIMm','admin@gmail.com',0,50,'1528',0,1,NULL,1,NULL,'#989898'),(3,'compte','compte','compte','$2a$13$ZjCYmDzQWNS0QVhybxdE0.p0gHjPU40x8.xbKjdjF7ljdIzVJLtS6','compte@gmail.com',0,50,'1762',0,1,NULL,0,NULL,'#989898');
 /*!40000 ALTER TABLE `player` ENABLE KEYS */;
-UNLOCK TABLES;
+
+--
+-- Table structure for table `redeemed`
+--
+
+DROP TABLE IF EXISTS `redeemed`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `redeemed` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `playerId` int NOT NULL,
+  `bonId` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_redeemed_player` (`playerId`),
+  KEY `fk_redeemed_bon` (`bonId`),
+  CONSTRAINT `fk_redeemed_bon` FOREIGN KEY (`bonId`) REFERENCES `bon` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_redeemed_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `redeemed`
+--
+
+/*!40000 ALTER TABLE `redeemed` DISABLE KEYS */;
+INSERT INTO `redeemed` VALUES (3,2,1);
+/*!40000 ALTER TABLE `redeemed` ENABLE KEYS */;
 
 --
 -- Table structure for table `scoreboard`
@@ -263,8 +297,8 @@ CREATE TABLE `scoreboard` (
   PRIMARY KEY (`id`),
   KEY `fk_scoreboard_game` (`gameId`),
   KEY `fk_scoreboard_player` (`playerId`),
-  CONSTRAINT `fk_scoreboard_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`),
-  CONSTRAINT `fk_scoreboard_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`)
+  CONSTRAINT `fk_scoreboard_game` FOREIGN KEY (`gameId`) REFERENCES `game` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_scoreboard_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -272,28 +306,12 @@ CREATE TABLE `scoreboard` (
 -- Dumping data for table `scoreboard`
 --
 
-LOCK TABLES `scoreboard` WRITE;
 /*!40000 ALTER TABLE `scoreboard` DISABLE KEYS */;
 /*!40000 ALTER TABLE `scoreboard` ENABLE KEYS */;
-UNLOCK TABLES;
 
-CREATE TABLE `bon` (
-  id int NOT NULL AUTO_INCREMENT,
-  code VARCHAR(255) NOT NULL UNIQUE,
-  gain_credit int NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE redeemed (
-  id int NOT NULL AUTO_INCREMENT,
-  playerId int NOT NULL,
-  bonId int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_redeemed_player` (`playerId`),
-  KEY `fk_redeemed_bon` (`bonId`),
-  CONSTRAINT `fk_redeemed_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`),
-  CONSTRAINT `fk_redeemed_bon` FOREIGN KEY (`bonId`) REFERENCES `bon` (`id`)
-);
+--
+-- Dumping routines for database 'wildy_gamy'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -303,3 +321,5 @@ CREATE TABLE redeemed (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-01-30 16:22:14

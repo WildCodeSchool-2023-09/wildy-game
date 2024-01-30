@@ -24,6 +24,7 @@ function Upload({ handleCloseEdit }) {
       );
       if (res.status === 200) {
         success(`La bannière a été ajoutée`);
+        handleCloseEdit();
       }
     } catch (error) {
       failed("Erreur lors de l'ajout de la bannière");
@@ -47,11 +48,7 @@ function Upload({ handleCloseEdit }) {
           accept="image/png, image/jpeg"
           onChange={handleChange}
         />
-        <button
-          type="submit"
-          className="confirm"
-          onClick={() => handleCloseEdit()}
-        >
+        <button type="submit" className="confirm">
           Valider
         </button>
       </form>

@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "./contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,10 +19,12 @@ import Signup from "./pages/Signup";
 import Jeu from "./pages/Jeu";
 import Profil from "./pages/Profil";
 import Admin from "./pages/Admin";
-import Upload from "./pages/Upload";
 import Tetris from "./pages/Tetris";
 import Snake from "./pages/Snake";
 import ProfilVisiteur from "./components/ProfilVisiteur";
+import PlayerManagement from "./components/Admin/PlayerManagement";
+import BoutiqueManagement from "./components/Admin/BoutiqueManagement";
+import BonManagement from "./components/Admin/BonManagement";
 
 const router = createBrowserRouter([
   {
@@ -64,10 +70,18 @@ const router = createBrowserRouter([
       {
         path: "admin",
         element: <Admin />,
-      },
-      {
-        path: "upload",
-        element: <Upload />,
+        children: [
+          { path: "player", element: <PlayerManagement /> },
+          { path: "", element: <Navigate to="player" /> },
+          {
+            path: "boutique",
+            element: <BoutiqueManagement />,
+          },
+          {
+            path: "bons",
+            element: <BonManagement />,
+          },
+        ],
       },
     ],
   },

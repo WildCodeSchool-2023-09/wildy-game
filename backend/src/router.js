@@ -57,6 +57,7 @@ router.get("/boutique/:id", boutiqueControllers.findById);
 router.post("/boutique", boutiqueControllers.add);
 router.put("/boutique/:id", boutiqueControllers.edit);
 router.delete("/boutique/:id", boutiqueControllers.destroy);
+router.post("/boutique/avatar/:id", boutiqueControllers.addAvatar);
 
 /* ************************************************************************* */
 
@@ -75,6 +76,9 @@ router.get(
 );
 /* ************************************************************************* */
 
-/* const amisControllers = require("./controllers/amisControllers"); */
+// Admin
+const adminControllers = require("./controllers/adminControllers");
+
+router.get("/admin/test", adminControllers.browse);
 
 module.exports = router;

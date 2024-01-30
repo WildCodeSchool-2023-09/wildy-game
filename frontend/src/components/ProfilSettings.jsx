@@ -15,6 +15,8 @@ import editPen from "../assets/images/editPen.png";
 import ProfilAvatars from "./settingsComponents/ProfilAvatars";
 import Upload from "../pages/Upload";
 import close from "../assets/images/close.svg";
+import robot from "../assets/images/robot.png";
+import defaultBanner from "../assets/images/randomBanner.png";
 
 export default function ProfilSettings() {
   const { user, setUser } = useUser();
@@ -70,8 +72,6 @@ export default function ProfilSettings() {
       .catch((err) => console.error(err));
   }, [user.activeAvatar]);
 
-  console.info(user);
-  console.info("avatar image :", avatarImage);
   const handleAvatarChange = async () => {
     const avatarObject = { avatarId: avatar };
     try {
@@ -86,7 +86,6 @@ export default function ProfilSettings() {
       }
     } catch (error) {
       failed(error.response.data.error);
-      console.error(error.response.data.error);
     }
   };
 
@@ -226,7 +225,11 @@ export default function ProfilSettings() {
             </button>
           )}
           <img
-            src={`${import.meta.env.VITE_BACKEND_URL}/${avatarImage}`}
+            src={
+              avatarImage
+                ? `${import.meta.env.VITE_BACKEND_URL}/${avatarImage}`
+                : robot
+            }
             className={`avatar ${editmode && "edit-mode-avatar"}`}
             alt="avatar"
           />
@@ -241,7 +244,15 @@ export default function ProfilSettings() {
             <p className="hidden">edit</p>
           </button>
         )}
-        <div className={`banner ${editmode && "edit-mode-banner"}`} />
+        <img
+          className={`banner ${editmode && "edit-mode-banner"}`}
+          src={
+            user.banner
+              ? `${import.meta.env.VITE_BACKEND_URL}/${user.banner}`
+              : defaultBanner
+          }
+          alt="banner"
+        />
       </div>
       <div
         className={`settings-container ${editmode && "justify-center"}`}

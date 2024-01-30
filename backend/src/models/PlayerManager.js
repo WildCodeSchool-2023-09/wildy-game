@@ -32,7 +32,12 @@ class PlayerManager extends AbstractManager {
 
     const [result] = await this.database.query(
       `update ${this.table} set banner=? where id= ?`,
-      [`${banner.destination}/${banner.filename}${extension}`, id]
+      [
+        `${banner.destination.replace("public", "")}/${
+          banner.filename
+        }${extension}`,
+        id,
+      ]
     );
 
     // Return the ID of the newly inserted item

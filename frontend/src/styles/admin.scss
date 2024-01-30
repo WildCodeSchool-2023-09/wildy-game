@@ -5,3 +5,9 @@
 .active {
   color: #ec2020;
 }
+
+.admin-player {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(100px, 1fr));
+  font-family: "Montserrat", sans-serif;
+}

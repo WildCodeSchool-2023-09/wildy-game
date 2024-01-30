@@ -25,7 +25,7 @@ function Admin() {
   }
   return (
     <div className="bg-gray-400 flex w-screen min-h-screen flex-col pt-[80px]">
-      <div className="flex gap-4 mx-auto text-2xl bg-white w-full h-20 items-center p-2">
+      <div className="flex gap-4 mx-auto text-2xl bg-white w-full h-20 items-center p-2 overflow-auto">
         <p>Gerer :</p>
         <NavLink to="player" className="admin-link">
           Joueur

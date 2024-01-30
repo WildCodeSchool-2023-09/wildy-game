@@ -75,6 +75,9 @@ router.get(
 );
 /* ************************************************************************* */
 
-/* const amisControllers = require("./controllers/amisControllers"); */
+// Admin
+const adminControllers = require("./controllers/adminControllers");
+
+router.get("/admin/test", adminControllers.browse);
 
 module.exports = router;

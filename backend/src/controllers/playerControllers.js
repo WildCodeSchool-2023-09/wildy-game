@@ -79,8 +79,8 @@ const add = async (req, res, next) => {
 };
 
 const addBanner = async (req, res, next) => {
-  // Extract the item data from the request body
   const banner = req.file;
+  console.info(banner);
   const extension = path.extname(banner.originalname);
   await new Promise((resolve, reject) => {
     fs.rename(
@@ -100,7 +100,6 @@ const addBanner = async (req, res, next) => {
     return res.status(401).json({ error: "Token non fournie" });
   }
   try {
-    // Insert the item into the database
     const decoded = jwt.verify(token, process.env.APP_SECRET);
     const insertId = await tables.player.createBanner(
       banner,
@@ -108,10 +107,8 @@ const addBanner = async (req, res, next) => {
       extension
     );
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
-    res.status(201).json({ insertId });
+    res.status(200).json({ insertId });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 

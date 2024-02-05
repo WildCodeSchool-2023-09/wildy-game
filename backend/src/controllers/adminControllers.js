@@ -25,7 +25,20 @@ const destroy = async (req, res, next) => {
   }
 };
 
+const browseBons = async (req, res) => {
+  try {
+    const result = await tables.player.getAllBons();
+    if (result.length === 0) {
+      return res.status(404).send("Aucun bon disponible");
+    }
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   browse,
   destroy,
+  browseBons,
 };

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { success } from "../services/toast";
 import { useUser } from "../contexts/UserContext";
+import piece from "../assets/images/credit_1.png";
 
 function Logout({ user }) {
   const { setUser } = useUser();
@@ -30,13 +31,19 @@ function Logout({ user }) {
   };
 
   return (
-    <div>
-      <Link to="profil-settings">
-        <p>{user.pseudo}</p>
-      </Link>
-      <button type="button" onClick={handleLogout}>
-        Logout
-      </button>
+    <div className="flex justify-center item-center gap-2">
+      <div className="flex justify-center item-center">
+        <p className="self-center">{user.credit}</p>
+        <img src={piece} alt="piece" className="w-8 self-center" />
+      </div>
+      <div>
+        <Link to="profil-settings">
+          <p>{user.pseudo}</p>
+        </Link>
+        <button type="button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 }

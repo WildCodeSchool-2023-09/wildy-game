@@ -223,6 +223,12 @@ class PlayerManager extends AbstractManager {
     );
     return result;
   }
+
+  async getAllBons() {
+    const [result] = await this.database.query(`select * from bon;`);
+
+    return result;
+  }
 }
 
 module.exports = PlayerManager;

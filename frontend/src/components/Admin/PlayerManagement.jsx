@@ -17,48 +17,20 @@ function PlayerManagement() {
     <div>
       <div className="grid overflow-auto">
         <div className="admin-player">
-          <p className="font-mont font-bold border border-black p-2 bg-white">
-            ID
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-gray-300">
-            Firstname
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-white">
-            Lastname
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-gray-300">
-            Email
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-white">
-            Pseudo
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-gray-300">
-            Avatar
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-white">
-            Banner
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-gray-300">
-            Credit
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-white">
-            Experience
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-gray-300">
-            Admin
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-white">
-            lvl
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-gray-300">
-            membreId
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-white">
-            Theme
-          </p>
-          <p className="font-mont font-bold border border-black p-2 bg-gray-300">
-            Supprimer
-          </p>
+          <p className="admin-case1">ID</p>
+          <p className="admin-case2">Firstname</p>
+          <p className="admin-case1">Lastname</p>
+          <p className="admin-case2">Email</p>
+          <p className="admin-case1">Pseudo</p>
+          <p className="admin-case2">Avatar</p>
+          <p className="admin-case1">Banner</p>
+          <p className="admin-case2">Credit</p>
+          <p className="admin-case1">Experience</p>
+          <p className="admin-case2">Admin</p>
+          <p className="admin-case1">lvl</p>
+          <p className="admin-case2">membreId</p>
+          <p className="admin-case1">Theme</p>
+          <p className="admin-case2">Supprimer</p>
         </div>
         {players.map((player) => (
           <PlayerComponent player={player} />

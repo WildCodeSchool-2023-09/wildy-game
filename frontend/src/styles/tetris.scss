@@ -1,0 +1,200 @@
+@import "../styles/root.scss";
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.9);
+  top: -7rem;
+  position: relative;
+  @media screen and (min-width: 1920px) {
+    top: 10rem;
+    transform: scale(1);
+  }
+
+  .borne-arcade {
+    top: 0;
+    position: absolute;
+    z-index: 3;
+    transform: scale(1.2);
+    @media screen and (min-width: 1600px) {
+      transform: scale(2);
+    }
+    @media screen and (min-width: 1920px) {
+      transform: scale(2.2);
+      top: -200px;
+    }
+    @media screen and (max-width: 1160px) {
+      display: none;
+    }
+  }
+
+  .game-wrapper {
+    background-color: black;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 40rem;
+    top: 20rem;
+    height: 25rem;
+    z-index: 2;
+    @media screen and (max-width: 1160px) {
+      width: 95svw;
+      height: 85vh;
+      top: 12rem;
+      border-radius: 20px;
+    }
+
+    @media screen and (min-width: 1920px) {
+      width: 40rem;
+      height: 30rem;
+      transform: scale(1.6);
+      top: 10rem;
+    }
+
+    .scores {
+      color: white;
+      position: relative;
+      left: 7.5rem;
+      top: 2rem;
+      z-index: 3;
+      @media screen and (min-width: 1920px) {
+        left: 5rem;
+        top: 2rem;
+        z-index: 3;
+      }
+      @media screen and (max-width: 1160px) {
+        left: 2rem;
+      }
+    }
+
+    .tetris-board {
+      background-color: black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 100px;
+      position: relative;
+      width: 70rem;
+      transform: scale(0.7);
+      left: -2.5rem;
+
+      @media screen and (min-width: 1920px) {
+        width: 200%;
+        height: 80%;
+        transform: scale(0.8);
+        left: -40px;
+        top: 20px;
+      }
+      @media screen and (max-width: 1160px) {
+        height: 100%;
+        transform: scale(0.5);
+        flex-direction: column;
+        flex-wrap: wrap;
+        left: -37%;
+        width: 95svw;
+      }
+    }
+    .game-over {
+      position: absolute;
+      background-color: $neutral-color;
+      height: 100px;
+      width: 17rem;
+      text-align: center;
+      z-index: 200;
+      border-radius: 10px;
+      top: 8rem;
+      left: 12rem;
+
+      @media screen and (min-width: 1920px) {
+        top: 10rem;
+        left: 11rem;
+        transform: scale(1.2);
+      }
+      @media screen and (max-width: 1160px) {
+        left: 13%;
+        top: 40%;
+      }
+      .new-game {
+        position: relative;
+        top: -20px;
+        right: 7px;
+        margin: 1.5rem;
+        height: 3rem;
+        width: 15rem;
+        font-size: 1.7rem;
+        color: #3d3d3d;
+        background-color: #f9c80e;
+        padding: 5px 30px;
+        border: none;
+        box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+        border-radius: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        @media screen and (min-width: 1920px) {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+
+.tetris-play {
+  position: absolute;
+  z-index: 100;
+  margin: 1.5rem;
+  height: 3rem;
+  width: 15rem;
+  top: 70vh;
+  font-size: 1.7rem;
+  color: #3d3d3d;
+  background-color: #f9c80e;
+  padding: 5px 30px;
+  border: none;
+  box-shadow: 12px 12px 5px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.2);
+  @media screen and (min-width: 1920px) {
+    top: 30vh;
+    transform: scale(1.6);
+  }
+}
+
+.game-block {
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid #ddd;
+}
+.piece-i {
+  background-color: #ec858b;
+}
+.piece-j {
+  background-color: #f1b598;
+}
+.piece-l {
+  background-color: #f8efae;
+}
+.piece-o {
+  background-color: #b5a677;
+}
+.piece-s {
+  background-color: #816e56;
+}
+.piece-t {
+  background-color: #b77c72;
+}
+.piece-z {
+  background-color: #e3be58;
+}
+.piece-preview {
+  background-color: #eee;
+}

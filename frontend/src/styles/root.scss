@@ -10,7 +10,7 @@ $first-color: #920075;
 $second-color: #f9c80e;
 $shop-color1: #f36d84;
 $shop-color2: #3d2579;
-$neutral-color: #3d3d3d;
+$neutral-color: rgb(61, 61, 61);
 $neutral-color-light: #b4b4b4;
 $neutral-color-lighter: #e0dbdb;
 $font1: "Upheaval TT (BRK)", sans-serif;
@@ -20,6 +20,10 @@ $font3:
   sans serif;
 $generic-font: "Montserrat", sans-serif;
 
+.font-montserrat {
+  font-family: $generic-font;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,6 +31,7 @@ $generic-font: "Montserrat", sans-serif;
 }
 
 .link {
+  cursor: pointer;
   &:hover {
     opacity: 70%;
   }
@@ -74,7 +79,7 @@ body {
   height: 100%;
 }
 .dark {
-  background-image: url(../assets/images/27479681.png);
+  background-image: url(../assets/images/fond-dark.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -125,4 +130,14 @@ button {
   left: 39%;
   z-index: 100;
   width: 100px;
+}
+
+.toast-position {
+  top: 90px !important;
+}
+img {
+  pointer-events: none;
+}
+section {
+  max-width: 1220px;
 }

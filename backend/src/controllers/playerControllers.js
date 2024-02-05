@@ -1,4 +1,6 @@
 // Import access to database tables
+const fs = require("fs");
+const path = require("path");
 const jwt = require("jsonwebtoken");
 const tables = require("../tables");
 
@@ -27,6 +29,7 @@ const findById = async (req, res, next) => {
     if (player == null) {
       res.sendStatus(404);
     } else {
+      delete player.password;
       res.json(player);
     }
   } catch (err) {
@@ -75,6 +78,43 @@ const add = async (req, res, next) => {
   }
 };
 
+const addBanner = async (req, res, next) => {
+  const banner = req.file;
+  console.info(banner);
+  const extension = path.extname(banner.originalname);
+  await new Promise((resolve, reject) => {
+    fs.rename(
+      `${banner.destination}/${banner.filename}`,
+      `${banner.destination}/${banner.filename}${extension}`,
+      (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      }
+    );
+  });
+  const { token } = req.cookies;
+  if (!token) {
+    return res.status(401).json({ error: "Token non fournie" });
+  }
+  try {
+    const decoded = jwt.verify(token, process.env.APP_SECRET);
+    const insertId = await tables.player.createBanner(
+      banner,
+      decoded.player.id,
+      extension
+    );
+
+    res.status(200).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+
+  return null;
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 const destroy = async (req, res, next) => {
@@ -96,9 +136,109 @@ const login = async (req, res, next) => {
   try {
     const player = req.user;
     const token = jwt.sign({ player }, process.env.APP_SECRET);
-    res.cookie("token", token).json({ user: req.user, token });
+    res.cookie("token", token, { httpOnly: true });
+    res.json({ player });
   } catch (err) {
     next(err);
+  }
+};
+const logout = async (req, res, next) => {
+  try {
+    res.clearCookie("token");
+    res.sendStatus(200);
+  } catch (err) {
+    next(err);
+  }
+};
+const adminAddCode = async (req, res) => {
+  try {
+    const insertId = await tables.player.createCode(req.body.credit);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+const addCredit = async (req, res) => {
+  try {
+    const result = await tables.player.useCode(req.body.code, req.body.id);
+    if (result === 0 || result === "déjà utilisé") {
+      if (result === 0) {
+        return res.status(400).json({ error: "Code invalide / inexistant" });
+      }
+      return res.status(400).json({ error: "Code déjà utilisé" });
+    }
+    return res.status(201).json({ gain: result });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+const readByPseudo = async (req, res) => {
+  try {
+    const result = await tables.player.readByUsername(req.params.pseudo);
+    if (!result) {
+      return res.status(404).json({ error: "Introuvable" });
+    }
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+const editAvatar = async (req, res) => {
+  try {
+    const result = await tables.player.updateAvatar(
+      req.params.id,
+      req.body.avatarId
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Joueur ou avatar incorrect" });
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+
+const findByAvatar = async (req, res) => {
+  try {
+    const result = await tables.player.getAvatar(req.params.id);
+    if (!result) {
+      return res.status(404).json({ error: "Introuvable" });
+    }
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};
+const modifyTheme = async (req, res) => {
+  try {
+    const result = await tables.player.updateTheme(
+      req.body.profilTheme,
+      req.params.id
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Un erreur est survenue" });
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+const modifyAvatarColor = async (req, res) => {
+  try {
+    const result = await tables.player.updateAvatarColor(
+      req.body.avatarColor,
+      req.params.id
+    );
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Un erreur est survenue" });
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 };
 // Ready to export the controller functions
@@ -110,4 +250,13 @@ module.exports = {
   edit,
   destroy,
   login,
+  addBanner,
+  adminAddCode,
+  addCredit,
+  logout,
+  readByPseudo,
+  editAvatar,
+  findByAvatar,
+  modifyTheme,
+  modifyAvatarColor,
 };

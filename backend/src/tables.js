@@ -6,11 +6,16 @@
 const AvatarManager = require("./models/AvatarManager");
 const PlayerManager = require("./models/PlayerManager");
 const BoutiqueManager = require("./models/BoutiqueManager");
+const CollectionManager = require("./models/CollectionManager");
+const AmisManager = require("./models/AmisManager");
+const AdminManager = require("./models/AdminManager");
 
 const managers = [
   AvatarManager,
   PlayerManager,
   BoutiqueManager,
+  CollectionManager,
+  AmisManager,
   // Add other managers here
 ];
 
@@ -24,6 +29,8 @@ managers.forEach((ManagerClass) => {
   tables[manager.table] = manager;
 });
 
+// Ajout manager a la main car bug quand on vise la même table (dans ce cas player)
+tables.admin = new AdminManager();
 /* ************************************************************************* */
 
 // Use a Proxy to customize error messages when trying to access a non-existing table

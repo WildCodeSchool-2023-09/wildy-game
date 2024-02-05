@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "./contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +18,13 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Jeu from "./pages/Jeu";
 import Profil from "./pages/Profil";
+import Admin from "./pages/Admin";
+import Tetris from "./pages/Tetris";
+import Snake from "./pages/Snake";
+import ProfilVisiteur from "./components/ProfilVisiteur";
+import PlayerManagement from "./components/Admin/PlayerManagement";
+import BoutiqueManagement from "./components/Admin/BoutiqueManagement";
+import BonManagement from "./components/Admin/BonManagement";
 
 const router = createBrowserRouter([
   {
@@ -41,8 +52,36 @@ const router = createBrowserRouter([
         element: <Jeu />,
       },
       {
-        path: "profil",
+        path: "snake",
+        element: <Snake />,
+      },
+      {
+        path: "tetris",
+        element: <Tetris />,
+      },
+      {
+        path: "profil-settings",
         element: <Profil />,
+      },
+      {
+        path: "profil/:pseudo",
+        element: <ProfilVisiteur />,
+      },
+      {
+        path: "admin",
+        element: <Admin />,
+        children: [
+          { path: "player", element: <PlayerManagement /> },
+          { path: "", element: <Navigate to="player" /> },
+          {
+            path: "boutique",
+            element: <BoutiqueManagement />,
+          },
+          {
+            path: "bons",
+            element: <BonManagement />,
+          },
+        ],
       },
     ],
   },
@@ -51,10 +90,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
-    <UserProvider>
-      <RouterProvider router={router} />
-      <ToastContainer />
-    </UserProvider>
-  </React.StrictMode>
+  <UserProvider>
+    <RouterProvider router={router} />
+    <ToastContainer className="toast-position" />
+  </UserProvider>
 );

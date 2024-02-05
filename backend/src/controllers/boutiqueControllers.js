@@ -100,6 +100,24 @@ const filter = async (req, res, next) => {
   }
 };
 
+const addAvatar = async (req, res) => {
+  try {
+    const result = await tables.boutique.createAvatar(
+      req.params.id,
+      req.body.avatarId
+    );
+    if (result === 0) {
+      return res.status(400).json({ error: "Avatar déjà dans la collection" });
+    }
+    if (result === "pas assez de crédits") {
+      return res.status(400).json({ error: "Pas assez de crédits" });
+    }
+    return res.status(200).json({ result });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 // Ready to export the controller functions
 module.exports = {
   browse,
@@ -108,4 +126,5 @@ module.exports = {
   edit,
   destroy,
   filter,
+  addAvatar,
 };

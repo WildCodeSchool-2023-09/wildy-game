@@ -12,6 +12,9 @@ module.exports = {
           neutral: "#bbbbbb",
         },
       },
+      fontFamily: {
+        mont: ["Montserrat"],
+      },
     },
   },
   plugins: [],

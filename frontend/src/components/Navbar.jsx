@@ -1,15 +1,24 @@
 import { Player } from "@lottiefiles/react-lottie-player";
+import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavHashLink } from "react-router-hash-link";
 import { useUser } from "../contexts/UserContext";
+import Logout from "./Logout";
+
 import manette from "../assets/anim_manette.json";
 import "../styles/navbar.scss";
 
 function Navbar() {
+  const location = useLocation();
+
   const { user } = useUser();
   const [isActive, setIsActive] = useState("");
   const handleClick = (url) => {
     setIsActive(url);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const [navScrollClass, setNavScrollClass] = useState("");
@@ -48,7 +57,11 @@ function Navbar() {
 
   return (
     <nav
-      className={`navbar ${navScrollClass}`}
+      className={`navbar ${navScrollClass} ${
+        (location.pathname === "/profil-settings" ||
+          location.pathname === "/profil") &&
+        "scrolled relative"
+      }`}
       style={{ height: navSize, transition: "all 1s" }}
     >
       <NavHashLink
@@ -81,6 +94,7 @@ function Navbar() {
             onClick={() => handleClick("games")}
             className={`link ${isActive === "games" && "is-active"}`}
             to="/#games"
+            spy
           >
             Jeux{" "}
           </NavHashLink>
@@ -90,42 +104,63 @@ function Navbar() {
           <NavHashLink
             onClick={() => handleClick("contact")}
             className={`link ${isActive === "contact" && "is-active"}`}
+            smooth
             to="/#contact"
           >
             Nos Salles{" "}
           </NavHashLink>
         </li>
         <li>
-          <NavHashLink
+          <Link
             onClick={() => handleClick("boutique")}
             className={`link ${isActive === "boutique" && "is-active"}`}
-            to="boutique"
+            to="/boutique"
           >
             Boutique
-          </NavHashLink>
+          </Link>
         </li>
+        {user.isAdmin ? (
+          <li>
+            <NavHashLink
+              onClick={() => handleClick("admin")}
+              className={`link ${isActive === "admin" && "is-active"}`}
+              to="admin"
+            >
+              Admin
+            </NavHashLink>
+          </li>
+        ) : null}
       </ul>
       <div className="navbar-right">
         {user ? (
-          <p>Avatar</p>
+          <Logout user={user} />
         ) : (
           <NavHashLink
             onClick={() => handleClick("login")}
             className={`link ${isActive === "login" && "is-active"}`}
             to="login"
           >
-            {user ? "EST CONNECTE" : "LOGIN"}
+            LOGIN
           </NavHashLink>
         )}
-        {theme ? (
-          <button className="theme" type="button" onClick={() => handleTheme()}>
-            🌙
-          </button>
-        ) : (
-          <button className="theme" type="button" onClick={() => handleTheme()}>
-            ☀️
-          </button>
-        )}
+        {location.pathname === "/" &&
+          (theme ? (
+            <button
+              className="theme"
+              type="button"
+              onClick={() => handleTheme()}
+            >
+              🌙
+            </button>
+          ) : (
+            <button
+              className="theme"
+              type="button"
+              onClick={() => handleTheme()}
+            >
+              ☀️
+            </button>
+          ))}
       </div>
     </nav>
   );

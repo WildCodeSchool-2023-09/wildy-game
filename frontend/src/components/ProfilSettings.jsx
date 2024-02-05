@@ -16,7 +16,6 @@ import ProfilAvatars from "./settingsComponents/ProfilAvatars";
 import Upload from "../pages/Upload";
 import close from "../assets/images/close.svg";
 import robot from "../assets/images/robot.png";
-import defaultBanner from "../assets/images/randomBanner.png";
 
 export default function ProfilSettings() {
   const { user, setUser } = useUser();
@@ -247,9 +246,7 @@ export default function ProfilSettings() {
         <img
           className={`banner ${editmode && "edit-mode-banner"}`}
           src={
-            user.banner
-              ? `${import.meta.env.VITE_BACKEND_URL}/${user.banner}`
-              : defaultBanner
+            user.banner && `${import.meta.env.VITE_BACKEND_URL}/${user.banner}`
           }
           alt="banner"
         />
@@ -374,7 +371,7 @@ export default function ProfilSettings() {
         </div>
       )}
       {modalBanner && (
-        <div className="modal-container" onClick={() => setModalBanner(false)}>
+        <div className="modal-container">
           <Upload handleCloseEdit={handleCloseEdit} />
         </div>
       )}

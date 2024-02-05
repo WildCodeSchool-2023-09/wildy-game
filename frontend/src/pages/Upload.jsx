@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { success, failed } from "../services/toast";
 import close from "../assets/images/close.svg";
+import upload from "../assets/images/upload.png";
 
 function Upload({ handleCloseEdit }) {
   const [file, setFile] = useState();
@@ -41,10 +42,14 @@ function Upload({ handleCloseEdit }) {
         encType="multipart/form-data"
         onSubmit={handleSubmit}
       >
+        <label htmlFor="banner" style={{ cursor: "pointer" }}>
+          <img src={upload} alt="upload" width={150} />
+        </label>
         <input
           type="file"
           name="banner"
           id="banner"
+          hidden
           accept="image/png, image/jpeg"
           onChange={handleChange}
         />

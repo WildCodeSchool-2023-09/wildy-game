@@ -103,7 +103,7 @@
     width: 100svw;
   }
   .infos {
-    width: 70%;
+    width: 75%;
     padding-top: 15vh;
     z-index: 1;
     display: flex;
@@ -163,6 +163,7 @@
           padding: 0 10px;
           @media screen and (min-width: 1600px) {
             font-size: 2rem;
+            line-height: 2.5rem;
           }
           @media screen and (min-width: 361px) and (max-width: 1160px) {
             font-size: 1rem;
@@ -198,8 +199,9 @@
   .games {
     height: 100vh;
     width: 65%;
-    padding-top: 15vh;
     z-index: 1;
+    display: flex;
+    align-items: center;
 
     .games-container {
       color: white;
@@ -239,18 +241,22 @@
           background-size: contain;
           background-repeat: no-repeat;
           flex-grow: 1;
-          height: 60vh;
+          height: 500px;
           display: flex;
           align-items: flex-end;
           justify-content: center;
           @media screen and (max-width: 1000px) {
             width: 90%;
+            height: 60vh;
+            background-size: cover;
           }
           @media screen and (max-width: 800px) {
-            height: 10rem;
+            height: 200px;
+            background-size: cover;
           }
           @media screen and (max-width: 900px) {
             height: 13rem;
+            background-size: cover;
           }
           .game-button {
             display: flex;
@@ -291,7 +297,7 @@
           background-repeat: no-repeat;
           background-position: center;
           flex-grow: 1;
-          height: 60vh;
+          height: 500px;
           display: flex;
           align-items: flex-end;
           justify-content: center;
@@ -342,18 +348,21 @@
           background-size: contain;
           background-repeat: no-repeat;
           flex-grow: 1;
-          height: 60vh;
+          height: 500px;
           display: flex;
           align-items: flex-end;
           justify-content: center;
           @media screen and (max-width: 1000px) {
             width: 90%;
+            background-size: cover;
           }
           @media screen and (max-width: 600px) {
             height: 10rem;
+            background-size: cover;
           }
           @media screen and (max-width: 900px) {
             height: 13rem;
+            background-size: cover;
           }
           .game-button {
             display: flex;
@@ -426,8 +435,9 @@
   .contact {
     height: 100vh;
     width: 75%;
-    padding-top: 15vh;
     z-index: 1;
+    display: flex;
+    align-items: center;
 
     @media screen and (max-width: 391px) {
       margin-top: 400px;

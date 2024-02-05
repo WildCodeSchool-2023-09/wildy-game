@@ -17,20 +17,20 @@ function PlayerManagement() {
     <div>
       <div className="grid overflow-auto">
         <div className="admin-player">
-          <p className="admin-case1">ID</p>
-          <p className="admin-case2">Firstname</p>
-          <p className="admin-case1">Lastname</p>
-          <p className="admin-case2">Email</p>
-          <p className="admin-case1">Pseudo</p>
-          <p className="admin-case2">Avatar</p>
-          <p className="admin-case1">Banner</p>
-          <p className="admin-case2">Credit</p>
-          <p className="admin-case1">Experience</p>
-          <p className="admin-case2">Admin</p>
-          <p className="admin-case1">lvl</p>
-          <p className="admin-case2">membreId</p>
-          <p className="admin-case1">Theme</p>
-          <p className="admin-case2">Supprimer</p>
+          <p className="admin-case1 bg-gray-600 text-white">ID</p>
+          <p className="admin-case2 bg-gray-600 text-white">Firstname</p>
+          <p className="admin-case1 bg-gray-600 text-white">Lastname</p>
+          <p className="admin-case2 bg-gray-600 text-white">Email</p>
+          <p className="admin-case1 bg-gray-600 text-white">Pseudo</p>
+          <p className="admin-case2 bg-gray-600 text-white">Avatar</p>
+          <p className="admin-case1 bg-gray-600 text-white">Banner</p>
+          <p className="admin-case2 bg-gray-600 text-white">Credit</p>
+          <p className="admin-case1 bg-gray-600 text-white">Experience</p>
+          <p className="admin-case2 bg-gray-600 text-white">Admin</p>
+          <p className="admin-case1 bg-gray-600 text-white">lvl</p>
+          <p className="admin-case2 bg-gray-600 text-white">membreId</p>
+          <p className="admin-case1 bg-gray-600 text-white">Theme</p>
+          <p className="admin-case2 bg-gray-600 text-white">Supprimer</p>
         </div>
         {players.map((player) => (
           <PlayerComponent player={player} />

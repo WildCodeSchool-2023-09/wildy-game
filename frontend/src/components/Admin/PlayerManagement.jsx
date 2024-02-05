@@ -13,7 +13,6 @@ function PlayerManagement() {
         setPlayers(res.data);
       });
   }, []);
-  console.info(players);
   return (
     <div>
       <div className="grid overflow-auto">

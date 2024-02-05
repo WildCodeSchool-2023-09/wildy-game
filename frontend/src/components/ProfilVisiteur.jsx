@@ -10,12 +10,9 @@ import Friends from "./settingsComponents/Friends";
 export default function ProfilVisiteur() {
   const { pseudo } = useParams();
   const [player, setPlayer] = useState({});
-  const [primaryColor, setPrimaryColor] = useState("#ffffff");
-  const [secondaryColor, setSecondaryColor] = useState("#b4b4b4");
-  const [textColor, setTextColor] = useState("#ffffff");
-  console.info(setPrimaryColor);
-  console.info(setSecondaryColor);
-  console.info(setTextColor);
+  const primaryColor = "#ffffff";
+  const secondaryColor = "#b4b4b4";
+  const textColor = "#ffffff";
 
   useEffect(() => {
     axios

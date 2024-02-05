@@ -47,6 +47,8 @@ router.post("/players/addcredit", playerControllers.addCredit);
 router.get("/player/:pseudo", playerControllers.readByPseudo);
 router.put("/players/:id/addtheme", playerControllers.modifyTheme);
 router.put("/players/:id/updtavatarcolor", playerControllers.modifyAvatarColor);
+router.get("/protected", checkToken, playerControllers.refreshToken);
+
 /* ************************************************************************* */
 
 const boutiqueControllers = require("./controllers/boutiqueControllers");

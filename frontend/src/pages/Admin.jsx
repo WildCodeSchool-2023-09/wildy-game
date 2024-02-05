@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { Navigate, Outlet, NavLink } from "react-router-dom";
+import { useNavigate, Outlet, NavLink } from "react-router-dom";
 import axios from "axios";
 import { failed } from "../services/toast";
 import "../styles/admin.scss";
 
 function Admin() {
-  const [admin, setAdmin] = useState(null);
+  const [admin, setAdmin] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:3310/api/admin", { withCredentials: true })
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/admin`, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.status === 200) {
           setAdmin(true);
@@ -16,13 +19,16 @@ function Admin() {
       })
       .catch(() => {
         failed("Vous n'êtes pas connecté en tant qu'admin");
-        setAdmin(false);
+        navigate("/login", { replace: true });
       });
   }, []);
 
-  if (admin === false) {
-    return <Navigate to="/" replace />;
+  if (!admin) {
+    return (
+      <div className="bg-gray-400 flex w-screen min-h-screen flex-col pt-[80px]" />
+    );
   }
+
   return (
     <div className="bg-gray-400 flex w-screen min-h-screen flex-col pt-[80px]">
       <div className="flex gap-4 mx-auto text-2xl bg-white w-full h-20 items-center p-2 overflow-auto">

@@ -135,8 +135,13 @@ const destroy = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const player = req.user;
-    const token = jwt.sign({ player }, process.env.APP_SECRET);
-    res.cookie("token", token, { httpOnly: true });
+    const token = jwt.sign({ player }, process.env.APP_SECRET, {
+      expiresIn: "10d",
+    });
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 10 * 24 * 60 * 60 * 1000,
+    });
     res.json({ player });
   } catch (err) {
     next(err);
@@ -241,6 +246,36 @@ const modifyAvatarColor = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+const admin = async (req, res) => {
+  const verifyAdmin = req.decoded.isAdmin;
+  if (verifyAdmin === 0) {
+    return res.status(403).send("Vous n'êtes pas admin");
+  }
+  return res.sendStatus(200);
+};
+
+/* const refreshToken = async (req, res) => {
+  const { id } = req.decoded;
+  try {
+    const [result] = await tables.utilisateur.readId(id);
+    if (!result) {
+      res.status(404).send("No user found");
+    }
+    delete result.password;
+    const token = jwt.sign({ utilisateur: result }, process.env.APP_SECRET, {
+      expiresIn: "10d",
+    });
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 10 * 24 * 60 * 60 * 1000,
+    });
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}; */
+
 // Ready to export the controller functions
 
 module.exports = {
@@ -259,4 +294,5 @@ module.exports = {
   findByAvatar,
   modifyTheme,
   modifyAvatarColor,
+  admin,
 };

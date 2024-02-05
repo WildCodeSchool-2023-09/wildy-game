@@ -131,6 +131,16 @@ function Navbar() {
           </li>
         ) : null}
       </ul>
+      {location.pathname === "/" &&
+        (theme ? (
+          <button className="theme" type="button" onClick={() => handleTheme()}>
+            🌙
+          </button>
+        ) : (
+          <button className="theme" type="button" onClick={() => handleTheme()}>
+            ☀️
+          </button>
+        ))}
       <div className="navbar-right">
         {user ? (
           <Logout user={user} />
@@ -143,24 +153,6 @@ function Navbar() {
             LOGIN
           </NavHashLink>
         )}
-        {location.pathname === "/" &&
-          (theme ? (
-            <button
-              className="theme"
-              type="button"
-              onClick={() => handleTheme()}
-            >
-              🌙
-            </button>
-          ) : (
-            <button
-              className="theme"
-              type="button"
-              onClick={() => handleTheme()}
-            >
-              ☀️
-            </button>
-          ))}
       </div>
     </nav>
   );

@@ -11,3 +11,24 @@
   grid-template-columns: repeat(14, minmax(100px, 1fr));
   font-family: "Montserrat", sans-serif;
 }
+
+.admin-case1 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  border: 1px solid black;
+  padding: 0.5rem;
+  background-color: white;
+}
+.admin-case2 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  border: 1px solid black;
+  padding: 0.5rem;
+  background-color: #d1d5db;
+}
+
+.admin-bon {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
+  font-family: "Montserrat", sans-serif;
+}

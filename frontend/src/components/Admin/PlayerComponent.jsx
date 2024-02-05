@@ -22,48 +22,22 @@ function PlayerComponent({ player }) {
   };
   return (
     <div className="admin-player">
-      <p className="font-mont font-bold border border-black px-2 bg-white">
-        {player.id}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-gray-300">
-        {player.firstname}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-white">
-        {player.lastname}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-gray-300 hover:overflow-x-auto">
-        {player.email}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-white">
-        {player.pseudo}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-gray-300">
-        {player.activeAvatar}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-white">
-        {player.banner ? player.banner : "Aucune"}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-gray-300">
-        {player.credit}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-white">
-        {player.experience}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-gray-300">
-        {player.isAdmin ? "Oui" : "Non"}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-white">
-        {player.lvl}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-gray-300">
-        {player.membreId}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-white">
-        {player.profilTheme}
-      </p>
-      <p className="font-mont font-bold border border-black px-2 bg-gray-300">
+      <p className="admin-case1">{player.id}</p>
+      <p className="admin-case2">{player.firstname}</p>
+      <p className="admin-case1">{player.lastname}</p>
+      <p className="admin-case2 hover:overflow-x-auto">{player.email}</p>
+      <p className="admin-case1">{player.pseudo}</p>
+      <p className="admin-case2">{player.activeAvatar}</p>
+      <p className="admin-case1">{player.banner ? player.banner : "Aucune"}</p>
+      <p className="admin-case2">{player.credit}</p>
+      <p className="admin-case1">{player.experience}</p>
+      <p className="admin-case2">{player.isAdmin ? "Oui" : "Non"}</p>
+      <p className="admin-case1">{player.lvl}</p>
+      <p className="admin-case2">{player.membreId}</p>
+      <p className="admin-case1">{player.profilTheme}</p>
+      <p className="admin-case2">
         <button type="button" onClick={deletePlayer}>
-          Supprimer
+          Supprimer?
         </button>
       </p>
     </div>

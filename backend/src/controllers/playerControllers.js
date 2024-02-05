@@ -255,15 +255,15 @@ const admin = async (req, res) => {
   return res.sendStatus(200);
 };
 
-/* const refreshToken = async (req, res) => {
+const refreshToken = async (req, res) => {
   const { id } = req.decoded;
   try {
-    const [result] = await tables.utilisateur.readId(id);
+    const result = await tables.player.read(id);
     if (!result) {
       res.status(404).send("No user found");
     }
     delete result.password;
-    const token = jwt.sign({ utilisateur: result }, process.env.APP_SECRET, {
+    const token = jwt.sign({ player: result }, process.env.APP_SECRET, {
       expiresIn: "10d",
     });
     res.cookie("token", token, {
@@ -274,7 +274,7 @@ const admin = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-}; */
+};
 
 // Ready to export the controller functions
 
@@ -295,4 +295,5 @@ module.exports = {
   modifyTheme,
   modifyAvatarColor,
   admin,
+  refreshToken,
 };

@@ -17,7 +17,8 @@ function BonManagement() {
       });
   }, [refresh]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post(
         `${import.meta.env.VITE_BACKEND_URL}/api/admin/addcode`,
@@ -32,10 +33,10 @@ function BonManagement() {
   };
   return (
     <div>
-      <p className="text-2xl">
+      <p className="text-2xl text-center font-mont font-bold mb-2">
         Pour ajouter un bon, veuillez simplement préciser son montant:
       </p>
-      <form className="flex">
+      <form className="flex justify-center">
         <input
           type="number"
           value={bonMontant}
@@ -51,14 +52,25 @@ function BonManagement() {
           Valider
         </button>
       </form>
-      <div className="flex flex-col">
+      <div className="mt-4 flex flex-col items-center">
         <div className="admin-bon">
-          <p>ID</p>
+          <p className="admin-case1 bg-gray-600 text-white">ID</p>
+          <p className="admin-case2 bg-gray-600 text-white">CODE</p>
+          <p className="admin-case1 bg-gray-600 text-white">GAIN EN CREDIT</p>
+          <p className="admin-case2 bg-gray-600 text-white">Supprimer</p>
         </div>
         {bonListe.map((element) => (
-          <div key={element.id} className="flex text-xl gap-4 items-center">
-            <p className="font-mont font-semibold">{element.code}</p>
-            <p className="font-mont font-semibold">{element.gain_credit}</p>
+          <div key={element.id} className="admin-bon text-xl">
+            <p className="font-mont font-semibold admin-case1">{element.id}</p>
+            <p className="font-mont font-semibold admin-case2">
+              {element.code}
+            </p>
+            <p className="font-mont font-semibold admin-case1">
+              {element.gain_credit}
+            </p>
+            <div className="admin-case2 flex justify-center">
+              <button type="button">Supprimer?</button>
+            </div>
           </div>
         ))}
       </div>

@@ -64,85 +64,77 @@ function Navbar() {
       }`}
       style={{ height: navSize, transition: "all 1s" }}
     >
-      <NavHashLink
-        onClick={handleClick}
-        className={`link ${isActive ? "is-active" : ""}`}
-        to="/#home"
-      >
-        <Player
-          autoplay
-          keepLastFrame
-          src={manette}
-          style={{ height: "40px" }}
-          className="navbar-left"
-        />
-      </NavHashLink>
-
-      <ul className="navbar-middle">
-        <li>
-          <NavHashLink
-            onClick={() => handleClick("infos")}
-            className={`link ${isActive === "infos" && "is-active"}`}
-            to="/#infos"
-          >
-            Infos
-          </NavHashLink>
-        </li>
-        <li>
-          {" "}
-          <NavHashLink
-            onClick={() => handleClick("games")}
-            className={`link ${isActive === "games" && "is-active"}`}
-            to="/#games"
-            spy
-          >
-            Jeux{" "}
-          </NavHashLink>
-        </li>
-        <li>
-          {" "}
-          <NavHashLink
-            onClick={() => handleClick("contact")}
-            className={`link ${isActive === "contact" && "is-active"}`}
-            smooth
-            to="/#contact"
-          >
-            Nos Salles{" "}
-          </NavHashLink>
-        </li>
-        <li>
-          <Link
-            onClick={() => handleClick("boutique")}
-            className={`link ${isActive === "boutique" && "is-active"}`}
-            to="/boutique"
-          >
-            Boutique
-          </Link>
-        </li>
-        {user.isAdmin ? (
+      <div className="flex flex-1">
+        <NavHashLink
+          onClick={handleClick}
+          className={`link ${isActive ? "is-active" : ""}`}
+          to="/#home"
+        >
+          <Player
+            autoplay
+            keepLastFrame
+            src={manette}
+            style={{ height: "40px" }}
+            className="navbar-left"
+          />
+        </NavHashLink>
+      </div>
+      <div className="flex flex-grow justify-center">
+        <ul className="navbar-middle">
           <li>
             <NavHashLink
-              onClick={() => handleClick("admin")}
-              className={`link ${isActive === "admin" && "is-active"}`}
-              to="admin"
+              onClick={() => handleClick("infos")}
+              className={`link ${isActive === "infos" && "is-active"}`}
+              to="/#infos"
             >
-              Admin
+              Infos
             </NavHashLink>
           </li>
-        ) : null}
-      </ul>
-      <div className="navbar-right">
-        {user ? (
-          <Logout user={user} />
-        ) : (
-          <NavHashLink
-            onClick={() => handleClick("login")}
-            className={`link ${isActive === "login" && "is-active"}`}
-            to="login"
-          >
-            LOGIN
-          </NavHashLink>
-        )}
+          <li>
+            {" "}
+            <NavHashLink
+              onClick={() => handleClick("games")}
+              className={`link ${isActive === "games" && "is-active"}`}
+              to="/#games"
+              spy
+            >
+              Jeux{" "}
+            </NavHashLink>
+          </li>
+          <li>
+            {" "}
+            <NavHashLink
+              onClick={() => handleClick("contact")}
+              className={`link ${isActive === "contact" && "is-active"}`}
+              smooth
+              to="/#contact"
+            >
+              Nos Salles
+            </NavHashLink>
+          </li>
+          <li>
+            <Link
+              onClick={() => handleClick("boutique")}
+              className={`link ${isActive === "boutique" && "is-active"}`}
+              to="/boutique"
+            >
+              Boutique
+            </Link>
+          </li>
+          {user.isAdmin ? (
+            <li>
+              <NavHashLink
+                onClick={() => handleClick("admin")}
+                className={`link ${isActive === "admin" && "is-active"}`}
+                to="admin"
+              >
+                Admin
+              </NavHashLink>
+            </li>
+          ) : null}
+        </ul>
+      </div>
+      <div className="flex flex-1 justify-end">
         {location.pathname === "/" &&
           (theme ? (
             <button
@@ -161,6 +153,19 @@ function Navbar() {
               ☀️
             </button>
           ))}
+        <div className="navbar-right">
+          {user ? (
+            <Logout user={user} />
+          ) : (
+            <NavHashLink
+              onClick={() => handleClick("login")}
+              className={`link ${isActive === "login" && "is-active"}`}
+              to="login"
+            >
+              LOGIN
+            </NavHashLink>
+          )}
+        </div>
       </div>
     </nav>
   );

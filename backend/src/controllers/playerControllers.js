@@ -276,6 +276,30 @@ const refreshToken = async (req, res) => {
   }
 };
 
+const updateScoreboard = async (req, res) => {
+  try {
+    const result = await tables.player.addInLeaderboard(req.body);
+    if (result === -1) {
+      return res.json({ message: "score plus bas, pas de mise à jour" });
+    }
+    if (result === 0) {
+      return res.status(404).json({ error: "Un erreur est survenue" });
+    }
+    return res.sendStatus(201);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+const leaderboard = async (req, res) => {
+  try {
+    const result = await tables.player.getLeaderboard();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 // Ready to export the controller functions
 
 module.exports = {
@@ -296,4 +320,6 @@ module.exports = {
   modifyAvatarColor,
   admin,
   refreshToken,
+  updateScoreboard,
+  leaderboard,
 };

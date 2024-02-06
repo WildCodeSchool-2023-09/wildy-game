@@ -1,24 +1,31 @@
 import axios from "axios";
 import PropTypes from "prop-types";
 import { success, failed } from "../../services/toast";
+import { useUser } from "../../contexts/UserContext";
 
-function PlayerComponent({ player }) {
+function PlayerComponent({ player, setRefresh, refresh }) {
+  const { user } = useUser();
   const deletePlayer = () => {
-    axios
-      .delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/admin/players/${player.id}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          success("Joueur supprimé");
-        }
-      })
-      .catch(() => {
-        failed("Erreur lors de la suppression du joueur");
-      });
+    if (user.id === player.id) {
+      failed("Vous ne pouvez pas vous supprimer vous-même");
+    } else {
+      axios
+        .delete(
+          `${import.meta.env.VITE_BACKEND_URL}/api/admin/players/${player.id}`,
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            success("Joueur supprimé");
+            setRefresh(!refresh);
+          }
+        })
+        .catch(() => {
+          failed("Erreur lors de la suppression du joueur");
+        });
+    }
   };
   return (
     <div className="admin-player">
@@ -36,7 +43,12 @@ function PlayerComponent({ player }) {
       <p className="admin-case2">{player.membreId}</p>
       <p className="admin-case1">{player.profilTheme}</p>
       <p className="admin-case2">
-        <button type="button" onClick={deletePlayer}>
+        <button
+          type="button"
+          onClick={deletePlayer}
+          /* disabled={player.id === user.id} */
+          className="disabled:text-transparent"
+        >
           Supprimer?
         </button>
       </p>
@@ -63,6 +75,8 @@ PlayerComponent.propTypes = {
       PropTypes.oneOf([null]),
     ]),
   }).isRequired,
+  setRefresh: PropTypes.func.isRequired,
+  refresh: PropTypes.bool.isRequired,
 };
 
 export default PlayerComponent;

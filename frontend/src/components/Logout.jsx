@@ -6,8 +6,8 @@ import { useUser } from "../contexts/UserContext";
 import piece from "../assets/images/credit_1.png";
 import "../styles/navbar.scss";
 
-function Logout({ user }) {
-  const { setUser } = useUser();
+function Logout() {
+  const { setUser, user } = useUser();
   const navigate = useNavigate();
 
   const handleLogout = async (event) => {

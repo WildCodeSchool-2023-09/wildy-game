@@ -86,5 +86,6 @@ const adminControllers = require("./controllers/adminControllers");
 router.get("/admin/players", verifyToken, adminControllers.browse);
 router.delete("/admin/players/:id", verifyToken, adminControllers.destroy);
 router.get("/admin/bons", verifyToken, adminControllers.browseBons);
+router.delete("/admin/bons/:id", verifyToken, adminControllers.destroyCode);
 
 module.exports = router;

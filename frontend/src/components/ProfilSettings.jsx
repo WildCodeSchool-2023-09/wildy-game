@@ -18,7 +18,7 @@ import close from "../assets/images/close.svg";
 import robot from "../assets/images/robot.png";
 
 export default function ProfilSettings() {
-  const { user, setUser } = useUser();
+  const { user, setUser, refreshUser } = useUser();
   const [redeemBody, setRedeemBody] = useState({
     code: "",
     id: 0,
@@ -105,6 +105,7 @@ export default function ProfilSettings() {
 
       if (res.status === 201) {
         success(`Code utilisé avec succes +${res.data.gain} !`);
+        refreshUser();
       }
     } catch (error) {
       failed(error.response.data.error);

@@ -31,6 +31,18 @@ function BonManagement() {
       })
       .catch((err) => failed(err.response.data.error));
   };
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/api/admin/bons/${id}`, {
+        withCredentials: true,
+      })
+      .then(() => {
+        success("Code supprimé");
+        setRefresh(!refresh);
+      })
+      .catch((err) => failed(err.response.data.error));
+  };
   return (
     <div>
       <p className="text-2xl text-center font-mont font-bold mb-2">
@@ -69,7 +81,9 @@ function BonManagement() {
               {element.gain_credit}
             </p>
             <div className="admin-case2 flex justify-center">
-              <button type="button">Supprimer?</button>
+              <button type="button" onClick={() => handleDelete(element.id)}>
+                Supprimer?
+              </button>
             </div>
           </div>
         ))}

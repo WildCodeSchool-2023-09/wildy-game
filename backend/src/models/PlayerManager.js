@@ -253,6 +253,14 @@ class PlayerManager extends AbstractManager {
 
     return result;
   }
+
+  async deleteCode(id) {
+    const [rows] = await this.database.query(`DELETE FROM bon WHERE id=?`, [
+      id,
+    ]);
+
+    return rows;
+  }
 }
 
 module.exports = PlayerManager;

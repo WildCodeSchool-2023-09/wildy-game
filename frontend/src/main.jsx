@@ -25,6 +25,7 @@ import ProfilVisiteur from "./components/ProfilVisiteur";
 import PlayerManagement from "./components/Admin/PlayerManagement";
 import BoutiqueManagement from "./components/Admin/BoutiqueManagement";
 import BonManagement from "./components/Admin/BonManagement";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -60,12 +61,17 @@ const router = createBrowserRouter([
         element: <Tetris />,
       },
       {
-        path: "profil-settings",
-        element: <Profil />,
-      },
-      {
         path: "profil/:pseudo",
         element: <ProfilVisiteur />,
+      },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "/profil-settings",
+            element: <Profil />,
+          },
+        ],
       },
       {
         path: "admin",

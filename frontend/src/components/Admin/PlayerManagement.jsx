@@ -4,6 +4,7 @@ import PlayerComponent from "./PlayerComponent";
 
 function PlayerManagement() {
   const [players, setPlayers] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/players`, {
@@ -12,7 +13,7 @@ function PlayerManagement() {
       .then((res) => {
         setPlayers(res.data);
       });
-  }, []);
+  }, [refresh]);
   return (
     <div>
       <div className="grid overflow-auto">
@@ -30,10 +31,14 @@ function PlayerManagement() {
           <p className="admin-case1 bg-gray-600 text-white">lvl</p>
           <p className="admin-case2 bg-gray-600 text-white">membreId</p>
           <p className="admin-case1 bg-gray-600 text-white">Theme</p>
-          <p className="admin-case2 bg-gray-600 text-white">Supprimer</p>
+          <p className="admin-case2 bg-red-500 text-white">Supprimer</p>
         </div>
         {players.map((player) => (
-          <PlayerComponent player={player} />
+          <PlayerComponent
+            player={player}
+            setRefresh={setRefresh}
+            refresh={refresh}
+          />
         ))}
       </div>
     </div>

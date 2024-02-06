@@ -19,7 +19,7 @@ const verifyToken = async (req, res, next) => {
 const checkToken = async (req, res, next) => {
   const { token } = req.cookies;
   if (!token) {
-    return res.status(403).send("Token non fournie");
+    return res.status(403).send("Token non fourni");
   }
   try {
     const decoded = jwt.verify(token, process.env.APP_SECRET);

@@ -15,6 +15,7 @@ function Signup() {
     pseudo: "",
     password: "",
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
@@ -22,6 +23,7 @@ function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/players`,
@@ -51,7 +53,12 @@ function Signup() {
       <ParallaxCoin />
       <div className="container-form">
         <img src={borne} alt="borne" className="borne-arcade" />
-        <form onSubmit={handleSubmit} method="post" className="login-form">
+        <form
+          onSubmit={handleSubmit}
+          method="post"
+          className="login-form"
+          id="signup"
+        >
           <div className="top-signup">
             <div className="signup-column">
               <label htmlFor="email">Email</label>
@@ -103,20 +110,10 @@ function Signup() {
                 onChange={handleChange}
               />
             </div>
-            <div className="signup-column">
-              <label htmlFor="password-confirm">Confirmer</label>
-              <input
-                type="password"
-                name="password-confirm"
-                id="password-confirm"
-                value={user.password}
-                onChange={handleChange}
-              />
-            </div>
-            <button type="submit" className="btn-connexion">
-              Inscription
-            </button>
           </div>
+          <button type="submit" className="btn-connexion">
+            Inscription
+          </button>
         </form>
       </div>
     </div>

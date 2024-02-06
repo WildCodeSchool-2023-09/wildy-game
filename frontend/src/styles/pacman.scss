@@ -16,15 +16,24 @@
     z-index: 2;
     transform: scale(1.2);
     @media screen and (min-width: 1600px) {
-      transform: scale(1.2);
+      transform: scale(1.1);
+    }
+
+    @media screen and (min-width: 1921px) {
+      top: 5vh !important;
+      margin-bottom: 160px;
+      transform: scale(2.1);
     }
     @media screen and (min-width: 1920px) {
-      top: 5vh !important;
       margin-bottom: 160px;
       transform: scale(2.1);
     }
     @media screen and (max-width: 1160px) {
       display: none;
+    }
+    @media screen and (min-width: 1161px) and (max-width: 1919px) {
+      transform: scale(1.8);
+      top: 200px;
     }
   }
   .pacman-play {
@@ -56,17 +65,24 @@
     height: 70vh;
     transform: scale(0.8);
     background-color: black;
-    @media screen and (min-width: 1600px) {
-      margin-bottom: 160px;
-      transform: scale(1.2);
-    }
+
     @media screen and (min-width: 1920px) {
+      transform: scale(1);
+      position: relative;
+      top: -90px;
+    }
+    @media screen and (min-width: 1921px) {
       transform: scale(1);
       position: relative;
       top: -8vh;
     }
     @media screen and (max-width: 1160px) {
       width: 95svw;
+      height: 85vh;
+      border-radius: 20px;
+    }
+    @media screen and (min-width: 1161px) and (max-width: 1919px) {
+      width: 1200px;
       height: 85vh;
       border-radius: 20px;
     }

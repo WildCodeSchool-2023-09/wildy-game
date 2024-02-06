@@ -1,8 +1,34 @@
 .game-container {
   transform: scale(0.7);
-  @media screen and (min-width: 1920px) {
+  @media screen and (min-width: 1921px) {
     transform: scale(0.9);
   }
+  .borne-arcade {
+    top: 0;
+    position: absolute;
+    z-index: 2;
+    transform: scale(1.2);
+
+    @media screen and (min-width: 1600px) {
+      transform: scale(1.1);
+    }
+
+    @media screen and (min-width: 1921px) {
+      top: -250px;
+      transform: scale(2.1);
+    }
+    @media screen and (min-width: 1920px) {
+      margin-bottom: 160px;
+      transform: scale(2.1);
+    }
+    @media screen and (max-width: 1160px) {
+      display: none;
+    }
+    @media screen and (min-width: 1161px) and (max-width: 1919px) {
+      transform: scale(2.3);
+    }
+  }
+
   .snake-wraper {
     display: flex;
     justify-content: center;
@@ -13,8 +39,15 @@
     position: relative;
     top: -10em;
     background-color: #000;
-    @media screen and (min-width: 1920px) {
-      top: -20em;
+    @media screen and (max-width: 1160px) {
+      top: 200px;
+      width: 80svw;
+    }
+    @media screen and (min-width: 1921px) {
+      top: -16em;
+    }
+    @media screen and (min-width: 1161px) and (max-width: 1920px) {
+      top: 13px;
     }
     .score {
       position: absolute;
@@ -22,6 +55,9 @@
       top: 5em;
       left: 5em;
       font-size: 2rem;
+      @media screen and (max-width: 1160px) {
+        top: 100px;
+      }
       @media screen and (min-width: 1920px) {
         top: 10em;
       }
@@ -35,6 +71,9 @@
       height: 34em;
       margin-top: 3rem;
       border: 3px solid rgb(139, 92, 112) !important;
+      @media screen and (max-width: 1160px) {
+        width: 100%;
+      }
     }
     button,
     .game-over {
@@ -61,6 +100,11 @@
     }
     .play {
       top: 900px;
+      @media screen and (max-width: 1160px) {
+        top: 200px;
+        position: relative;
+        left: 0;
+      }
     }
   }
 }

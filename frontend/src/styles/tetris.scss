@@ -40,7 +40,6 @@
     width: 40rem;
     top: 20rem;
     height: 25rem;
-    z-index: 2;
     @media screen and (max-width: 1160px) {
       width: 95svw;
       height: 85vh;
@@ -53,6 +52,10 @@
       height: 30rem;
       transform: scale(1.6);
       top: 10rem;
+    }
+
+    @media screen and (min-width: 2400px) {
+      top: 6em;
     }
 
     .scores {

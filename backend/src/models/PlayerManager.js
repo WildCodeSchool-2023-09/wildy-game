@@ -229,6 +229,38 @@ class PlayerManager extends AbstractManager {
 
     return result;
   }
+
+  async addInLeaderboard(body) {
+    const [checkScore] = await this.database.query(
+      `select score from scoreboard where gameId = ? and playerId = ?`,
+      [body.gameId, body.id]
+    );
+    if (checkScore[0].score >= body.score) {
+      return -1;
+    }
+    const [result] = await this.database.query(
+      `insert into scoreboard (gameId, playerId, score) values (?, ?, ?)`,
+      [body.gameId, body.id, body.score]
+    );
+
+    return result.insertId;
+  }
+
+  async getLeaderboard() {
+    const [result] = await this.database.query(
+      `select p.id, s.gameId, p.pseudo, s.score from scoreboard as s join player as p on s.playerId = p.id`
+    );
+
+    return result;
+  }
+
+  async deleteCode(id) {
+    const [rows] = await this.database.query(`DELETE FROM bon WHERE id=?`, [
+      id,
+    ]);
+
+    return rows;
+  }
 }
 
 module.exports = PlayerManager;

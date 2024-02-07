@@ -4,7 +4,7 @@ import { useUser } from "../../contexts/UserContext";
 import { failed, success } from "../../services/toast";
 
 function BuyValidate({ setModalValidate, modalValidate, avatarId }) {
-  const { user } = useUser();
+  const { user, refreshUser } = useUser();
   const handleBuyAvatar = async () => {
     try {
       const res = await axios.post(
@@ -14,6 +14,7 @@ function BuyValidate({ setModalValidate, modalValidate, avatarId }) {
       if (res.status === 200) {
         success("Avatar acheté avec succès !");
         setModalValidate(!modalValidate);
+        refreshUser();
       }
     } catch (error) {
       failed(error.response.data.error);

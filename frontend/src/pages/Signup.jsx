@@ -8,13 +8,15 @@ import { success, failed } from "../services/toast";
 
 function Signup() {
   const [created, setCreated] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [user, setUser] = useState({
-    fistname: "",
+    firstname: "",
     lastname: "",
     email: "",
     pseudo: "",
     password: "",
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
@@ -22,6 +24,12 @@ function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (user.password !== confirmPassword) {
+      failed("Les mots de passe ne correspondent pas");
+      return;
+    }
+
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/players`,
@@ -51,7 +59,12 @@ function Signup() {
       <ParallaxCoin />
       <div className="container-form">
         <img src={borne} alt="borne" className="borne-arcade" />
-        <form onSubmit={handleSubmit} method="post" className="login-form">
+        <form
+          onSubmit={handleSubmit}
+          method="post"
+          className="login-form"
+          id="signup"
+        >
           <div className="top-signup">
             <div className="signup-column">
               <label htmlFor="email">Email</label>
@@ -104,19 +117,19 @@ function Signup() {
               />
             </div>
             <div className="signup-column">
-              <label htmlFor="password-confirm">Confirmer</label>
+              <label htmlFor="password2">Mot de passe</label>
               <input
                 type="password"
-                name="password-confirm"
-                id="password-confirm"
-                value={user.password}
-                onChange={handleChange}
+                name="password2"
+                id="password2"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            <button type="submit" className="btn-connexion">
-              Inscription
-            </button>
           </div>
+          <button type="submit" className="btn-connexion">
+            Inscription
+          </button>
         </form>
       </div>
     </div>

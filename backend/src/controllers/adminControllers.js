@@ -37,8 +37,21 @@ const browseBons = async (req, res) => {
   }
 };
 
+const destroyCode = async (req, res) => {
+  try {
+    const result = await tables.player.deleteCode(req.params.id);
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: "Un erreur est survenue" });
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   browse,
   destroy,
   browseBons,
+  destroyCode,
 };

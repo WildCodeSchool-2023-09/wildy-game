@@ -1,5 +1,5 @@
 function BoutiqueManagement() {
-  return <div>BoutiqueManagement</div>;
+  return <div className="text-8xl">En chantier</div>;
 }
 
 export default BoutiqueManagement;

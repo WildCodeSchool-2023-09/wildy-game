@@ -107,6 +107,7 @@
     padding-top: 15vh;
     z-index: 1;
     display: flex;
+    height: 100vh;
 
     .infos-container {
       color: white;
@@ -162,7 +163,7 @@
           text-align: center;
           padding: 0 10px;
           @media screen and (min-width: 1600px) {
-            font-size: 2rem;
+            font-size: 1.5rem;
             line-height: 2.5rem;
           }
           @media screen and (min-width: 361px) and (max-width: 1160px) {
@@ -241,10 +242,13 @@
           background-size: contain;
           background-repeat: no-repeat;
           flex-grow: 1;
-          height: 500px;
+          height: 450px;
           display: flex;
           align-items: flex-end;
           justify-content: center;
+          @media screen and (min-width: 1920px) {
+            height: 500px;
+          }
           @media screen and (max-width: 1000px) {
             width: 90%;
             height: 60vh;
@@ -297,10 +301,13 @@
           background-repeat: no-repeat;
           background-position: center;
           flex-grow: 1;
-          height: 500px;
+          height: 450px;
           display: flex;
           align-items: flex-end;
           justify-content: center;
+          @media screen and (min-width: 1920px) {
+            height: 500px;
+          }
           @media screen and (max-width: 1000px) {
             width: 90%;
           }
@@ -348,10 +355,13 @@
           background-size: contain;
           background-repeat: no-repeat;
           flex-grow: 1;
-          height: 500px;
+          height: 450px;
           display: flex;
           align-items: flex-end;
           justify-content: center;
+          @media screen and (min-width: 1920px) {
+            height: 500px;
+          }
           @media screen and (max-width: 1000px) {
             width: 90%;
             background-size: cover;

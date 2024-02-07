@@ -1,7 +1,7 @@
 import Tetris from "react-tetris";
 import { useState } from "react";
 import "../styles/tetris.scss";
-import borne from "../assets/images/borne_arcade.png";
+import borne from "../assets/images/borne_game.png";
 
 function TetrisGame() {
   const [start, setStart] = useState(false);

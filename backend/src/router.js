@@ -48,6 +48,8 @@ router.get("/player/:pseudo", playerControllers.readByPseudo);
 router.put("/players/:id/addtheme", playerControllers.modifyTheme);
 router.put("/players/:id/updtavatarcolor", playerControllers.modifyAvatarColor);
 router.get("/protected", checkToken, playerControllers.refreshToken);
+router.post("/players/scoreboard", playerControllers.updateScoreboard);
+router.get("/scoreboard", playerControllers.leaderboard);
 
 /* ************************************************************************* */
 
@@ -84,5 +86,6 @@ const adminControllers = require("./controllers/adminControllers");
 router.get("/admin/players", verifyToken, adminControllers.browse);
 router.delete("/admin/players/:id", verifyToken, adminControllers.destroy);
 router.get("/admin/bons", verifyToken, adminControllers.browseBons);
+router.delete("/admin/bons/:id", verifyToken, adminControllers.destroyCode);
 
 module.exports = router;

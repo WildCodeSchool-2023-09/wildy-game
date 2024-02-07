@@ -46,6 +46,9 @@
     @media screen and (min-width: 1921px) {
       top: -16em;
     }
+    @media screen and (min-width: 2400px) {
+      top: -22.5em;
+    }
     @media screen and (min-width: 1161px) and (max-width: 1920px) {
       top: 13px;
     }
@@ -60,6 +63,9 @@
       }
       @media screen and (min-width: 1920px) {
         top: 10em;
+      }
+      @media screen and (min-width: 2400px) {
+        left: 6em;
       }
     }
     .canvas-snake {

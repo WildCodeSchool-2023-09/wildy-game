@@ -1,3 +1,4 @@
+import Switch from "@mui/material/Switch";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useLocation, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -135,24 +136,7 @@ function Navbar() {
         </ul>
       </div>
       <div className="flex flex-1 justify-end">
-        {location.pathname === "/" &&
-          (theme ? (
-            <button
-              className="theme"
-              type="button"
-              onClick={() => handleTheme()}
-            >
-              🌙
-            </button>
-          ) : (
-            <button
-              className="theme"
-              type="button"
-              onClick={() => handleTheme()}
-            >
-              ☀️
-            </button>
-          ))}
+        {location.pathname === "/" && <Switch onClick={() => handleTheme()} />}
         <div className="navbar-right">
           {user ? (
             <Logout user={user} />

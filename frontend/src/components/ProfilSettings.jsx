@@ -260,6 +260,7 @@ export default function ProfilSettings() {
             <h1>Mon compte</h1>
             <h2>{user.pseudo}</h2>
             <h2>{user.email}</h2>
+            <h2>{user.membreID}</h2>
             <ul>
               <li>
                 <button

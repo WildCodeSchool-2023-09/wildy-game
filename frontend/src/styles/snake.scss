@@ -75,6 +75,10 @@
         left: 6em;
         font-size: 1.6rem;
       }
+      @media screen and (min-width: 2400px) {
+        top: 12em;
+        left: 8em;
+      }
     }
     .canvas-snake {
       position: relative;
@@ -88,6 +92,10 @@
       border: 3px solid rgb(139, 92, 112) !important;
       @media screen and (max-width: 1160px) {
         width: 100%;
+      }
+      @media screen and (min-width: 2000px) {
+        top: 6em;
+        transform: scale(1.1);
       }
     }
 
@@ -111,6 +119,9 @@
     }
     .game-over {
       height: 4rem;
+      @media screen and (min-width: 2000px) {
+        top: 18em;
+      }
     }
   }
 }

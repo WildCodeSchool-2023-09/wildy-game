@@ -49,7 +49,6 @@
     max-width: 1220px;
     position: relative;
     top: 100px;
-
     background-color: #000;
     @media screen and (max-width: 1160px) {
       top: 200px;
@@ -63,7 +62,7 @@
       top: -16em;
     }
     @media screen and (min-width: 2400px) {
-      top: -22.5em;
+      top: -9em;
     }
 
     .scores {
@@ -73,12 +72,15 @@
       top: 2rem;
       z-index: 3;
       @media screen and (min-width: 1920px) {
-        left: 5rem;
+        left: -20rem;
         top: 2rem;
         z-index: 3;
       }
       @media screen and (max-width: 1160px) {
         left: 2rem;
+      }
+      @media screen and (min-width: 2400px) {
+        top: 10em;
       }
     }
 
@@ -100,7 +102,8 @@
         transform: scale(1.1);
         height: 80%;
         left: -40px;
-        top: 20px;
+        top: -20px;
+        width: 600px;
       }
       @media screen and (max-width: 1160px) {
         height: 100%;
@@ -122,13 +125,17 @@
       top: 300px;
 
       @media screen and (min-width: 1920px) {
-        top: 10rem;
-        left: 11rem;
+        top: 15rem;
+        left: 25rem;
         transform: scale(1.2);
       }
       @media screen and (max-width: 1160px) {
         left: 13%;
         top: 40%;
+      }
+      @media screen and (min-width: 2400px) {
+        top: 25em;
+        left: 28em;
       }
       .new-game {
         position: relative;

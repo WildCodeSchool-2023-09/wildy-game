@@ -8,8 +8,9 @@ import { success, failed } from "../services/toast";
 
 function Signup() {
   const [created, setCreated] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [user, setUser] = useState({
-    fistname: "",
+    firstname: "",
     lastname: "",
     email: "",
     pseudo: "",
@@ -23,6 +24,11 @@ function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (user.password !== confirmPassword) {
+      failed("Les mots de passe ne correspondent pas");
+      return;
+    }
 
     try {
       const res = await axios.post(
@@ -108,6 +114,16 @@ function Signup() {
                 id="password"
                 value={user.password}
                 onChange={handleChange}
+              />
+            </div>
+            <div className="signup-column">
+              <label htmlFor="password2">Mot de passe</label>
+              <input
+                type="password"
+                name="password2"
+                id="password2"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
           </div>

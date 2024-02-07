@@ -2,63 +2,74 @@
 
 .game-container {
   display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
   align-items: center;
   justify-content: center;
-  transform: scale(0.9);
-  top: -7rem;
+  height: 90vh;
+  width: 100vw;
+  margin: 0 auto;
   position: relative;
   @media screen and (min-width: 1920px) {
-    top: 10rem;
-    transform: scale(1);
+    top: 20vh;
   }
 
   .borne-arcade {
     top: 0;
     position: absolute;
-    z-index: 3;
-    transform: scale(1.2);
-    @media screen and (min-width: 1600px) {
-      transform: scale(2);
+    z-index: 2;
+
+    @media screen and (min-width: 1921px) {
+      top: 5vh !important;
+      margin-bottom: 160px;
+      transform: scale(2.1);
     }
     @media screen and (min-width: 1920px) {
-      transform: scale(2.2);
-      top: -200px;
+      margin-bottom: 160px;
+      transform: scale(2.1);
     }
     @media screen and (max-width: 1160px) {
       display: none;
     }
+    @media screen and (max-width: 1160px) {
+      display: none;
+    }
+    @media screen and (min-width: 1161px) and (max-width: 1919px) {
+      transform: scale(1.4);
+      top: 0;
+    }
   }
 
   .game-wrapper {
-    background-color: black;
-    position: absolute;
     display: flex;
     justify-content: center;
-    width: 40rem;
-    top: 20rem;
-    height: 25rem;
-    z-index: 2;
-    @media screen and (max-width: 1160px) {
-      width: 95svw;
-      height: 85vh;
-      top: 12rem;
-      border-radius: 20px;
-    }
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    height: 600px;
+    width: 60svw;
+    max-width: 1220px;
+    position: relative;
+    top: 100px;
 
+    background-color: #000;
+    @media screen and (max-width: 1160px) {
+      top: 200px;
+      width: 80svw;
+    }
     @media screen and (min-width: 1920px) {
-      width: 40rem;
-      height: 30rem;
-      transform: scale(1.6);
-      top: 10rem;
+      top: -40px;
+      height: 80%;
+    }
+    @media screen and (min-width: 1921px) {
+      top: -16em;
+    }
+    @media screen and (min-width: 2400px) {
+      top: -22.5em;
     }
 
     .scores {
       color: white;
       position: relative;
-      left: 7.5rem;
+      left: 200px;
       top: 2rem;
       z-index: 3;
       @media screen and (min-width: 1920px) {
@@ -79,14 +90,15 @@
       justify-content: center;
       gap: 100px;
       position: relative;
-      width: 70rem;
+      width: 500px;
+      height: 500px;
       transform: scale(0.7);
-      left: -2.5rem;
+      left: -100px;
+      top: -75px;
 
       @media screen and (min-width: 1920px) {
-        width: 200%;
+        transform: scale(1.1);
         height: 80%;
-        transform: scale(0.8);
         left: -40px;
         top: 20px;
       }
@@ -107,8 +119,7 @@
       text-align: center;
       z-index: 200;
       border-radius: 10px;
-      top: 8rem;
-      left: 12rem;
+      top: 300px;
 
       @media screen and (min-width: 1920px) {
         top: 10rem;
@@ -122,7 +133,7 @@
       .new-game {
         position: relative;
         top: -20px;
-        right: 7px;
+
         margin: 1.5rem;
         height: 3rem;
         width: 15rem;

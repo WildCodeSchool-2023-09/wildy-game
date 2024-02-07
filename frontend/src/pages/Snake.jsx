@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import useInterval from "../components/useInterval";
-import borne from "../assets/images/borne_arcade.png";
+import borne from "../assets/images/borne_game.png";
 import "../styles/snake.scss";
 
 const CANVAS_SIZE = [800, 800];
@@ -162,7 +162,7 @@ function Snake() {
   });
 
   return (
-    <div className="game-container ">
+    <div className="snake-container ">
       <img src={borne} alt="" className="borne-arcade" />
       <div
         className="snake-wraper"

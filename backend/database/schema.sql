@@ -78,7 +78,7 @@ CREATE TABLE `bon` (
   `gain_credit` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `bon` (
 --
 
 /*!40000 ALTER TABLE `bon` DISABLE KEYS */;
-INSERT INTO `bon` VALUES (1,'TEST',30000),(2,'TEST2',9999);
+INSERT INTO `bon` VALUES (3,'S8YIRAHV',250),(4,'1VF61OGQ',1000),(5,'90LNK0KZ',2000);
 /*!40000 ALTER TABLE `bon` ENABLE KEYS */;
 
 --
@@ -103,7 +103,7 @@ CREATE TABLE `boutique` (
   PRIMARY KEY (`id`),
   KEY `fk_boutique` (`avatarId`),
   CONSTRAINT `fk_boutique` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +111,7 @@ CREATE TABLE `boutique` (
 --
 
 /*!40000 ALTER TABLE `boutique` DISABLE KEYS */;
-INSERT INTO `boutique` VALUES (1,2000,60),(2,2000,53),(3,1000,54),(4,100,55),(5,10,56),(6,1,57),(7,500,58),(8,9999,59);
+INSERT INTO `boutique` VALUES (1,2000,60),(2,2000,53),(3,1000,54),(4,100,55),(5,10,56),(6,1,57),(7,500,58),(8,9999,59),(9,650,61),(10,450,62),(11,500,63),(12,400,64),(13,10000,65),(14,10,66),(15,990,67),(16,980,68),(17,970,69),(18,470,70),(19,480,71),(20,480,72),(21,350,73),(22,600,74),(23,9000,75),(24,8500,76),(25,7000,77),(26,7620,78),(27,8430,79),(28,3580,80),(29,6855,81),(30,5500,82),(31,6500,83),(32,4500,84),(33,3250,85),(34,8800,86),(35,7000,87),(36,4000,88),(37,2500,89),(38,1500,90),(39,1000,91),(40,8400,92),(41,670,93),(42,7000,94),(43,20,95),(44,400,96),(45,300,97),(46,800,98),(47,900,99),(48,1000,100),(49,1200,101),(50,6300,102),(51,8800,103),(52,3000,104),(53,7400,105),(54,9000,106),(55,850,107),(56,950,108),(57,1250,109),(58,7400,110),(59,9600,111),(60,3600,112),(61,6300,113),(62,7100,114),(63,9600,115),(64,3600,116),(65,1020,117),(66,1025,118),(67,3100,119),(68,3650,120),(69,5500,121),(70,8250,122),(71,3000,123),(72,2500,124),(73,3200,125),(74,500,126),(75,400,127),(76,200,128),(77,100,129);
 /*!40000 ALTER TABLE `boutique` ENABLE KEYS */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `collection` (
   KEY `fk_collection_avatar` (`avatarId`),
   CONSTRAINT `fk_collection_avatar` FOREIGN KEY (`avatarId`) REFERENCES `avatar` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_collection_player` FOREIGN KEY (`playerId`) REFERENCES `player` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `collection` (
 --
 
 /*!40000 ALTER TABLE `collection` DISABLE KEYS */;
-INSERT INTO `collection` VALUES (28,2,54),(31,2,55),(32,2,59),(33,2,53);
+INSERT INTO `collection` VALUES (28,2,54),(31,2,55),(32,2,59),(33,2,53),(34,5,56),(35,5,66);
 /*!40000 ALTER TABLE `collection` ENABLE KEYS */;
 
 --
@@ -244,7 +244,7 @@ CREATE TABLE `player` (
   UNIQUE KEY `membreId` (`membreId`),
   KEY `fk_player_collection` (`activeAvatar`),
   CONSTRAINT `fk_player_collection` FOREIGN KEY (`activeAvatar`) REFERENCES `collection` (`avatarId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +252,7 @@ CREATE TABLE `player` (
 --
 
 /*!40000 ALTER TABLE `player` DISABLE KEYS */;
-INSERT INTO `player` VALUES (2,'admin','admin','admin','$2a$13$AHX2ZMS8qfEjoIMmHM6fke9kT5Dxf1K6U6It7pFBTOHNe2qu.KIMm','admin@gmail.com',0,50,'1528',0,1,NULL,1,NULL,'#989898'),(3,'compte','compte','compte','$2a$13$ZjCYmDzQWNS0QVhybxdE0.p0gHjPU40x8.xbKjdjF7ljdIzVJLtS6','compte@gmail.com',0,50,'1762',0,1,NULL,0,NULL,'#989898');
+INSERT INTO `player` VALUES (2,'admin','admin','admin','$2a$13$AHX2ZMS8qfEjoIMmHM6fke9kT5Dxf1K6U6It7pFBTOHNe2qu.KIMm','admin@gmail.com',0,50,'1528',4,1,NULL,1,53,'#5280da'),(3,'compte','compte','compte','$2a$13$ZjCYmDzQWNS0QVhybxdE0.p0gHjPU40x8.xbKjdjF7ljdIzVJLtS6','compte@gmail.com',0,50,'1762',0,1,NULL,0,NULL,'#989898'),(4,'testtes','testest','testtestest','$2a$13$dV1u0Por6GylR5frj62qUe59Ence5aTA50DJVqOhfZs.udZEB5/6q','g.pell@gmail.com',0,50,'1691',0,1,NULL,0,NULL,'#989898'),(5,'ghislain','Pellicano','Ghis','$2a$13$TPyqaBJI0puBVJ/rH5wuRezyIKN3ujOIVaKAg4t9R1z2aGIt8BAKe','ghis.pell@gmail.com',0,30,'1318',0,1,NULL,0,NULL,'#989898');
 /*!40000 ALTER TABLE `player` ENABLE KEYS */;
 
 --
@@ -279,7 +279,6 @@ CREATE TABLE `redeemed` (
 --
 
 /*!40000 ALTER TABLE `redeemed` DISABLE KEYS */;
-INSERT INTO `redeemed` VALUES (3,2,1);
 /*!40000 ALTER TABLE `redeemed` ENABLE KEYS */;
 
 --
@@ -322,4 +321,4 @@ CREATE TABLE `scoreboard` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-30 16:22:14
+-- Dump completed on 2024-02-07 11:17:30

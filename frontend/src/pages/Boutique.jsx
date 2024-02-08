@@ -43,7 +43,7 @@ function Boutique() {
       </div>
       <div className="boutique-main flex w-full">
         {modalValidate && (
-          <div className="checkValidate z-[2] absolute w-full h-full bg-slate-400/75 flex items-center justify-center">
+          <div className="checkValidate z-[2] absolute w-full h-full bg-slate-400/75 flex items-start justify-center">
             <BuyValidate
               setModalValidate={setModalValidate}
               modalValidate={modalValidate}

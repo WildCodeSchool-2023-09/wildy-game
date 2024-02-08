@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import piece from "../../assets/images/credit_1.png";
 import cart from "../../assets/images/cart.svg";
+import handleScrollToTop from "../../services/scroll";
 
 function BoutiqueComponent({
   item,
@@ -25,6 +26,7 @@ function BoutiqueComponent({
             onClick={() => {
               setModalValidate(!modalValidate);
               setAvatarId(item.id);
+              handleScrollToTop();
             }}
           >
             <img src={cart} alt="cart" className="h-6" />

@@ -117,7 +117,7 @@ function Signup() {
               />
             </div>
             <div className="signup-column">
-              <label htmlFor="password2">Mot de passe</label>
+              <label htmlFor="password2">Confirmation</label>
               <input
                 type="password"
                 name="password2"

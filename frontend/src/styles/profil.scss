@@ -75,7 +75,7 @@
         }
         @media screen and (min-width: 1500px) {
           top: 50px;
-          left: 250px;
+          left: 200px;
         }
       }
       .edit-avatar:hover + .edit-mode-avatar {
@@ -136,8 +136,14 @@
         font-size: 1.5rem;
       }
       h2 {
+        font-size: 0.8rem;
+        font-family: $font3;
+      }
+      h3 {
+        color: $neutral-color;
         font-family: $generic-font;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        text-decoration: underline;
       }
       ul {
         margin-top: 10px;
@@ -146,6 +152,9 @@
         gap: 10px;
         li {
           font-family: $generic-font;
+        }
+        button {
+          color: $neutral-color;
         }
       }
     }
@@ -185,6 +194,12 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 20px;
+      }
+      .fav-games {
+        h2 {
+          font-family: $generic-font;
+          text-align: center;
+        }
       }
       section {
         background-color: $neutral-color-light;

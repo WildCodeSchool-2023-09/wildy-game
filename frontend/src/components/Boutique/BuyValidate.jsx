@@ -21,7 +21,7 @@ function BuyValidate({ setModalValidate, modalValidate, avatarId }) {
     }
   };
   return (
-    <div className="buyValidate w-[300px] h-[150px] flex flex-col items-center justify-center bg-color-second gap-4">
+    <div className="buyValidate w-[300px] h-[150px] flex flex-col items-center justify-center bg-color-second gap-4 mt-16">
       <h3 className="text-center">Êtes vous sur d'acheter cet avatar?</h3>
       <div className="buyValidatebtn flex gap-10">
         <button

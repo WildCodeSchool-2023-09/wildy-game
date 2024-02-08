@@ -16,6 +16,7 @@ import ProfilAvatars from "./settingsComponents/ProfilAvatars";
 import Upload from "../pages/Upload";
 import close from "../assets/images/close.svg";
 import robot from "../assets/images/robot.png";
+import defaut from "../assets/images/randomBanner.png";
 
 export default function ProfilSettings() {
   const { user, setUser, refreshUser } = useUser();
@@ -247,7 +248,9 @@ export default function ProfilSettings() {
         <img
           className={`banner ${editmode && "edit-mode-banner"}`}
           src={
-            user.banner && `${import.meta.env.VITE_BACKEND_URL}/${user.banner}`
+            user.banner
+              ? `${import.meta.env.VITE_BACKEND_URL}/${user.banner}`
+              : defaut
           }
           alt="banner"
         />
@@ -259,9 +262,12 @@ export default function ProfilSettings() {
         {editmode === false && (
           <aside className="settings-menu">
             <h1>Mon compte</h1>
+            <h3>pseudo:</h3>
             <h2>{user.pseudo}</h2>
+            <h3>email:</h3>
             <h2>{user.email}</h2>
-            <h2>{user.membreID}</h2>
+            <h3>Mon n° de membre:</h3>
+            <h2>{user.membreId}</h2>
             <ul>
               <li>
                 <button
@@ -278,7 +284,6 @@ export default function ProfilSettings() {
         <div className="settings-content">
           <div className="exp-wrapper">
             <ExpBar />
-            <p className="title">player.title</p>
           </div>
           {editmode ? (
             <button

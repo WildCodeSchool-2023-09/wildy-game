@@ -3,9 +3,13 @@ import coin from "../../assets/images/credit_1.png";
 
 export default function Hv({ editmode, secondaryColor, textColor }) {
   return (
-    <section className="profil-hv" style={{ backgroundColor: secondaryColor }}>
+    <section
+      className="profil-hv"
+      style={{ backgroundColor: secondaryColor }}
+      disabled
+    >
       <h1 style={{ color: textColor }}>PROPOSER DES ITEMS À L'ÉCHANGE</h1>
-      <div className="profil-hv-content">
+      <div className="profil-hv-content" style={{ fontStyle: "italic" }}>
         {editmode && (
           <div className="hv-items">
             <div className="item">
@@ -24,7 +28,7 @@ export default function Hv({ editmode, secondaryColor, textColor }) {
             </button>
           </div>
         )}
-        ------items on sale------
+        ------à venir prochainement------
       </div>
     </section>
   );
